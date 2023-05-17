@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ProdoSettings extends AppCompatActivity {
 
@@ -55,6 +56,8 @@ public class ProdoSettings extends AppCompatActivity {
                 editor.putInt("timer", timer);
 
                 editor.apply();
+                Toast.makeText(ProdoSettings.this, "Settings saved", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
 

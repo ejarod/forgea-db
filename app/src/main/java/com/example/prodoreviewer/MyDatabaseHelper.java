@@ -196,6 +196,17 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
+    int cardNo() {
+        String query = "SELECT * FROM cards";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+
+        cursor.moveToNext();
+        int count = cursor.getCount();
+        cursor.close();
+        return count;
+    }
+
     Cursor readTopicData() {
         String query = "SELECT * FROM TOPIC";
         SQLiteDatabase db = this.getReadableDatabase();

@@ -76,6 +76,7 @@ public class ProdoCardDisplay extends AppCompatActivity {
         }
 
         if(deck.size()==0) {
+            Toast.makeText(this, "No Cards Created", Toast.LENGTH_SHORT).show();
             finish();
         }
 

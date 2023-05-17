@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +18,7 @@ public class ProdoReviewer extends AppCompatActivity {
     Button btnSettings;
     ImageButton btnBackButton;
     TextView lblPageName;
+    private MyDatabaseHelper db;
 
 
     @Override
@@ -30,6 +32,7 @@ public class ProdoReviewer extends AppCompatActivity {
         btnSettings = (Button) findViewById(R.id.btnSettings);
         btnBackButton = findViewById(R.id.btnBackButton);
         lblPageName = findViewById(R.id.lblPageName);
+        db = new MyDatabaseHelper(ProdoReviewer.this);
 
         lblPageName.setText("Prodo Reviewer");
 
@@ -67,6 +70,10 @@ public class ProdoReviewer extends AppCompatActivity {
         btnQuick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(db.cardNo()==0) {
+                    Toast.makeText(ProdoReviewer.this, "Cards must be created first", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 Intent intent = new Intent(ProdoReviewer.this, ProdoCardDisplay.class);
                 intent.putExtra("topic","Quick");
                 startActivity(intent);

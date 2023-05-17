@@ -46,6 +46,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(myDB.topicCardNo(String.valueOf(topic_name.get(position)))==0) {
+                    Toast.makeText(context, "Cards must be created first", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 Intent intent = new Intent(context,ProdoCardDisplay.class);
                 intent.putExtra("topic",String.valueOf(topic_name.get(position)));
                 context.startActivity(intent);
