@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1A1A1A"
+    android:visibility="visible"
+    tools:context=".ProdoCardDisplay">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar" />
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/card_navigation"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/txtFrontText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="135dp"
+        android:fontFamily="@font/inter_semibold"
+        android:text="Front"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtBackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="39dp"
+        android:fontFamily="@font/inter_semibold"
+        android:gravity="center"
+        android:text="Back"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/txtFrontText"
+        app:layout_constraintTop_toBottomOf="@+id/txtFrontText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

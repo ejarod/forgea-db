@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#101010"
+    android:backgroundTint="#101010"
+    tools:context=".ProdoCardCreate">
+    <include layout="@layout/toolbar"/>
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.ProdoReviewer.AppBarOverlay"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="#101010">
+
+        <TextView
+            android:id="@+id/lblBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_bold"
+            android:text="Card Back"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/txtCardBack"
+            app:layout_constraintStart_toStartOf="@+id/txtCardBack"
+            app:layout_constraintTop_toBottomOf="@+id/txtCardFront" />
+
+        <TextView
+            android:id="@+id/lblTopic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            android:layout_marginBottom="3dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="Card Front"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/txtCardFront"
+            app:layout_constraintStart_toStartOf="@+id/txtCardFront"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/txtCardFront"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="61dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="61dp"
+            android:layout_marginBottom="21dp"
+            android:background="#232323"
+            android:fontFamily="@font/inter_medium"
+            android:hint="Enter Card Front"
+            android:padding="20dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#C1C1C1"
+            app:layout_constraintBottom_toTopOf="@+id/lblBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblTopic" />
+
+        <EditText
+            android:id="@+id/txtCardBack"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="59dp"
+            android:layout_marginBottom="29dp"
+            android:background="#232323"
+            android:fontFamily="@font/inter_medium"
+            android:hint="Enter Card Back"
+            android:padding="20dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#C1C1C1"
+            app:layout_constraintBottom_toTopOf="@+id/btnAddNewCard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblBack" />
+
+        <Button
+            android:id="@+id/btnAddNewCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="97dp"
+            android:background="@drawable/custom_button"
+            android:text="Add Card"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtCardBack" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
