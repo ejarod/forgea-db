@@ -183,6 +183,9 @@ public class ProdoCardDisplay extends AppCompatActivity {
         }
 
         Card currentCard = deck.get(currentCardIndex);
+        if(currentCard.getDifficulty()=="easy") {
+            nextCard();
+        }
         txtFrontText.setText(currentCard.getName());
         txtBackText.setText(currentCard.getContent());
 
@@ -217,12 +220,18 @@ public class ProdoCardDisplay extends AppCompatActivity {
 
             lblFront.setVisibility(View.INVISIBLE);
             lblBack.setVisibility(View.VISIBLE);
+            btnNext.setVisibility(View.VISIBLE);
+            btnEasy.setVisibility(View.VISIBLE);
+            btnHard.setVisibility(View.VISIBLE);
         } else if (isBackVisible) {
             txtFrontText.setVisibility(View.VISIBLE);
             txtBackText.setVisibility(View.INVISIBLE);
 
             lblFront.setVisibility(View.VISIBLE);
             lblBack.setVisibility(View.INVISIBLE);
+            btnNext.setVisibility(View.INVISIBLE);
+            btnEasy.setVisibility(View.INVISIBLE);
+            btnHard.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -240,11 +249,17 @@ public class ProdoCardDisplay extends AppCompatActivity {
             txtBackText.setVisibility(View.INVISIBLE);
             lblFront.setVisibility(View.VISIBLE);
             lblBack.setVisibility(View.INVISIBLE);
+            btnNext.setVisibility(View.INVISIBLE);
+            btnEasy.setVisibility(View.INVISIBLE);
+            btnHard.setVisibility(View.INVISIBLE);
         } else {
             txtFrontText.setText("End of Topic");
             txtBackText.setVisibility(View.INVISIBLE);
             lblFront.setVisibility(View.INVISIBLE);
             lblBack.setVisibility(View.INVISIBLE);
+            btnNext.setVisibility(View.INVISIBLE);
+            btnEasy.setVisibility(View.INVISIBLE);
+            btnHard.setVisibility(View.INVISIBLE);
             Toast.makeText(this, "No Cards Left", Toast.LENGTH_SHORT).show();
             if (timer != null) {
                 timer.cancel();
@@ -262,7 +277,11 @@ public class ProdoCardDisplay extends AppCompatActivity {
             timer = null;
         }
 
-        deck.remove(currentCard);
+        for(int i = 0; i < deck.size(); i++) {
+            if(deck.get(i)==currentCard) {
+                deck.remove(i);
+            }
+        }
 
         if (currentCardIndex < deck.size()) {
             displayCard();
@@ -270,6 +289,9 @@ public class ProdoCardDisplay extends AppCompatActivity {
             txtBackText.setVisibility(View.INVISIBLE);
             lblFront.setVisibility(View.VISIBLE);
             lblBack.setVisibility(View.INVISIBLE);
+            btnNext.setVisibility(View.INVISIBLE);
+            btnEasy.setVisibility(View.INVISIBLE);
+            btnHard.setVisibility(View.INVISIBLE);
         } else {
             Toast.makeText(this, "No Cards Left", Toast.LENGTH_SHORT).show();
             if (timer != null) {
@@ -298,6 +320,9 @@ public class ProdoCardDisplay extends AppCompatActivity {
             txtBackText.setVisibility(View.INVISIBLE);
             lblFront.setVisibility(View.VISIBLE);
             lblBack.setVisibility(View.INVISIBLE);
+            btnNext.setVisibility(View.INVISIBLE);
+            btnEasy.setVisibility(View.INVISIBLE);
+            btnHard.setVisibility(View.INVISIBLE);
         } else {
             Toast.makeText(this, "No Cards Left", Toast.LENGTH_SHORT).show();
             if (timer != null) {

@@ -35,7 +35,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/custom_button"
                 android:text="Easy"
-                android:textColor="#8BC34A" />
+                android:textColor="#8BC34A"
+                android:visibility="invisible" />
 
             <Button
                 android:id="@+id/btnHard"
@@ -44,7 +45,8 @@
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/custom_button"
                 android:text="Hard"
-                android:textColor="#F44336" />
+                android:textColor="#F44336"
+                android:visibility="invisible" />
 
             <Button
                 android:id="@+id/btnNext"
@@ -53,7 +55,8 @@
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/back_button"
                 android:text="Next"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:visibility="invisible" />
 
         </LinearLayout>
 
