@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +22,7 @@ public class Prodotopics extends AppCompatActivity {
     ArrayList<String> topic_id;
     ArrayList<String> topic_name;
     CustomAdapter customAdapter;
-    ImageButton btnBackButton;
+    ImageButton btnBackButton,btnHome;
     TextView lblPageName;
 
 
@@ -31,11 +32,22 @@ public class Prodotopics extends AppCompatActivity {
         setContentView(R.layout.activity_prodotopics);
 
         btnBackButton = findViewById(R.id.btnBackButton);
+        btnHome = findViewById(R.id.btnHome);
 
         btnBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(Prodotopics.this, ProdoReviewer.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
         lblPageName = findViewById(R.id.lblPageName);

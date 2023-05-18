@@ -16,9 +16,9 @@ import android.widget.Toast;
 
 public class ProdoSettings extends AppCompatActivity {
 
-    ImageButton btnBackButton;
+    ImageButton btnBackButton,btnHome;
     Button btnSave,btnClearTopics,btnClearCards;
-    EditText txtTimer;
+    EditText txtTimer,txtLoop;
     TextView lblPageName;
     private MyDatabaseHelper db;
 
@@ -27,11 +27,13 @@ public class ProdoSettings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prodo_settings);
         btnBackButton = findViewById(R.id.btnBackButton);
+        btnHome = findViewById(R.id.btnHome);
         btnClearCards = findViewById(R.id.btnClearCards);
         btnClearTopics = findViewById(R.id.btnClearTopics);
         btnSave = findViewById(R.id.btnSaveSettings);
         txtTimer = findViewById(R.id.txtTimer);
         lblPageName = findViewById(R.id.lblPageName);
+        txtLoop = findViewById(R.id.txtLoop);
 
         lblPageName.setText("Settings");
 
@@ -42,18 +44,47 @@ public class ProdoSettings extends AppCompatActivity {
             }
         });
 
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(ProdoSettings.this, ProdoReviewer.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //db = new MyDatabaseHelper(ProdoSettings.this);
-                //db.saveSettings(Integer.parseInt(txtTimer.getText().toString()));
 
                 SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = preferences.edit();
 
-                int timer = Integer.parseInt(txtTimer.getText().toString());
-                editor.putInt("timer", timer);
+                try{
+                    String input = txtTimer.getText().toString();
+                    if(!input.isEmpty()) {
+                        int timer = Integer.parseInt(input);
+                        editor.putInt("timer", timer);
+                    }
+
+                } catch(Exception e) {
+                    Toast.makeText(ProdoSettings.this, "Invalid Timer Input", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                try{
+                    String input2 = txtLoop.getText().toString();
+                    if(!input2.isEmpty()) {
+                        int loop = Integer.parseInt(input2);
+                        editor.putInt("loop", loop);
+                    }
+
+                } catch(Exception e) {
+                    Toast.makeText(ProdoSettings.this, "Invalid Loop Input", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 editor.apply();
                 Toast.makeText(ProdoSettings.this, "Settings saved", Toast.LENGTH_SHORT).show();

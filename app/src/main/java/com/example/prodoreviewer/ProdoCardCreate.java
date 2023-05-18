@@ -16,7 +16,7 @@ public class ProdoCardCreate extends AppCompatActivity {
 
     Button btnAddNewCard;
     EditText txtCardFront, txtCardBack;
-    ImageButton btnBackButton;
+    ImageButton btnBackButton,btnHome;
     TextView lblPageName;
 
     @SuppressLint("MissingInflatedId")
@@ -28,6 +28,7 @@ public class ProdoCardCreate extends AppCompatActivity {
         Intent intent = getIntent();
 
         btnBackButton = findViewById(R.id.btnBackButton);
+        btnHome = findViewById(R.id.btnHome);
         lblPageName = findViewById(R.id.lblPageName);
 
         lblPageName.setText("Card Create");
@@ -57,6 +58,16 @@ public class ProdoCardCreate extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(ProdoCardCreate.this, ProdoReviewer.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
     }

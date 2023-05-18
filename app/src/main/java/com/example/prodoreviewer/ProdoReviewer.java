@@ -16,7 +16,7 @@ public class ProdoReviewer extends AppCompatActivity {
     Button btnTopic;
     Button btnQuick;
     Button btnSettings;
-    ImageButton btnBackButton;
+    ImageButton btnBackButton,btnHome;
     TextView lblPageName;
     private MyDatabaseHelper db;
 
@@ -31,6 +31,7 @@ public class ProdoReviewer extends AppCompatActivity {
         btnQuick = (Button) findViewById(R.id.btnQuick);
         btnSettings = (Button) findViewById(R.id.btnSettings);
         btnBackButton = findViewById(R.id.btnBackButton);
+        btnHome = findViewById(R.id.btnHome);
         lblPageName = findViewById(R.id.lblPageName);
         db = new MyDatabaseHelper(ProdoReviewer.this);
 

@@ -15,7 +15,7 @@
     <include
         android:id="@+id/include2"
         layout="@layout/card_navigation"
-        android:layout_width="411dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent" />
 
@@ -39,12 +39,39 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="39dp"
         android:fontFamily="@font/inter_semibold"
-        android:gravity="center"
         android:text="Back"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="@+id/txtFrontText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtFrontText" />
+
+    <TextView
+        android:id="@+id/lblFront"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/inter_semibold"
+        android:text="Frontside"
+        android:textColor="#373737"
+        app:layout_constraintBottom_toBottomOf="@+id/lblBackside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lblBackside" />
+
+    <TextView
+        android:id="@+id/lblBackside"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="79dp"
+        android:fontFamily="@font/inter_semibold"
+        android:text="Backside"
+        android:textColor="#373737"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/txtFrontText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

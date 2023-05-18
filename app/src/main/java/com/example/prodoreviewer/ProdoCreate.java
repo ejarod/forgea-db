@@ -16,7 +16,7 @@ public class ProdoCreate extends AppCompatActivity {
 
     Button btnAdd;
     EditText txtTopic;
-    ImageButton btnBackButton;
+    ImageButton btnBackButton,btnHome;
     TextView lblPageName;
 
 
@@ -29,6 +29,7 @@ public class ProdoCreate extends AppCompatActivity {
         txtTopic = (EditText) findViewById(R.id.txtTopic);
         btnAdd = (Button) findViewById(R.id.btnAddNewCard);
         btnBackButton = findViewById(R.id.btnBackButton);
+        btnHome = findViewById(R.id.btnHome);
         lblPageName = findViewById(R.id.lblPageName);
 
         lblPageName.setText("Create Topic");
@@ -37,6 +38,16 @@ public class ProdoCreate extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(ProdoCreate.this, ProdoReviewer.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
 
