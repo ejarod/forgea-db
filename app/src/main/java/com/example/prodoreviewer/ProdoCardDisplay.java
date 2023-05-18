@@ -236,6 +236,16 @@ public class ProdoCardDisplay extends AppCompatActivity {
     }
 
     private void nextCard() {
+
+        if (currentCardIndex >= deck.size()) {
+            Toast.makeText(this, "No Cards Left", Toast.LENGTH_SHORT).show();
+            if (timer != null) {
+                timer.cancel();
+                timer = null;
+            }
+            finish();
+        }
+
         if (timer != null) {
             timer.cancel();
             timer = null;
@@ -270,16 +280,29 @@ public class ProdoCardDisplay extends AppCompatActivity {
     }
 
     private void easyCard() {
+
+        if (currentCardIndex >= deck.size()) {
+            Toast.makeText(this, "No Cards Left", Toast.LENGTH_SHORT).show();
+            if (timer != null) {
+                timer.cancel();
+                timer = null;
+            }
+            finish();
+        }
+
         Card currentCard = deck.get(currentCardIndex);
+        deck.remove(currentCardIndex);
 
         if (timer != null) {
             timer.cancel();
             timer = null;
         }
 
-        for(int i = 0; i < deck.size(); i++) {
-            if(deck.get(i)==currentCard) {
-                deck.remove(i);
+        if (currentCardIndex < deck.size()){
+            for(int i = 0; i < deck.size(); i++) {
+                if(deck.get(i)==currentCard) {
+                    deck.remove(i);
+                }
             }
         }
 
@@ -303,6 +326,16 @@ public class ProdoCardDisplay extends AppCompatActivity {
     }
 
     private void hardCard() {
+
+        if (currentCardIndex >= deck.size()) {
+            Toast.makeText(this, "No Cards Left", Toast.LENGTH_SHORT).show();
+            if (timer != null) {
+                timer.cancel();
+                timer = null;
+            }
+            finish();
+        }
+
         Card currentCard = deck.get(currentCardIndex);
 
         if (timer != null) {
