@@ -67,7 +67,7 @@ public class Prodotopics extends AppCompatActivity {
 
     }
 
-    void storeData() {
+    private void storeData() {
         Cursor cursor = myDB.readTopicData();
         if(cursor == null) {
             return;

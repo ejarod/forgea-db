@@ -2,15 +2,18 @@ package com.example.prodoreviewer;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -69,6 +72,20 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 context.startActivity(intent);
             }
         });
+
+        holder.btnEditCards.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                confirmTopicDelete(String.valueOf(topic_name.get(position)));
+            }
+        });
     }
 
     @Override
@@ -80,7 +97,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
         TextView txtTopicCards, txtTopic_name;
         ConstraintLayout mainLayout;
-        Button btnAdd_Card;
+        Button btnAdd_Card,btnEditCards;
+        ImageButton btnDelete;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -88,6 +106,30 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             txtTopic_name = itemView.findViewById(R.id.txtTopic_name);
             btnAdd_Card = itemView.findViewById(R.id.btnAdd_Card);
             mainLayout = itemView.findViewById(R.id.mainLayout);
+            btnDelete = itemView.findViewById(R.id.btnDeleteTopic);
+            btnEditCards = itemView.findViewById(R.id.btnEditCards);
         }
+    }
+
+    private void confirmTopicDelete(String topic) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Confirmation")
+                .setMessage("Are you sure you want to delete topic?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        myDB.deleteTopic(topic);
+                        Intent intent = new Intent(context, Prodotopics.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        context.startActivity(intent);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .show();
     }
 }

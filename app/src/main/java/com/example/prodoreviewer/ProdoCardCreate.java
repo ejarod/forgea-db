@@ -46,6 +46,10 @@ public class ProdoCardCreate extends AppCompatActivity {
                 String cardContent = txtCardBack.getText().toString();
 
                 MyDatabaseHelper myDB = new MyDatabaseHelper(ProdoCardCreate.this);
+                if(myDB.cardExists(cardName)){
+                    Toast.makeText(ProdoCardCreate.this, "Card already exists", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 myDB.addCard(cardName,"normal",cardContent,topicName);
 
                 Intent intent = new Intent(ProdoCardCreate.this, Prodotopics.class);

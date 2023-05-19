@@ -218,4 +218,28 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
+
+    boolean topicExists(String topic) {
+        String query = "SELECT * FROM TOPIC where topic_name='"+topic+"'";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if(cursor.moveToNext()) {
+            return true;
+        }
+        return false;
+    }
+
+    boolean cardExists(String name) {
+        String query = "SELECT * FROM cards where card_name='"+name+"'";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if(cursor.moveToNext()) {
+            return true;
+        }
+        return false;
+    }
 }

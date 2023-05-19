@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -58,9 +59,11 @@ public class ProdoCreate extends AppCompatActivity {
                 String topicName = txtTopic.getText().toString();
 
                 MyDatabaseHelper myDB = new MyDatabaseHelper(ProdoCreate.this);
+                if(myDB.topicExists(topicName)){
+                    Toast.makeText(ProdoCreate.this, "Topic already exists", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 myDB.addTopic(topicName);
-
-
                 finish();
             }
         });
