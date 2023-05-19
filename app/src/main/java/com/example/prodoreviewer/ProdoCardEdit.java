@@ -52,6 +52,11 @@ public class ProdoCardEdit extends AppCompatActivity {
                 String newName = txtEditFront.getText().toString();
                 String cardContent = txtEditBack.getText().toString();
 
+                if(myDB.cardExists(newName) && !cardName.equals(newName)){
+                    Toast.makeText(ProdoCardEdit.this, "Card front already exists", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 myDB.editCard(cardName,cardContent,newName);
 
                 Intent intent = new Intent(ProdoCardEdit.this, Prodotopics.class);
