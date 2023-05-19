@@ -135,6 +135,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        myDB.deleteAllCards(topic);
                         myDB.deleteTopic(topic);
                         Intent intent = new Intent(context, Prodotopics.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -116,6 +116,7 @@ public class ProdoSettings extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         db = new MyDatabaseHelper(ProdoSettings.this);
                         db.deleteAllTopics();
+                        db.deleteAllCards();
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {

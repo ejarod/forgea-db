@@ -157,6 +157,11 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DELETE FROM cards");
     }
 
+    void deleteAllCards(String topic) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM cards WHERE card_topic='"+topic+"'");
+    }
+
     void deleteCard(String name) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM cards where card_name='"+name+"'");
