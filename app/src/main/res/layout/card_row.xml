@@ -35,6 +35,7 @@
                     android:id="@+id/txtCard_name"
                     android:layout_width="202dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="80dp"
                     android:fontFamily="@font/inter_semibold"
                     android:text="TextView"
                     android:textColor="#FFFFFF"

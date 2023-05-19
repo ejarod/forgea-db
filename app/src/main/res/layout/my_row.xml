@@ -102,6 +102,7 @@
                     android:background="@drawable/custom_button_addcard"
                     android:elevation="1dp"
                     android:fontFamily="@font/inter_semibold"
+                    android:gravity="center"
                     android:paddingLeft="60dp"
                     android:text="Add new card"
                     android:textAlignment="viewStart"
