@@ -56,8 +56,7 @@
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.2"
+                    app:layout_constraintEnd_toStartOf="@+id/btnDeleteTopic"
                     app:layout_constraintStart_toEndOf="@+id/txtTopicCards"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.509" />
@@ -98,7 +97,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="70dp"
-                    android:layout_marginEnd="50dp"
                     android:background="@drawable/custom_button_addcard"
                     android:elevation="1dp"
                     android:fontFamily="@font/inter_semibold"
@@ -108,7 +106,6 @@
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btnEditCards"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
