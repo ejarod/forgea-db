@@ -46,10 +46,8 @@
 
                 <TextView
                     android:id="@+id/txtTopic_name"
-                    android:layout_width="260dp"
-                    android:layout_height="42dp"
-                    android:layout_marginLeft="70dp"
-                    android:layout_marginRight="100dp"
+                    android:layout_width="231dp"
+                    android:layout_height="45dp"
                     android:layout_marginBottom="60dp"
                     android:fontFamily="@font/inter_bold"
                     android:paddingTop="5dp"
@@ -59,8 +57,10 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintHorizontal_bias="0.2"
+                    app:layout_constraintStart_toEndOf="@+id/txtTopicCards"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.509" />
 
                 <ImageView
                     android:id="@+id/imageView2"
@@ -95,9 +95,10 @@
                 <Button
                     android:id="@+id/btnAdd_Card"
                     android:layout_width="180dp"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="70dp"
+                    android:layout_marginEnd="32dp"
                     android:background="@drawable/custom_button_addcard"
                     android:elevation="1dp"
                     android:fontFamily="@font/inter_semibold"
@@ -107,13 +108,14 @@
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btnEditCards"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
                     android:id="@+id/btnEditCards"
                     android:layout_width="130dp"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="70dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/custom_button_addcard"
