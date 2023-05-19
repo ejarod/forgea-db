@@ -26,9 +26,10 @@
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="320dp"
+                android:layout_width="296dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:padding="12dp">
 
                 <TextView
@@ -58,6 +59,7 @@
                     android:textAllCaps="false"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.968"
                     app:layout_constraintStart_toEndOf="@+id/txtCard_name"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
