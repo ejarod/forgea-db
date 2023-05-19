@@ -20,12 +20,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginLeft="110dp"
-            android:layout_marginRight="110dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
             android:fontFamily="@font/inter_semibold"
             android:text="TextView"
             android:textColor="#FFFFFF"
-            android:textSize="16sp" />
+            android:textSize="10sp" />
 
         <ImageButton
             android:id="@+id/btnHome"

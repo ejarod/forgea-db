@@ -119,6 +119,7 @@
         android:padding="20dp"
         android:textColor="#FFFFFF"
         android:textColorHint="#C1C1C1"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
