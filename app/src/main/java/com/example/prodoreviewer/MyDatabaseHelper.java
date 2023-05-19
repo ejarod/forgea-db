@@ -116,6 +116,21 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    void editCard(String name, String newContent, String newName) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(COLUMN_NAME, newName);
+        cv.put(COLUMN_CONTENT, newContent);
+
+        int result = db.update(TABLE_NAME, cv, COLUMN_NAME + " = ?", new String[]{name});
+        if (result > 0) {
+            Toast.makeText(context, "Card updated", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Could not update card", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     void addTopic(String name){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -137,14 +152,14 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    void deleteAllSettings() {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DELETE FROM Settings");
-    }
-
     void deleteAllCards() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM cards");
+    }
+
+    void deleteCard(String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM cards where card_name='"+name+"'");
     }
 
     int getTimer() {
@@ -196,6 +211,17 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
+    Card getCard(String name) {
+        String query = "SELECT * FROM cards WHERE card_name = '"+name+"'";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+
+        cursor.moveToNext();
+        Card card = new Card(cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4));
+        cursor.close();
+        return card;
+    }
+
     int cardNo() {
         String query = "SELECT * FROM cards";
         SQLiteDatabase db = this.getReadableDatabase();
@@ -209,6 +235,18 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     Cursor readTopicData() {
         String query = "SELECT * FROM TOPIC";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+
+        if(db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
+    Cursor readCardData(String topic) {
+        String query = "SELECT * FROM cards where card_topic='"+topic+"'";
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = null;

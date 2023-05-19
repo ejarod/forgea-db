@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class Prodotopics extends AppCompatActivity {
 
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
 
     MyDatabaseHelper myDB;
     ArrayList<String> topic_id;

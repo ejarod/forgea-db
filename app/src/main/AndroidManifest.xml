@@ -27,15 +27,15 @@
             android:name=".ProdoCards"
             android:exported="false" />
         <activity
-            android:name=".ProdoUpdate"
-            android:exported="false" />
-        <activity
             android:name=".Prodotopics"
             android:exported="false" />
         <activity
             android:name=".ProdoCreate"
             android:exported="true"
             android:parentActivityName=".ProdoReviewer" />
+        <activity
+            android:name=".ProdoCardEdit"
+            android:exported="false" />
         <activity
             android:name=".ProdoReviewer"
             android:exported="true">

@@ -152,6 +152,10 @@ public class ProdoCardDisplay extends AppCompatActivity {
                     timer.cancel();
                     timer = null;
                 }
+                Intent intent = new Intent(ProdoCardDisplay.this, Prodotopics.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+
                 finish();
             }
         });

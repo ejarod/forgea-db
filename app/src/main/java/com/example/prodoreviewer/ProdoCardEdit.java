@@ -1,7 +1,5 @@
 package com.example.prodoreviewer;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,10 +10,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ProdoCardCreate extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
 
-    Button btnAddNewCard;
-    EditText txtCardFront, txtCardBack;
+public class ProdoCardEdit extends AppCompatActivity {
+
+    Button btnEditCard;
+    EditText txtEditFront, txtEditBack;
     ImageButton btnBackButton,btnHome;
     TextView lblPageName;
 
@@ -23,7 +23,9 @@ public class ProdoCardCreate extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_prodo_card_create);
+        setContentView(R.layout.activity_prodo_card_edit);
+
+        MyDatabaseHelper myDB = new MyDatabaseHelper(ProdoCardEdit.this);
 
         Intent intent = getIntent();
 
@@ -31,38 +33,41 @@ public class ProdoCardCreate extends AppCompatActivity {
         btnHome = findViewById(R.id.btnHome);
         lblPageName = findViewById(R.id.lblPageName);
 
-        lblPageName.setText("Card Create");
+        lblPageName.setText("Card Edit");
 
-        txtCardFront = (EditText) findViewById(R.id.txtCardFront);
-        txtCardBack = (EditText) findViewById(R.id.txtCardBack);
-        btnAddNewCard = (Button) findViewById(R.id.btnAddNewCard);
+        txtEditFront = (EditText) findViewById(R.id.txtEditFront);
+        txtEditBack = (EditText) findViewById(R.id.txtEditBack);
+        btnEditCard = (Button) findViewById(R.id.btnEditCard);
+
+        Card card = myDB.getCard(intent.getStringExtra("front"));
+
+        txtEditFront.setText(card.getName());
+        txtEditBack.setText(card.getContent());
 
 
-        btnAddNewCard.setOnClickListener(new View.OnClickListener() {
+        btnEditCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String cardName = txtCardFront.getText().toString();
-                String topicName = intent.getStringExtra("topic");
-                String cardContent = txtCardBack.getText().toString();
+                String cardName = intent.getStringExtra("front");
+                String newName = txtEditFront.getText().toString();
+                String cardContent = txtEditBack.getText().toString();
 
-                MyDatabaseHelper myDB = new MyDatabaseHelper(ProdoCardCreate.this);
-                if(myDB.cardExists(cardName)){
-                    Toast.makeText(ProdoCardCreate.this, "Card already exists", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                myDB.addCard(cardName,"normal",cardContent,topicName);
+                myDB.editCard(cardName,cardContent,newName);
 
-                Intent intent = new Intent(ProdoCardCreate.this, Prodotopics.class);
+                Intent intent = new Intent(ProdoCardEdit.this, Prodotopics.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+
+                finish();
             }
         });
 
         btnBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ProdoCardCreate.this, Prodotopics.class);
+                Intent intent = new Intent(ProdoCardEdit.this, ProdoCards.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("topic",card.getTopic());
                 startActivity(intent);
 
                 finish();
@@ -73,7 +78,7 @@ public class ProdoCardCreate extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(ProdoCardCreate.this, ProdoReviewer.class);
+                Intent intent = new Intent(ProdoCardEdit.this, ProdoReviewer.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }

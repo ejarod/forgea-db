@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -23,6 +25,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     private Context context;
     private ArrayList<String> topic_id, topic_name;
     private MyDatabaseHelper myDB;
+    private Animation translate_anim;
 
 
     public CustomAdapter(Context context, ArrayList<String> topic_id, ArrayList<String> topic_name) {
@@ -76,7 +79,18 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.btnEditCards.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(myDB.topicCardNo(String.valueOf(topic_name.get(position)))==0) {
+                    Toast.makeText(context, "Cards must be created first", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Intent intent = new Intent(context,ProdoCards.class);
+                intent.putExtra("topic",String.valueOf(topic_name.get(position)));
+                context.startActivity(intent);
 
+                if (view.getContext() instanceof Activity) {
+                    Activity activity = (Activity) view.getContext();
+                    activity.finish();
+                }
             }
         });
 
@@ -108,6 +122,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             mainLayout = itemView.findViewById(R.id.mainLayout);
             btnDelete = itemView.findViewById(R.id.btnDeleteTopic);
             btnEditCards = itemView.findViewById(R.id.btnEditCards);
+
+            translate_anim = AnimationUtils.loadAnimation(context,R.anim.translate_anim);
+            mainLayout.setAnimation(translate_anim);
         }
     }
 

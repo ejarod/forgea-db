@@ -110,7 +110,7 @@ public class ProdoSettings extends AppCompatActivity {
     private void confirmTopicClear() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Confirmation")
-                .setMessage("Are you sure you want to clear cards?")
+                .setMessage("Are you sure you want to clear all topics?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -130,7 +130,7 @@ public class ProdoSettings extends AppCompatActivity {
     private void confirmCardClear() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Confirmation")
-                .setMessage("Are you sure you want to clear topics?")
+                .setMessage("Are you sure you want to clear all cards?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
