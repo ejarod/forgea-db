@@ -45,6 +45,21 @@ public class ProdoCardCreate extends AppCompatActivity {
                 String topicName = intent.getStringExtra("topic");
                 String cardContent = txtCardBack.getText().toString();
 
+                if(cardName.length() > 38) {
+                    Toast.makeText(ProdoCardCreate.this, "Front text too long!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(cardContent.length() > 128) {
+                    Toast.makeText(ProdoCardCreate.this, "Back text too long!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(cardName.isEmpty() || cardName.trim().isEmpty()) {
+                    Toast.makeText(ProdoCardCreate.this, "Enter a card name", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 MyDatabaseHelper myDB = new MyDatabaseHelper(ProdoCardCreate.this);
                 if(myDB.cardExists(cardName)){
                     Toast.makeText(ProdoCardCreate.this, "Card already exists", Toast.LENGTH_SHORT).show();

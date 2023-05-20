@@ -58,6 +58,16 @@ public class ProdoCreate extends AppCompatActivity {
             public void onClick(View view) {
                 String topicName = txtTopic.getText().toString();
 
+                if(topicName.length() > 38) {
+                    Toast.makeText(ProdoCreate.this, "Topic name too long!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(topicName.isEmpty() || topicName.trim().isEmpty()) {
+                    Toast.makeText(ProdoCreate.this, "Enter a topic name", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 MyDatabaseHelper myDB = new MyDatabaseHelper(ProdoCreate.this);
                 if(myDB.topicExists(topicName)){
                     Toast.makeText(ProdoCreate.this, "Topic already exists", Toast.LENGTH_SHORT).show();

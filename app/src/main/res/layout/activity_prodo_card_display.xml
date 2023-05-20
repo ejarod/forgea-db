@@ -38,13 +38,14 @@
     <TextView
         android:id="@+id/txtBackText"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="39dp"
         android:layout_marginRight="50dp"
         android:fontFamily="@font/inter_semibold"
-        android:gravity="center"
+        android:gravity="center_horizontal|top"
         android:text="Back"
+        android:textAlignment="gravity"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:visibility="invisible"
@@ -57,12 +58,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="84dp"
         android:fontFamily="@font/inter_semibold"
         android:text="Frontside"
         android:textColor="#373737"
-        app:layout_constraintBottom_toBottomOf="@+id/lblBackside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/lblBackside" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/lblBackside"
@@ -70,12 +71,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="79dp"
         android:fontFamily="@font/inter_semibold"
         android:text="Backside"
         android:textColor="#373737"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/txtFrontText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

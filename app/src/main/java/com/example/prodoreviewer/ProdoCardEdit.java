@@ -52,6 +52,21 @@ public class ProdoCardEdit extends AppCompatActivity {
                 String newName = txtEditFront.getText().toString();
                 String cardContent = txtEditBack.getText().toString();
 
+                if(newName.isEmpty() || newName.trim().isEmpty()) {
+                    Toast.makeText(ProdoCardEdit.this, "Enter valid name", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(cardName.length() > 38) {
+                    Toast.makeText(ProdoCardEdit.this, "Front text too long!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(cardContent.length() > 128) {
+                    Toast.makeText(ProdoCardEdit.this, "Back text too long!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 if(myDB.cardExists(newName) && !cardName.equals(newName)){
                     Toast.makeText(ProdoCardEdit.this, "Card front already exists", Toast.LENGTH_SHORT).show();
                     return;
