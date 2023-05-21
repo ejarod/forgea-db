@@ -2,10 +2,13 @@ package com.example.prodoreviewer;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +29,15 @@ public class ProdoSettings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prodo_settings);
+
+        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        postponeEnterTransition();
+
+        View sharedView = findViewById(R.id.includeSettings);
+        String transitionName = getString(R.string.transition_image);
+        ViewCompat.setTransitionName(sharedView, transitionName);
+
         btnBackButton = findViewById(R.id.btnBackButton);
         btnHome = findViewById(R.id.btnHome);
         btnClearCards = findViewById(R.id.btnClearCards);
@@ -105,6 +117,14 @@ public class ProdoSettings extends AppCompatActivity {
                 confirmCardClear();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+        startPostponedEnterTransition();
     }
 
     private void confirmTopicClear() {

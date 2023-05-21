@@ -9,7 +9,10 @@
     android:background="#101010"
     android:backgroundTint="#101010"
     tools:context=".ProdoCardEdit">
-    <include layout="@layout/toolbar"/>
+    <include
+        android:id="@+id/includeEdit"
+        android:transitionName="sharedImage"
+        layout="@layout/toolbar"/>
 
 
     <com.google.android.material.appbar.AppBarLayout

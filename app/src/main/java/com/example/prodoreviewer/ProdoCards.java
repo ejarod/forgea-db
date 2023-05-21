@@ -1,11 +1,15 @@
 package com.example.prodoreviewer;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -26,6 +30,15 @@ public class ProdoCards extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prodo_cards);
+
+        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        postponeEnterTransition();
+
+        View sharedView = findViewById(R.id.includeCards);
+        String transitionName = getString(R.string.transition_image);
+        ViewCompat.setTransitionName(sharedView, transitionName);
+
         btnBackButton = findViewById(R.id.btnBackButton);
         lblPageName = findViewById(R.id.lblPageName);
         recyclerView = findViewById(R.id.recyclerView2);
@@ -53,6 +66,14 @@ public class ProdoCards extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+        startPostponedEnterTransition();
     }
 
     private void storeData(String topic) {

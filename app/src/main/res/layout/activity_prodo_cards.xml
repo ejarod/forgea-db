@@ -6,7 +6,10 @@
     android:layout_height="match_parent"
     android:background="#101010"
     tools:context=".ProdoCards">
-    <include layout="@layout/toolbar"/>
+    <include
+        android:id="@+id/includeCards"
+        android:transitionName="sharedImage"
+        layout="@layout/toolbar"/>
 
 
     <androidx.recyclerview.widget.RecyclerView

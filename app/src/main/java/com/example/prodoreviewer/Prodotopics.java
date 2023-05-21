@@ -1,11 +1,15 @@
 package com.example.prodoreviewer;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -37,6 +41,10 @@ public class Prodotopics extends AppCompatActivity {
         btnBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(Prodotopics.this, ProdoReviewer.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+
                 finish();
             }
         });
@@ -65,6 +73,14 @@ public class Prodotopics extends AppCompatActivity {
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(Prodotopics.this));
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+        startPostponedEnterTransition();
     }
 
     private void storeData() {

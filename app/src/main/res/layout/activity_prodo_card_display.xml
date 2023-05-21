@@ -9,7 +9,8 @@
     tools:context=".ProdoCardDisplay">
 
     <include
-        android:id="@+id/include"
+        android:id="@+id/includeDisplay"
+        android:transitionName="sharedImage"
         layout="@layout/toolbar" />
 
     <include

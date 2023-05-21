@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -83,6 +84,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                     Toast.makeText(context, "Cards must be created first", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 Intent intent = new Intent(context,ProdoCards.class);
                 intent.putExtra("topic",String.valueOf(topic_name.get(position)));
                 context.startActivity(intent);
@@ -113,6 +115,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         ConstraintLayout mainLayout;
         Button btnAdd_Card,btnEditCards;
         ImageButton btnDelete;
+        View sharedView;
+        String transitionName;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -122,6 +126,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             mainLayout = itemView.findViewById(R.id.mainLayout);
             btnDelete = itemView.findViewById(R.id.btnDeleteTopic);
             btnEditCards = itemView.findViewById(R.id.btnEditCards);
+            sharedView = itemView.findViewById(R.id.includeTopics);
+            transitionName = context.getString(R.string.transition_image);
 
             translate_anim = AnimationUtils.loadAnimation(context,R.anim.translate_anim);
             mainLayout.setAnimation(translate_anim);

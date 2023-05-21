@@ -1,6 +1,8 @@
 package com.example.prodoreviewer;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
 
 public class ProdoReviewer extends AppCompatActivity {
 
@@ -21,21 +25,24 @@ public class ProdoReviewer extends AppCompatActivity {
     private MyDatabaseHelper db;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prodoreviewer);
 
-        btnStudy = (Button) findViewById(R.id.btnStudy);
-        btnTopic = (Button) findViewById(R.id.btnTopic);
-        btnQuick = (Button) findViewById(R.id.btnQuick);
-        btnSettings = (Button) findViewById(R.id.btnSettings);
+        btnStudy = findViewById(R.id.btnStudy);
+        btnTopic = findViewById(R.id.btnTopic);
+        btnQuick = findViewById(R.id.btnQuick);
+        btnSettings = findViewById(R.id.btnSettings);
         btnBackButton = findViewById(R.id.btnBackButton);
         btnHome = findViewById(R.id.btnHome);
         lblPageName = findViewById(R.id.lblPageName);
         db = new MyDatabaseHelper(ProdoReviewer.this);
 
         lblPageName.setText("Prodo Reviewer");
+
+        btnHome.setVisibility(View.INVISIBLE);
 
         btnBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +55,13 @@ public class ProdoReviewer extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ProdoReviewer.this,ProdoCreate.class);
-                startActivity(intent);
+                //startActivity(intent);
+
+                View sharedView = findViewById(R.id.include); // The shared element view
+                String transitionName = getString(R.string.transition_image); // The transition name
+                ActivityOptionsCompat options = ActivityOptionsCompat
+                        .makeSceneTransitionAnimation(ProdoReviewer.this, sharedView, transitionName);
+                startActivity(intent, options.toBundle());
             }
         });
 
@@ -64,7 +77,13 @@ public class ProdoReviewer extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ProdoReviewer.this, ProdoSettings.class);
-                startActivity(intent);
+                //startActivity(intent);
+
+                View sharedView = findViewById(R.id.include); // The shared element view
+                String transitionName = getString(R.string.transition_image); // The transition name
+                ActivityOptionsCompat options = ActivityOptionsCompat
+                        .makeSceneTransitionAnimation(ProdoReviewer.this, sharedView, transitionName);
+                startActivity(intent, options.toBundle());
             }
         });
 
@@ -76,9 +95,23 @@ public class ProdoReviewer extends AppCompatActivity {
                     return;
                 }
                 Intent intent = new Intent(ProdoReviewer.this, ProdoCardDisplay.class);
-                intent.putExtra("topic","Quick");
-                startActivity(intent);
+                intent.putExtra("topic"," ");
+                //startActivity(intent);
+
+                View sharedView = findViewById(R.id.include); // The shared element view
+                String transitionName = getString(R.string.transition_image); // The transition name
+                ActivityOptionsCompat options = ActivityOptionsCompat
+                        .makeSceneTransitionAnimation(ProdoReviewer.this, sharedView, transitionName);
+                startActivity(intent, options.toBundle());
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+        startPostponedEnterTransition();
     }
 }

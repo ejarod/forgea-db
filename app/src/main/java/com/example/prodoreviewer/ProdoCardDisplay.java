@@ -1,8 +1,13 @@
 package com.example.prodoreviewer;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -51,6 +56,16 @@ public class ProdoCardDisplay extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prodo_card_display);
+
+        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        postponeEnterTransition();
+
+        View sharedView = findViewById(R.id.includeDisplay);
+        String transitionName = getString(R.string.transition_image);
+        ViewCompat.setTransitionName(sharedView, transitionName);
+
+
         Intent intent = getIntent();
         String topicName = intent.getStringExtra("topic");
         txtFrontText = findViewById(R.id.txtFrontText);
@@ -80,8 +95,9 @@ public class ProdoCardDisplay extends AppCompatActivity {
 
         ArrayList<Card> originaldeck = new ArrayList<>();
 
-        if(topicName.equalsIgnoreCase("quick")) {
+        if(topicName.equalsIgnoreCase(" ")) {
             originaldeck = db.getCards();
+            lblPageName.setText("Quick");
         } else {
             originaldeck = db.getCards(topicName);
         }
@@ -145,6 +161,7 @@ public class ProdoCardDisplay extends AppCompatActivity {
             }
         });
 
+
         btnBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -152,13 +169,12 @@ public class ProdoCardDisplay extends AppCompatActivity {
                     timer.cancel();
                     timer = null;
                 }
-                Intent intent = new Intent(ProdoCardDisplay.this, Prodotopics.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
 
                 finish();
             }
         });
+
+
 
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -174,6 +190,14 @@ public class ProdoCardDisplay extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+        startPostponedEnterTransition();
     }
 
     private void displayCard() {

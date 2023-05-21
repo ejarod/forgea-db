@@ -1,9 +1,13 @@
 package com.example.prodoreviewer;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +28,14 @@ public class ProdoCardCreate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prodo_card_create);
+
+        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        postponeEnterTransition();
+
+        View sharedView = findViewById(R.id.includeCardCreate);
+        String transitionName = getString(R.string.transition_image);
+        ViewCompat.setTransitionName(sharedView, transitionName);
 
         Intent intent = getIntent();
 
@@ -79,7 +91,6 @@ public class ProdoCardCreate extends AppCompatActivity {
                 Intent intent = new Intent(ProdoCardCreate.this, Prodotopics.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
-
                 finish();
             }
         });
@@ -93,5 +104,13 @@ public class ProdoCardCreate extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+        startPostponedEnterTransition();
     }
 }
