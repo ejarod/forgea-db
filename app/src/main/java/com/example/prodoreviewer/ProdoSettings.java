@@ -85,7 +85,8 @@ public class ProdoSettings extends AppCompatActivity {
                     }
 
                 } catch(Exception e) {
-                    Toast.makeText(ProdoSettings.this, "Invalid Timer Input", Toast.LENGTH_SHORT).show();
+                    txtTimer.setError("Invalid Input");
+                    txtTimer.requestFocus();
                     return;
                 }
 
@@ -96,8 +97,15 @@ public class ProdoSettings extends AppCompatActivity {
                         editor.putInt("loop", loop);
                     }
 
+                    if(input2.equals(0)) {
+                        txtLoop.setError("Must not be zero");
+                        txtLoop.requestFocus();
+                        return;
+                    }
+
                 } catch(Exception e) {
-                    Toast.makeText(ProdoSettings.this, "Invalid Loop Input", Toast.LENGTH_SHORT).show();
+                    txtLoop.setError("Invalid Input");
+                    txtLoop.requestFocus();
                     return;
                 }
 

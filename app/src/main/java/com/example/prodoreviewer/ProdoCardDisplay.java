@@ -112,6 +112,10 @@ public class ProdoCardDisplay extends AppCompatActivity {
             finish();
         }
 
+        if(LOOP==0) {
+            LOOP=1;
+        }
+
         for (Card c : originaldeck) {
             for (int i = 0; i < LOOP; i++) {
                 deck.add(c);
