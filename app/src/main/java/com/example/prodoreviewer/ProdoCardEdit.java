@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -27,7 +29,10 @@ public class ProdoCardEdit extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_prodo_card_edit);
+
+
 
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
@@ -65,22 +70,26 @@ public class ProdoCardEdit extends AppCompatActivity {
                 String cardContent = txtEditBack.getText().toString();
 
                 if(newName.isEmpty() || newName.trim().isEmpty()) {
-                    Toast.makeText(ProdoCardEdit.this, "Enter valid name", Toast.LENGTH_SHORT).show();
+                    txtEditFront.setError("Must not be empty");
+                    txtEditFront.requestFocus();
                     return;
                 }
 
                 if(cardName.length() > 38) {
-                    Toast.makeText(ProdoCardEdit.this, "Front text too long!", Toast.LENGTH_SHORT).show();
+                    txtEditFront.setError("Front text too long");
+                    txtEditFront.requestFocus();
                     return;
                 }
 
                 if(cardContent.length() > 128) {
-                    Toast.makeText(ProdoCardEdit.this, "Back text too long!", Toast.LENGTH_SHORT).show();
+                    txtEditBack.setError("Content change too long");
+                    txtEditBack.requestFocus();
                     return;
                 }
 
                 if(myDB.cardExists(newName) && !cardName.equals(newName)){
-                    Toast.makeText(ProdoCardEdit.this, "Card front already exists", Toast.LENGTH_SHORT).show();
+                    txtEditFront.setError("Already exists");
+                    txtEditFront.requestFocus();
                     return;
                 }
 

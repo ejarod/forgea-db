@@ -4,7 +4,14 @@
         <item name="android:background">#101010</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:textColorPrimary">#F44336</item>
+        <item name="colorPrimary">#101010</item>
+        <item name="colorPrimaryDark">#101010</item>
         <!-- Add other style attributes as needed -->
     </style>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
 
 </resources>

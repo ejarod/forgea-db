@@ -63,7 +63,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="61dp"
             android:layout_marginBottom="21dp"
-            android:background="#232323"
+            android:background="@drawable/edit_text_bg"
             android:fontFamily="@font/inter_medium"
             android:hint="Enter Card Front"
             android:padding="20dp"
@@ -83,7 +83,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="59dp"
             android:layout_marginBottom="29dp"
-            android:background="#232323"
+            android:background="@drawable/edit_text_bg"
             android:fontFamily="@font/inter_medium"
             android:gravity="top|left"
             android:hint="Enter Card Back"
@@ -109,6 +109,7 @@
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtCardBack" />
     </androidx.constraintlayout.widget.ConstraintLayout>

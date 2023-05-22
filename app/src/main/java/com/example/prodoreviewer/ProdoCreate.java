@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -29,7 +31,10 @@ public class ProdoCreate extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_prodo_create);
+
+
 
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
@@ -77,18 +82,21 @@ public class ProdoCreate extends AppCompatActivity {
                 String topicName = txtTopic.getText().toString();
 
                 if(topicName.length() > 38) {
-                    Toast.makeText(ProdoCreate.this, "Topic name too long!", Toast.LENGTH_SHORT).show();
+                    txtTopic.setError("Name too long");
+                    txtTopic.requestFocus();
                     return;
                 }
 
                 if(topicName.isEmpty() || topicName.trim().isEmpty()) {
-                    Toast.makeText(ProdoCreate.this, "Enter a topic name", Toast.LENGTH_SHORT).show();
+                    txtTopic.setError("Must not be empty");
+                    txtTopic.requestFocus();
                     return;
                 }
 
                 MyDatabaseHelper myDB = new MyDatabaseHelper(ProdoCreate.this);
                 if(myDB.topicExists(topicName)){
-                    Toast.makeText(ProdoCreate.this, "Topic already exists", Toast.LENGTH_SHORT).show();
+                    txtTopic.setError("Already exists0");
+                    txtTopic.requestFocus();
                     return;
                 }
                 myDB.addTopic(topicName);

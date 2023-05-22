@@ -10,6 +10,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -27,7 +29,10 @@ public class ProdoCardCreate extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_prodo_card_create);
+
+
 
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
@@ -58,23 +63,27 @@ public class ProdoCardCreate extends AppCompatActivity {
                 String cardContent = txtCardBack.getText().toString();
 
                 if(cardName.length() > 38) {
-                    Toast.makeText(ProdoCardCreate.this, "Front text too long!", Toast.LENGTH_SHORT).show();
+                    txtCardFront.setError("Front text too long");
+                    txtCardFront.requestFocus();
                     return;
                 }
 
                 if(cardContent.length() > 128) {
-                    Toast.makeText(ProdoCardCreate.this, "Back text too long!", Toast.LENGTH_SHORT).show();
+                    txtCardBack.setError("Content too long");
+                    txtCardBack.requestFocus();
                     return;
                 }
 
                 if(cardName.isEmpty() || cardName.trim().isEmpty()) {
-                    Toast.makeText(ProdoCardCreate.this, "Enter a card name", Toast.LENGTH_SHORT).show();
+                    txtCardFront.setError("Must not be empty");
+                    txtCardFront.requestFocus();
                     return;
                 }
 
                 MyDatabaseHelper myDB = new MyDatabaseHelper(ProdoCardCreate.this);
                 if(myDB.cardExists(cardName)){
-                    Toast.makeText(ProdoCardCreate.this, "Card already exists", Toast.LENGTH_SHORT).show();
+                    txtCardFront.setError("Already exists");
+                    txtCardFront.requestFocus();
                     return;
                 }
                 myDB.addCard(cardName,"normal",cardContent,topicName);
