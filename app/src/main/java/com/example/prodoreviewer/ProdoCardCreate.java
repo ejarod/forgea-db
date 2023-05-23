@@ -80,7 +80,7 @@ public class ProdoCardCreate extends AppCompatActivity {
                     return;
                 }
 
-                MyDatabaseHelper myDB = new MyDatabaseHelper(ProdoCardCreate.this);
+                MyDatabaseHelperCard myDB = new MyDatabaseHelperCard(ProdoCardCreate.this);
                 if(myDB.cardExists(cardName)){
                     txtCardFront.setError("Already exists");
                     txtCardFront.requestFocus();

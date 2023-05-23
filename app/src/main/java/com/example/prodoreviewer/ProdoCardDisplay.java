@@ -41,7 +41,7 @@ public class ProdoCardDisplay extends AppCompatActivity {
     private ArrayList<Card> deck = new ArrayList<>();
     //boolean dailyShuffle = false;
 
-    private MyDatabaseHelper db;
+    private MyDatabaseHelperCard db;
 
     //private int hourSet = 9;
     private TextView txtFrontText,lblFront,lblBack;
@@ -89,7 +89,7 @@ public class ProdoCardDisplay extends AppCompatActivity {
 
         lblPageName.setText(topicName);
 
-        db = new MyDatabaseHelper(ProdoCardDisplay.this);
+        db = new MyDatabaseHelperCard(ProdoCardDisplay.this);
 
         SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 

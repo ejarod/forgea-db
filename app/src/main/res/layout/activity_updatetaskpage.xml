@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#101010"
+    tools:context=".updatetaskpage">
+
+    <include
+        android:id="@+id/includeUpdate"
+        android:transitionName="sharedImage"
+        layout="@layout/toolbar"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="90dp"
+        android:background="#101010"
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="550dp"
+            android:layout_margin="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/taskTitleNew"
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/textfieldbg"
+                    android:fontFamily="@font/inter_semibold"
+                    android:hint="Task Name"
+                    android:padding="12dp"
+                    android:textColor="#C1C1C1"
+                    android:textColorHint="#C1C1C1"
+                    android:textSize="14sp" />
+            </TableRow>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/taskDescriptionNew"
+                    android:layout_width="wrap_content"
+                    android:layout_height="203dp"
+                    android:background="@drawable/textfieldbg"
+                    android:fontFamily="@font/inter_semibold"
+                    android:gravity="top|start"
+                    android:hint="Description"
+                    android:padding="12dp"
+                    android:textColor="#C1C1C1"
+                    android:textColorHint="#C1C1C1"
+                    android:textSize="14sp" />
+            </TableRow>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/taskListNew"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/textfieldbg"
+                        android:fontFamily="@font/inter_semibold"
+                        android:gravity="top|start"
+                        android:hint="List name"
+                        android:padding="12dp"
+                        android:textColor="#C1C1C1"
+                        android:textColorHint="#C1C1C1"
+                        android:textSize="14sp" />
+
+                    <Space
+                        android:layout_width="15dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </TableRow>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/taskDueNew"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/textfieldbg"
+                        android:focusable="false"
+                        android:fontFamily="@font/inter_semibold"
+                        android:gravity="top|start"
+                        android:hint="Select a date"
+                        android:padding="12dp"
+                        android:textColor="#C1C1C1"
+                        android:textColorHint="#C1C1C1"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+            </TableRow>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:hint="task icon:"
+                        android:textColorHint="#C1C1C1"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/taskIconNew"
+                            android:layout_width="110dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/textfieldbg"
+                            android:clickable="true"
+                            android:focusable="false"
+                            android:fontFamily="@font/inter_semibold"
+                            android:padding="12dp"
+                            android:textColor="#C1C1C1"
+                            android:textSize="14sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Space
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/icon_background"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="13dp">
+
+                        <Spinner
+                            android:id="@+id/taskColorNew"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:entries="@array/color_choices"
+                            android:fontFamily="@font/inter_semibold"
+                            android:gravity="top|start"
+                            android:padding="10dp"
+                            android:textSize="14sp" />
+                    </androidx.cardview.widget.CardView>
+
+                    <Space
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content" />
+
+                    <ImageButton
+                        android:id="@+id/taskFlashcard"
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/textfieldbg"
+                        android:tint="#C1C1C1"
+                        app:srcCompat="@drawable/flashcard" />
+
+                    <Space
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </TableRow>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="30dp" />
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnDelete"
+                        android:layout_width="145dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/buttonoutline"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Delete"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        app:backgroundTint="@null" />
+
+                    <Space
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:id="@+id/btnUpdate"
+                        android:layout_width="145dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|center"
+                        android:background="@drawable/buttonbg"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Update"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        app:backgroundTint="@null" />
+                </LinearLayout>
+            </TableRow>
+
+        </TableLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="670dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/menubtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#101010"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/menuicon" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

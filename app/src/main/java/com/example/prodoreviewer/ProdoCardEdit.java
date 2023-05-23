@@ -42,7 +42,7 @@ public class ProdoCardEdit extends AppCompatActivity {
         String transitionName = getString(R.string.transition_image);
         ViewCompat.setTransitionName(sharedView, transitionName);
 
-        MyDatabaseHelper myDB = new MyDatabaseHelper(ProdoCardEdit.this);
+        MyDatabaseHelperCard myDB = new MyDatabaseHelperCard(ProdoCardEdit.this);
 
         Intent intent = getIntent();
 

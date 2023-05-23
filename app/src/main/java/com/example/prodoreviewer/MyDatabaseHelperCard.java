@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-public class MyDatabaseHelper extends SQLiteOpenHelper {
+public class MyDatabaseHelperCard extends SQLiteOpenHelper {
 
     private Context context;
     private static final String DATABASE_NAME = "Prodo.db";
@@ -24,7 +24,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_CONTENT = "card_content";
     private static final String COLUMN_TOPIC = "card_topic";
 
-    public MyDatabaseHelper(@Nullable Context context) {
+    public MyDatabaseHelperCard(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }

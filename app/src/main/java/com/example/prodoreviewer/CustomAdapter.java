@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
     private Context context;
     private ArrayList<String> topic_id, topic_name;
-    private MyDatabaseHelper myDB;
+    private MyDatabaseHelperCard myDB;
     private Animation translate_anim;
 
 
@@ -46,7 +46,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull CustomAdapter.MyViewHolder holder,final int position) {
-        myDB = new MyDatabaseHelper(context);
+        myDB = new MyDatabaseHelperCard(context);
         holder.txtTopicCards.setText(String.valueOf(myDB.getCards(topic_name.get(position)).size()));
         holder.txtTopic_name.setText(String.valueOf(topic_name.get(position)));
 

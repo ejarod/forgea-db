@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -24,7 +25,7 @@ public class ProdoReviewer extends AppCompatActivity {
     Button btnSettings;
     ImageButton btnBackButton,btnHome;
     TextView lblPageName;
-    private MyDatabaseHelper db;
+    private MyDatabaseHelperCard db;
 
 
 
@@ -34,8 +35,6 @@ public class ProdoReviewer extends AppCompatActivity {
 
         setContentView(R.layout.activity_prodoreviewer);
 
-
-
         btnStudy = findViewById(R.id.btnStudy);
         btnTopic = findViewById(R.id.btnTopic);
         btnQuick = findViewById(R.id.btnQuick);
@@ -43,16 +42,23 @@ public class ProdoReviewer extends AppCompatActivity {
         btnBackButton = findViewById(R.id.btnBackButton);
         btnHome = findViewById(R.id.btnHome);
         lblPageName = findViewById(R.id.lblPageName);
-        db = new MyDatabaseHelper(ProdoReviewer.this);
+        db = new MyDatabaseHelperCard(ProdoReviewer.this);
 
         lblPageName.setText("Prodo Reviewer");
-
-        btnHome.setVisibility(View.INVISIBLE);
 
         btnBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProdoReviewer.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
 

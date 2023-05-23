@@ -93,7 +93,7 @@ public class ProdoCreate extends AppCompatActivity {
                     return;
                 }
 
-                MyDatabaseHelper myDB = new MyDatabaseHelper(ProdoCreate.this);
+                MyDatabaseHelperCard myDB = new MyDatabaseHelperCard(ProdoCreate.this);
                 if(myDB.topicExists(topicName)){
                     txtTopic.setError("Already exists0");
                     txtTopic.requestFocus();

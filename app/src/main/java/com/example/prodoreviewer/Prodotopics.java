@@ -24,7 +24,7 @@ public class Prodotopics extends AppCompatActivity {
 
     private RecyclerView recyclerView;
 
-    MyDatabaseHelper myDB;
+    MyDatabaseHelperCard myDB;
     ArrayList<String> topic_id;
     ArrayList<String> topic_name;
     CustomAdapter customAdapter;
@@ -67,7 +67,7 @@ public class Prodotopics extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
 
-        myDB = new MyDatabaseHelper(Prodotopics.this);
+        myDB = new MyDatabaseHelperCard(Prodotopics.this);
         topic_id = new ArrayList<>();
         topic_name = new ArrayList<>();
 

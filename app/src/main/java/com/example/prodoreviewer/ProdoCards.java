@@ -24,7 +24,7 @@ public class ProdoCards extends AppCompatActivity {
     ImageButton btnBackButton;
     TextView lblPageName;
     private RecyclerView recyclerView;
-    private MyDatabaseHelper myDB;
+    private MyDatabaseHelperCard myDB;
     private ArrayList<String> card_name;
     private CardAdapter cardadapter;
 
@@ -53,7 +53,7 @@ public class ProdoCards extends AppCompatActivity {
         Intent intent = getIntent();
         String topicName = intent.getStringExtra("topic");
 
-        myDB = new MyDatabaseHelper(ProdoCards.this);
+        myDB = new MyDatabaseHelperCard(ProdoCards.this);
         card_name = new ArrayList<>();
 
         storeData(topicName);

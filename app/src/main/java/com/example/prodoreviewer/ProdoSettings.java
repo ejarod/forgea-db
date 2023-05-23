@@ -25,7 +25,7 @@ public class ProdoSettings extends AppCompatActivity {
     Button btnSave,btnClearTopics,btnClearCards;
     EditText txtTimer,txtLoop;
     TextView lblPageName;
-    private MyDatabaseHelper db;
+    private MyDatabaseHelperCard db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,7 +145,7 @@ public class ProdoSettings extends AppCompatActivity {
                 .setPositiveButton("Clear topics", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        db = new MyDatabaseHelper(ProdoSettings.this);
+                        db = new MyDatabaseHelperCard(ProdoSettings.this);
                         db.deleteAllTopics();
                         db.deleteAllCards();
                     }
@@ -166,7 +166,7 @@ public class ProdoSettings extends AppCompatActivity {
                 .setPositiveButton("Clear cards", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        db = new MyDatabaseHelper(ProdoSettings.this);
+                        db = new MyDatabaseHelperCard(ProdoSettings.this);
                         db.deleteAllCards();
                     }
                 })

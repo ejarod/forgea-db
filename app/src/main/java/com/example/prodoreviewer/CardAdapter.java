@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> {
     private Context context;
     private ArrayList<String> card_name;
-    private MyDatabaseHelper myDB;
+    private MyDatabaseHelperCard myDB;
     private Animation translate_anim;
 
 
@@ -42,7 +42,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull CardAdapter.MyViewHolder holder, final int position) {
-        myDB = new MyDatabaseHelper(context);
+        myDB = new MyDatabaseHelperCard(context);
         holder.txtCard_name.setText(String.valueOf(card_name.get(position)));
 
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
