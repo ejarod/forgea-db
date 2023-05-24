@@ -112,7 +112,7 @@ public class ProdoCardDisplay extends AppCompatActivity {
             finish();
         }
 
-        if(LOOP==0) {
+        if(LOOP<=0) {
             LOOP=1;
         }
 

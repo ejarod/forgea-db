@@ -257,7 +257,7 @@ public class mainMenu extends AppCompatActivity {
 
         sort = intent.getStringExtra("sort");
 
-        if(sort.equals("none")) {
+        if(sort==null || sort.equals("none")) {
             displayData();
 
             adapter = new recycleAdapter2(mainMenu.this,list_id,list_title,list_icon,

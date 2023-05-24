@@ -108,7 +108,7 @@ public class updatetaskpage extends AppCompatActivity {
             taskIconNew.setText(taskIcon);
 
             // Set up the colorSpinnerNew Spinner and select the appropriate item
-            String[] colorOptions = {"Red", "Blue", "Green", "Yellow"};
+            String[] colorOptions = {"Red", "Blue", "Green", "Purple"};
             ArrayAdapter<String> colorAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, colorOptions);
             colorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             colorSpinnerNew.setAdapter(colorAdapter);

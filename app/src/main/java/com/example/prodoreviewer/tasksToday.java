@@ -54,6 +54,8 @@ public class tasksToday extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(tasksToday.this, mainMenu.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                intent.putExtra("sort", "none");
                 startActivity(intent);
             }
         });

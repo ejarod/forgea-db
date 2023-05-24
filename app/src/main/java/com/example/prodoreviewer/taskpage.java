@@ -54,6 +54,7 @@ public class taskpage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(taskpage.this, mainMenu.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("sort", "none");
                 startActivity(intent);
             }
         });
@@ -122,7 +123,7 @@ public class taskpage extends AppCompatActivity {
                 myDB2.addList(list, taskIcon.getText().toString().trim(),
                         colorSpinner.getSelectedItem().toString().trim());
 
-                Intent intent = new Intent(taskpage.this, mainMenu.class);
+                Intent intent = new Intent(taskpage.this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }

@@ -74,14 +74,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        tasks4today.setOnClickListener(new View.OnClickListener() {
+        /*tasks4today.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, tasksToday.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 
     void getTasksForToday() {
