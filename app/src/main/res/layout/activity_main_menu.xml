@@ -40,6 +40,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#101010"
+                    android:tint="#ffffff"
                     app:srcCompat="@drawable/doublearrowright" />
 
                 <TextView
@@ -48,8 +49,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left|center"
                     android:fontFamily="@font/inter_semibold"
-                    android:text="Lists"
-                    android:textColor="#333333"
+                    android:text="Profile"
+                    android:textColor="#ffffff"
                     android:textSize="14sp"
                     android:textStyle="bold" />
             </TableRow>
@@ -63,6 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#101010"
+                    android:tint="#ffffff"
                     app:srcCompat="@drawable/doublearrowright" />
 
                 <TextView
@@ -71,8 +73,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left|center"
                     android:fontFamily="@font/inter_semibold"
-                    android:text="Upcoming"
-                    android:textColor="#333333"
+                    android:text="Skill Assessment"
+                    android:textColor="#ffffff"
                     android:textSize="14sp"
                     android:textStyle="bold" />
             </TableRow>
@@ -86,6 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#101010"
+                    android:tint="#ffffff"
                     app:srcCompat="@drawable/doublearrowright" />
 
                 <TextView
@@ -94,8 +97,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left|center"
                     android:fontFamily="@font/inter_semibold"
-                    android:text="Today"
-                    android:textColor="#333333"
+                    android:text="Career Paths"
+                    android:textColor="#ffffff"
                     android:textSize="14sp"
                     android:textStyle="bold" />
             </TableRow>
@@ -109,6 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#101010"
+                    android:tint="#ffffff"
                     app:srcCompat="@drawable/calendar" />
 
                 <TextView
@@ -117,8 +121,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left|center"
                     android:fontFamily="@font/inter_semibold"
-                    android:text="Calendar"
-                    android:textColor="#333333"
+                    android:text="Progress Tracker"
+                    android:textColor="#ffffff"
                     android:textSize="14sp"
                     android:textStyle="bold" />
             </TableRow>
@@ -132,6 +136,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#101010"
+                    android:tint="#ffffff"
                     app:srcCompat="@drawable/flashcard" />
 
                 <TextView
@@ -140,8 +145,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left|center"
                     android:fontFamily="@font/inter_semibold"
-                    android:text="Flashcards"
-                    android:textColor="#333333"
+                    android:text="Resources"
+                    android:textColor="#ffffff"
                     android:textSize="14sp"
                     android:textStyle="bold" />
             </TableRow>
@@ -183,7 +188,7 @@
             android:layout_marginEnd="215dp"
             android:layout_marginBottom="300dp"
             android:fontFamily="@font/inter_semibold"
-            android:text="Lists"
+            android:text="Topics"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -213,7 +218,7 @@
             android:layout_marginTop="260dp"
             android:layout_marginEnd="85dp"
             android:fontFamily="@font/inter_semibold"
-            android:text="Add New List"
+            android:text="Add "
             android:textColor="#FFFFFF"
             android:textSize="14sp"
             android:textStyle="bold"

@@ -33,7 +33,7 @@ public class Upcomingtasks extends AppCompatActivity {
         ImageButton home = findViewById(R.id.btnHome);
         ImageButton menu = findViewById(R.id.menubtn);
         TextView lblPageName = findViewById(R.id.lblPageName);
-        lblPageName.setText("Upcoming");
+        lblPageName.setText("Skill Assessment");
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
