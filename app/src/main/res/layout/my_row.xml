@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            app:cardBackgroundColor="#333333"
+            app:cardCornerRadius="7dp">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/txtTopicCards"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="60dp"
+                    android:text="0"
+                    android:textColor="#C1C1C1"
+                    android:textSize="34sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtTopic_name"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="60dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:paddingTop="5dp"
+                    android:text="TextView"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btnDeleteTopic"
+                    app:layout_constraintStart_toEndOf="@+id/txtTopicCards"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.509" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="29dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:elevation="5dp"
+                    android:forceHasOverlappingRendering="false"
+                    app:layout_constraintBottom_toBottomOf="@+id/btnAdd_Card"
+                    app:layout_constraintStart_toStartOf="@+id/btnAdd_Card"
+                    app:layout_constraintTop_toTopOf="@+id/btnAdd_Card"
+                    app:srcCompat="@drawable/ic_add_card" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="29dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="80dp"
+                    android:layout_marginBottom="8dp"
+                    android:elevation="5dp"
+                    android:forceHasOverlappingRendering="false"
+                    app:layout_constraintBottom_toBottomOf="@+id/btnEditCards"
+                    app:layout_constraintEnd_toEndOf="@+id/btnEditCards"
+                    app:layout_constraintStart_toStartOf="@+id/btnEditCards"
+                    app:layout_constraintTop_toTopOf="@+id/btnEditCards"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/baseline_edit_note_24" />
+
+                <Button
+                    android:id="@+id/btnAdd_Card"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="23dp"
+                    android:background="@drawable/custom_button_addcard"
+                    android:elevation="1dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:paddingLeft="30dp"
+                    android:text="Add new card"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTopic_name" />
+
+                <Button
+                    android:id="@+id/btnEditCards"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/custom_button_addcard"
+                    android:elevation="1dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:paddingLeft="60dp"
+                    android:text="Edit"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTopic_name"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <ImageButton
+                    android:id="@+id/btnDeleteTopic"
+                    android:layout_width="50dp"
+                    android:layout_height="42dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="60dp"
+                    android:background="@drawable/back_button"
+                    android:backgroundTint="#F44336"
+                    android:elevation="1dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:src="@drawable/delete_button"
+                    android:text="Delete"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

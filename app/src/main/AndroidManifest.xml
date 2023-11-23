@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/prodo_logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ProdoReviewer"
+        tools:targetApi="31">
+        <activity
+            android:name=".Calendar"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".tasksToday"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".Upcomingtasks"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".updatetaskpage"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".taskpage"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".mainMenu"
+            android:screenOrientation="portrait"
+            android:exported="false"/>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ProdoSettings"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ProdoCardDisplay"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ProdoCardCreate"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ProdoCards"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".Prodotopics"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ProdoCreate"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:parentActivityName=".ProdoReviewer" />
+        <activity
+            android:name=".ProdoCardEdit"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ProdoReviewer"
+            android:screenOrientation="portrait"
+            android:exported="true">
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>
