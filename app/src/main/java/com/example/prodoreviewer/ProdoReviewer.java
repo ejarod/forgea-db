@@ -44,7 +44,7 @@ public class ProdoReviewer extends AppCompatActivity {
         lblPageName = findViewById(R.id.lblPageName);
         db = new MyDatabaseHelperCard(ProdoReviewer.this);
 
-        lblPageName.setText("Prodo Reviewer");
+        lblPageName.setText("Resource Management");
 
         btnBackButton.setOnClickListener(new View.OnClickListener() {
             @Override

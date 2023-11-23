@@ -19,8 +19,7 @@
             android:padding="20dp">
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="200dp"
-                android:src="@drawable/signimg"/>
+                android:layout_height="200dp"/>
             <EditText
                 android:layout_width="300dp"
                 android:layout_height="60dp"
@@ -29,9 +28,8 @@
                 android:layout_marginTop="30dp"
                 android:padding="8dp"
                 android:hint="Email"
-                android:drawableLeft="@drawable/baseline_email_24"
                 android:drawablePadding="8dp"
-                android:background="@drawable/edittext_bkg"/>
+                android:background="@drawable/edit_text_bg"/>
             <EditText
                 android:layout_width="300dp"
                 android:layout_height="60dp"
@@ -41,9 +39,8 @@
                 android:padding="8dp"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
-                android:background="@drawable/edittext_bkg"/>
+                android:background="@drawable/edit_text_bg"/>
             <EditText
                 android:layout_width="300dp"
                 android:layout_height="60dp"
@@ -53,9 +50,8 @@
                 android:padding="8dp"
                 android:hint="Confirm Password"
                 android:inputType="textPassword"
-                android:drawableLeft="@drawable/baseline_password_24"
                 android:drawablePadding="8dp"
-                android:background="@drawable/edittext_bkg"/>
+                android:background="@drawable/edit_text_bg"/>
             <Button
                 android:layout_width="300dp"
                 android:layout_height="70dp"
