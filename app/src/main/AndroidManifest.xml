@@ -12,11 +12,20 @@
         android:theme="@style/Theme.ProdoReviewer"
         tools:targetApi="31">
         <activity
+            android:name=".Timeo_Register"
+            android:exported="false" />
+        <activity
             android:name=".Timeo_Register_Login"
             android:exported="false" />
         <activity
             android:name=".Timeo_LogIn"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Calendar"
             android:exported="false"
@@ -43,14 +52,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".ProdoSettings"
             android:exported="false"

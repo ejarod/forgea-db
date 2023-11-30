@@ -15,8 +15,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="90dp"
-        android:background="#101010"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/gradient"
         android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -227,7 +227,7 @@
                         android:fontFamily="@font/inter_semibold"
                         android:text="Delete"
                         android:textAllCaps="false"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#FF3C3C"
                         android:textStyle="bold"
                         app:backgroundTint="@null" />
 

@@ -5,6 +5,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.widget.Button;
+
+import com.example.prodoreviewer.databinding.ActivityTimeoRegisterLoginBinding;
+import com.example.prodoreviewer.databinding.FragmentLoginTabBinding;
+import com.example.prodoreviewer.databinding.FragmentSignupTabBinding;
 import com.google.android.material.tabs.TabLayout;
 
 public class Timeo_Register_Login extends AppCompatActivity {
@@ -13,10 +18,13 @@ public class Timeo_Register_Login extends AppCompatActivity {
     private ViewPager2 viewPager2;
     private ViewPagerAdapter adapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeo_register_login);
+
+
 
         tabLayout = findViewById(R.id.tab_layout);
         viewPager2 = findViewById(R.id.view_pager);
@@ -25,6 +33,8 @@ public class Timeo_Register_Login extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         adapter = new ViewPagerAdapter(fragmentManager, getLifecycle());
         viewPager2.setAdapter(adapter);
+
+
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
