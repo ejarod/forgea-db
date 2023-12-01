@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00101010"
     tools:context=".MainActivity">
 
     <include
@@ -17,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="50dp"
-        android:background="@drawable/gradient"
+        android:background="@drawable/general_background"
         app:layout_constraintTop_toTopOf="parent">
 
         <TableLayout
@@ -41,7 +40,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#00101010"
-                    android:tint="#000000"
+                    app:tint="#FFFFFF"
                     app:srcCompat="@drawable/doublearrowright" />
 
                 <TextView
@@ -51,7 +50,7 @@
                     android:layout_gravity="left|center"
                     android:fontFamily="@font/inter_semibold"
                     android:text="Profile"
-                    android:textColor="#000000"
+                    android:textColor="#FFFFFF"
                     android:textSize="14sp"
                     android:textStyle="bold" />
             </TableRow>
@@ -65,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#00101010"
-                    android:tint="#000000"
+                    app:tint="#FFFFFF"
                     app:srcCompat="@drawable/doublearrowright" />
 
                 <TextView
@@ -75,7 +74,7 @@
                     android:layout_gravity="left|center"
                     android:fontFamily="@font/inter_semibold"
                     android:text="Skill Assessment"
-                    android:textColor="#000000"
+                    android:textColor="#FFFFFF"
                     android:textSize="14sp"
                     android:textStyle="bold" />
             </TableRow>
@@ -89,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#00101010"
-                    android:tint="#000000"
+                    app:tint="#FFFFFF"
                     app:srcCompat="@drawable/doublearrowright" />
 
                 <TextView
@@ -99,7 +98,7 @@
                     android:layout_gravity="left|center"
                     android:fontFamily="@font/inter_semibold"
                     android:text="Career Paths"
-                    android:textColor="#000000"
+                    android:textColor="#FFFFFF"
                     android:textSize="14sp"
                     android:textStyle="bold" />
             </TableRow>
@@ -113,7 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#00101010"
-                    android:tint="#000000"
+                    app:tint="#FFFFFF"
                     app:srcCompat="@drawable/calendar" />
 
                 <TextView
@@ -123,7 +122,7 @@
                     android:layout_gravity="left|center"
                     android:fontFamily="@font/inter_semibold"
                     android:text="Progress Tracker"
-                    android:textColor="#000000"
+                    android:textColor="#FFFFFF"
                     android:textSize="14sp"
                     android:textStyle="bold" />
             </TableRow>
@@ -137,7 +136,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#00101010"
-                    android:tint="#000000"
+                    app:tint="#FFFFFF"
                     app:srcCompat="@drawable/flashcard" />
 
                 <TextView
@@ -147,7 +146,7 @@
                     android:layout_gravity="left|center"
                     android:fontFamily="@font/inter_semibold"
                     android:text="Resources"
-                    android:textColor="#000000"
+                    android:textColor="#FFFFFF"
                     android:textSize="14sp"
                     android:textStyle="bold" />
             </TableRow>
@@ -164,7 +163,7 @@
         android:layout_marginTop="370dp"
         android:layout_marginRight="25dp"
         android:layout_marginBottom="130dp"
-        android:background="@drawable/recyclerviewbg"
+        android:background="@drawable/rounded_corners"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -173,7 +172,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tasklistmenu"
             android:layout_width="match_parent"
-            android:layout_height="280dp"
+            android:layout_height="260dp"
             android:padding="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -182,15 +181,15 @@
 
         <TextView
             android:id="@+id/textView10"
-            android:layout_width="120dp"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="215dp"
             android:layout_marginBottom="300dp"
             android:fontFamily="@font/inter_semibold"
-            android:text="Topics"
-            android:textColor="#FFFFFF"
+            android:text="Curated For You"
+            android:textColor="#36353A"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -204,13 +203,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="260dp"
             android:layout_marginRight="230dp"
-            android:background="@drawable/textfieldbg"
+            android:backgroundTint="#00FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tasklistmenu"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tasklistmenu"
             app:srcCompat="@drawable/add"
-            app:tint="#C1C1C1" />
+            app:tint="#36353A" />
 
         <TextView
             android:id="@+id/addnewlist"
@@ -220,7 +219,7 @@
             android:layout_marginEnd="85dp"
             android:fontFamily="@font/inter_semibold"
             android:text="Add "
-            android:textColor="#FFFFFF"
+            android:textColor="#36353A"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -244,7 +243,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:backgroundTint="#00FFFFFF"
-            android:tint="#000000"
+            app:tint="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -66,7 +66,7 @@
         android:layout_marginEnd="70dp"
         android:layout_marginBottom="211dp"
         android:background="@drawable/custom_button"
-        android:backgroundTint="#2196F3"
+        android:backgroundTint="#574D68"
         android:text="Add Topic"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
