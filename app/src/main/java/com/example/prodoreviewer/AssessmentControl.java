@@ -71,9 +71,9 @@ public class AssessmentControl {
 
         for (int answer : answers) {
             if (answer < 4) {
-                scoreA += answer;
+                scoreA += 4-answer;
             } else if(answer > 4){
-                scoreB += answer;
+                scoreB += answer-4;
             }
         }
 
