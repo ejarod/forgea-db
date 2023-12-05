@@ -49,10 +49,10 @@ public class AssessmentControl {
         int scoreB = 0;
 
         for (int answer : answers) {
-            if (answer < 3) {
-                scoreA += 1;
-            } else {
-                scoreB += 1;
+            if (answer < 4) {
+                scoreA += 4-answer;
+            } else if(answer > 4){
+                scoreB += answer-4;
             }
         }
 
@@ -62,6 +62,27 @@ public class AssessmentControl {
             return 'B';
         } else {
             return 'C';
+        }
+    }
+
+    public static int getTypePercent(int[] answers) {
+        int scoreA = 0;
+        int scoreB = 0;
+
+        for (int answer : answers) {
+            if (answer < 4) {
+                scoreA += answer;
+            } else if(answer > 4){
+                scoreB += answer;
+            }
+        }
+
+        if (scoreA > scoreB) {
+            return scoreA / answers.length;
+        } else if (scoreA < scoreB) {
+            return scoreB / answers.length;
+        } else {
+            return 50;
         }
     }
 }

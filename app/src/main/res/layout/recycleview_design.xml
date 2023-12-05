@@ -14,8 +14,8 @@
         android:layout_height="65dp"
         app:cardBackgroundColor="#574D68"
         app:cardCornerRadius="20dp"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="3dp">
+        tools:layout_editor_absoluteX="9dp"
+        tools:layout_editor_absoluteY="5dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/icon_background"

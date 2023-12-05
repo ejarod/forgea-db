@@ -1,66 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="370dp"
-    android:layout_alignParentBottom="true"
-    android:layout_gravity="bottom"
-    android:background="#00101010">
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="370dp"
         android:layout_gravity="bottom"
+        android:layout_marginTop="350dp"
         android:background="#00FFFFFF"
-        android:padding="17dp">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtAgree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AGREE"
+                android:textAlignment="viewStart"
+                android:textColor="#F8F1AD"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtDisagree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DISAGREE"
+                android:textAlignment="viewEnd"
+                android:textColor="#B78FD6"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
             android:layout_gravity="bottom"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnAnswerA"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="55dp"
                 android:layout_weight="1"
-                android:background="@drawable/custom_button"
-                android:backgroundTint="#574D68"
-                android:text="A"
+                android:background="@drawable/assessment_choice_button"
+                android:backgroundTint="#f8f1ad"
+                android:backgroundTintMode="multiply"
                 android:textColor="#FFFFFF" />
 
             <Button
                 android:id="@+id/btnAnswerB"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="3dp"
                 android:layout_weight="1"
-                android:background="@drawable/custom_button"
-                android:backgroundTint="#574D68"
-                android:text="B"
+                android:background="@drawable/assessment_choice_button"
+                android:backgroundTint="#f2cea8"
+                android:backgroundTintMode="multiply"
                 android:textColor="#FFFFFF" />
 
             <Button
                 android:id="@+id/btnAnswerC"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/custom_button"
-                android:backgroundTint="#574D68"
-                android:text="C"
+                android:background="@drawable/assessment_choice_button"
+                android:backgroundTint="#edaca3"
+                android:backgroundTintMode="multiply"
                 android:textColor="#FFFFFF" />
 
             <Button
                 android:id="@+id/btnAnswerD"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/back_button"
-                android:backgroundTint="#574D68"
-                android:text="D"
+                android:background="@drawable/assessment_choice_button"
+                android:backgroundTint="#e79eb1"
+                android:backgroundTintMode="multiply"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btnAnswerE"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/assessment_choice_button"
+                android:backgroundTint="#e199c8"
+                android:backgroundTintMode="multiply"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btnAnswerF"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/assessment_choice_button"
+                android:backgroundTint="#d894dc"
+                android:backgroundTintMode="multiply"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btnAnswerG"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginLeft="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/assessment_choice_button"
+                android:backgroundTint="#b78fd6"
+                android:backgroundTintMode="multiply"
                 android:textColor="#FFFFFF" />
 
 
