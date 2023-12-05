@@ -22,13 +22,13 @@ public class AssessmentControl {
             result += "N";
         }
 
-        if(information =='A'){
+        if(decisions =='A'){
             result += "T";
         } else {
             result += "F";
         }
 
-        if(information =='A'){
+        if(structure =='A'){
             result += "J";
         } else {
             result += "P";
