@@ -45,14 +45,14 @@ public class AssessmentControl {
     }
 
     public static char getTypeScore(int[] answers) {
-        int scoreA = 0;
-        int scoreB = 0;
+        int scoreA = 0; //even questions == Extrovert
+        int scoreB = 0; //odd questions == Introvert
 
-        for (int answer : answers) {
-            if (answer < 4) {
-                scoreA += 4-answer;
-            } else if(answer > 4){
-                scoreB += answer-4;
+        for (int i = 0; i < answers.length; i++) {
+            if (i+1 % 2 == 0) {
+                scoreA += answers[i];
+            } else {
+                scoreB += answers[i];
             }
         }
 
@@ -69,11 +69,11 @@ public class AssessmentControl {
         int scoreA = 0;
         int scoreB = 0;
 
-        for (int answer : answers) {
-            if (answer < 4) {
-                scoreA += 4-answer;
-            } else if(answer > 4){
-                scoreB += answer-4;
+        for (int i = 0; i < answers.length; i++) {
+            if (i+1 % 2 == 0) {
+                scoreA += answers[i];
+            } else {
+                scoreB += answers[i];
             }
         }
 
