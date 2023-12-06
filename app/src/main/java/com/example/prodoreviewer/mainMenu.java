@@ -40,19 +40,17 @@ public class mainMenu extends AppCompatActivity {
         ImageButton home =findViewById(R.id.btnHome);
         ImageButton btnUpcoming = findViewById(R.id.btnUpcoming);
         ImageButton btnToday = findViewById(R.id.btnToday);
-        ImageButton btnCalendar = findViewById(R.id.btnCalendar);
         ImageButton btnFlashcard = findViewById(R.id.btnFlashcard);
         ImageButton btnListView = findViewById(R.id.btnListView);
         TextView upcoming = findViewById(R.id.upcoming);
         TextView today = findViewById(R.id.Today);
-        TextView calendar = findViewById(R.id.calendartxt);
         TextView addnewList = findViewById(R.id.addnewlist);
         TextView listview = findViewById(R.id.listview);
         TextView lblPageName = findViewById(R.id.lblPageName);
         TextView list = findViewById(R.id.textView10);
         lblPageName.setText("Menu");
         @SuppressLint({"MissingInflatedId", "LocalSuppress"})
-        TextView flashcard = findViewById(R.id.txtFlashcard);
+        TextView flashcard = findViewById(R.id.txtMenuPersonalityTraits);
 
         Intent intent = getIntent();
 
@@ -164,14 +162,6 @@ public class mainMenu extends AppCompatActivity {
                 recyclerView.setAdapter(adapter2);
             }
         });
-        calendar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(mainMenu.this, Calendar.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
 
         flashcard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,14 +185,6 @@ public class mainMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mainMenu.this, taskpage.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
-        btnCalendar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(mainMenu.this, Calendar.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }

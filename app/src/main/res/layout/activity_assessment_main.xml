@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#36353A"
+    tools:context=".AssessmentMain">
+
+    <include
+        android:id="@+id/includeDisplay"
+        layout="@layout/toolbar_dark"
+        android:transitionName="sharedImage" />
+
+    <TextView
+        android:id="@+id/txtAssessmentTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:text="Forge"
+        android:textColor="#F8F1AD"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txtAssessmentTitle2"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="140dp" />
+
+    <TextView
+        android:id="@+id/txtAssessmentTitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Your Ideal"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtAssessmentTitle"
+        tools:layout_editor_absoluteY="140dp" />
+
+    <TextView
+        android:id="@+id/txtAssessmentTitle3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Career"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="145dp"
+        tools:layout_editor_absoluteY="189dp" />
+
+    <TextView
+        android:id="@+id/txtAssessmentDescription"
+        android:layout_width="265dp"
+        android:layout_height="70dp"
+        android:text="This assessment is designed to help you find a career path that aligns with your personality traits.     "
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="73dp"
+        tools:layout_editor_absoluteY="330dp" />
+
+    <TextView
+        android:id="@+id/txtAssessmentDescription2"
+        android:layout_width="205dp"
+        android:layout_height="71dp"
+        android:text="It's based on the Myers-Briggs Type Indicator (MBTI), a widely recognized tool for understanding personality types"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        tools:layout_editor_absoluteX="103dp"
+        tools:layout_editor_absoluteY="454dp" />
+
+    <Button
+        android:id="@+id/btnAssessStart"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_button"
+        android:text="Get Started"
+        android:textColor="#36353A"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="577dp" />
+
+    <ImageButton
+        android:id="@+id/btnRef"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#36353A"
+        android:tint="#FFFFFF"
+        app:srcCompat="@drawable/icon_info"
+        tools:layout_editor_absoluteX="181dp"
+        tools:layout_editor_absoluteY="625dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

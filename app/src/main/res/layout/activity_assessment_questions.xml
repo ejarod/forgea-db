@@ -10,7 +10,7 @@
 
     <include
         android:id="@+id/includeDisplay"
-        layout="@layout/toolbarDark"
+        layout="@layout/toolbar_dark"
         android:transitionName="sharedImage" />
 
     <include
