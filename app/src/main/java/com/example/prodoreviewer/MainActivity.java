@@ -9,7 +9,6 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ImageButton menuButton = findViewById(R.id.menubtn);
-        Button tasks4today = findViewById(R.id.btnToday);
+        Button tasks4today = findViewById(R.id.btnCareerPaths);
 
         myDB = new myDatabasehelper(MainActivity.this);
         task_id = new ArrayList<>();

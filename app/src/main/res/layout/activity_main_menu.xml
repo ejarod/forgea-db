@@ -36,7 +36,7 @@
                 android:layout_marginTop="20dp">
 
                 <ImageButton
-                    android:id="@+id/btnListView"
+                    android:id="@+id/btnProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#00101010"
@@ -44,7 +44,7 @@
                     app:tint="#FFFFFF" />
 
                 <TextView
-                    android:id="@+id/listview"
+                    android:id="@+id/txtProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left|center"
@@ -61,7 +61,7 @@
                 android:layout_marginTop="5dp">
 
                 <ImageButton
-                    android:id="@+id/btnUpcoming"
+                    android:id="@+id/btnAssessment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#00101010"
@@ -69,7 +69,7 @@
                     app:tint="#FFFFFF"/>
 
                 <TextView
-                    android:id="@+id/upcoming"
+                    android:id="@+id/txtAssessment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left|center"
@@ -86,7 +86,7 @@
                 android:layout_marginTop="5dp">
 
                 <ImageButton
-                    android:id="@+id/btnToday"
+                    android:id="@+id/btnCareerPaths"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#00101010"
@@ -94,7 +94,7 @@
                     app:tint="#FFFFFF" />
 
                 <TextView
-                    android:id="@+id/Today"
+                    android:id="@+id/txtCareerPaths"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left|center"
@@ -111,7 +111,7 @@
                 android:layout_marginTop="5dp">
 
                 <ImageButton
-                    android:id="@+id/btnFlashcard"
+                    android:id="@+id/btnPersonalityTraits"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#00101010"
@@ -119,7 +119,7 @@
                     app:tint="#FFFFFF" />
 
                 <TextView
-                    android:id="@+id/txtMenuPersonalityTraits"
+                    android:id="@+id/txtPersonalityTraits"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left|center"

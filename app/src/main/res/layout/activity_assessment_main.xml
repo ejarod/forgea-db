@@ -16,7 +16,8 @@
         android:id="@+id/txtAssessmentTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="90dp"
         android:text="Forge"
         android:textColor="#F8F1AD"
         android:textSize="40sp"
@@ -24,71 +25,82 @@
         app:layout_constraintEnd_toStartOf="@+id/txtAssessmentTitle2"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="140dp" />
+        app:layout_constraintTop_toBottomOf="@+id/includeDisplay" />
 
     <TextView
         android:id="@+id/txtAssessmentTitle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
         android:text=" Your Ideal"
         android:textColor="#FFFFFF"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtAssessmentTitle"
-        tools:layout_editor_absoluteY="140dp" />
+        app:layout_constraintTop_toBottomOf="@+id/includeDisplay" />
 
     <TextView
         android:id="@+id/txtAssessmentTitle3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="146dp"
+        android:layout_marginTop="4dp"
         android:text="Career"
         android:textColor="#FFFFFF"
         android:textSize="40sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="145dp"
-        tools:layout_editor_absoluteY="189dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAssessmentTitle" />
 
     <TextView
         android:id="@+id/txtAssessmentDescription"
         android:layout_width="265dp"
         android:layout_height="70dp"
+        android:layout_marginStart="73dp"
+        android:layout_marginTop="80dp"
         android:text="This assessment is designed to help you find a career path that aligns with your personality traits.     "
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
-        tools:layout_editor_absoluteX="73dp"
-        tools:layout_editor_absoluteY="330dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAssessmentTitle3" />
 
     <TextView
         android:id="@+id/txtAssessmentDescription2"
         android:layout_width="205dp"
         android:layout_height="71dp"
+        android:layout_marginStart="103dp"
+        android:layout_marginTop="53dp"
         android:text="It's based on the Myers-Briggs Type Indicator (MBTI), a widely recognized tool for understanding personality types"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="12sp"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="454dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAssessmentDescription" />
 
     <Button
         android:id="@+id/btnAssessStart"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="52dp"
         android:background="@drawable/gradient_button"
         android:text="Get Started"
         android:textColor="#36353A"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="577dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAssessmentDescription2" />
 
     <ImageButton
         android:id="@+id/btnRef"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="181dp"
+        android:layout_marginBottom="63dp"
         android:backgroundTint="#36353A"
-        android:tint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/icon_info"
-        tools:layout_editor_absoluteX="181dp"
-        tools:layout_editor_absoluteY="625dp" />
+        app:tint="#FFFFFF" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

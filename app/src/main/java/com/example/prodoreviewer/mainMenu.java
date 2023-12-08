@@ -20,6 +20,7 @@ public class mainMenu extends AppCompatActivity {
     RecyclerView recyclerView;
     recycleAdapter2 adapter;
     recycleAdapter adapter2;
+    String UserEmail = "1";
 
     myDatabasehelper2 myDB2;
     myDatabasehelper myDB;
@@ -38,21 +39,24 @@ public class mainMenu extends AppCompatActivity {
         ImageButton taskadd = findViewById(R.id.addTask);
         ImageButton back = findViewById(R.id.btnBackButton);
         ImageButton home =findViewById(R.id.btnHome);
-        ImageButton btnUpcoming = findViewById(R.id.btnUpcoming);
-        ImageButton btnToday = findViewById(R.id.btnToday);
-        ImageButton btnFlashcard = findViewById(R.id.btnFlashcard);
-        ImageButton btnListView = findViewById(R.id.btnListView);
-        TextView upcoming = findViewById(R.id.upcoming);
-        TextView today = findViewById(R.id.Today);
+        ImageButton btnUpcoming = findViewById(R.id.btnAssessment);
+        ImageButton btnToday = findViewById(R.id.btnCareerPaths);
+        ImageButton btnFlashcard = findViewById(R.id.btnPersonalityTraits);
+        ImageButton btnListView = findViewById(R.id.btnProfile);
+        TextView txtAssessment = findViewById(R.id.txtAssessment);
+        TextView today = findViewById(R.id.txtCareerPaths);
         TextView addnewList = findViewById(R.id.addnewlist);
-        TextView listview = findViewById(R.id.listview);
+        TextView listview = findViewById(R.id.txtProfile);
         TextView lblPageName = findViewById(R.id.lblPageName);
         TextView list = findViewById(R.id.textView10);
         lblPageName.setText("Menu");
         @SuppressLint({"MissingInflatedId", "LocalSuppress"})
-        TextView flashcard = findViewById(R.id.txtMenuPersonalityTraits);
+        TextView flashcard = findViewById(R.id.txtPersonalityTraits);
 
         Intent intent = getIntent();
+        if(intent != null) {
+            UserEmail = intent.getStringExtra("email");
+        }
 
         myDB = new myDatabasehelper(mainMenu.this);
         myDB2 = new myDatabasehelper2(mainMenu.this);
@@ -72,39 +76,52 @@ public class mainMenu extends AppCompatActivity {
         listview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                recyclerView = findViewById(R.id.tasklistmenu);
+
+                Intent intent = new Intent(mainMenu.this,AssessmentMain.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("email", UserEmail);
+                startActivity(intent);
+
+                /*recyclerView = findViewById(R.id.tasklistmenu);
                 recyclerView.setLayoutManager(new LinearLayoutManager(mainMenu.this));
                 displayData();
 
                 adapter = new recycleAdapter2(mainMenu.this,list_id,list_title,list_icon,
                         list_color);
                 list.setText("Lists");
-                recyclerView.setAdapter(adapter);
+                recyclerView.setAdapter(adapter);*/
             }
         });
 
         btnListView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                recyclerView = findViewById(R.id.tasklistmenu);
+
+                Intent intent = new Intent(mainMenu.this,AssessmentMain.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("email", UserEmail);
+                startActivity(intent);
+
+                /*recyclerView = findViewById(R.id.tasklistmenu);
                 recyclerView.setLayoutManager(new LinearLayoutManager(mainMenu.this));
                 displayData();
 
                 adapter = new recycleAdapter2(mainMenu.this,list_id,list_title,list_icon,
                         list_color);
                 list.setText("Lists");
-                recyclerView.setAdapter(adapter);
+                recyclerView.setAdapter(adapter);*/
             }
         });
 
-        upcoming.setOnClickListener(new View.OnClickListener() {
+        txtAssessment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent intent = new Intent(mainMenu.this,Upcomingtasks.class);
+                Intent intent = new Intent(mainMenu.this,AssessmentMain.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);*/
+                intent.putExtra("email", UserEmail);
+                startActivity(intent);
 
-                recyclerView = findViewById(R.id.tasklistmenu);
+                /*recyclerView = findViewById(R.id.tasklistmenu);
                 recyclerView.setLayoutManager(new LinearLayoutManager(mainMenu.this));
                 getUpcomingTasks();
 
@@ -126,18 +143,24 @@ public class mainMenu extends AppCompatActivity {
                     }
                 });
                 list.setText("Upcoming");
-                recyclerView.setAdapter(adapter2);
+                recyclerView.setAdapter(adapter2);*/
             }
         });
 
         today.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent intent = new Intent(mainMenu.this,AssessmentMain.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("email", UserEmail);
+                startActivity(intent);
+
                 /*Intent intent = new Intent(mainMenu.this,tasksToday.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);*/
 
-                recyclerView = findViewById(R.id.tasklistmenu);
+                /*recyclerView = findViewById(R.id.tasklistmenu);
                 recyclerView.setLayoutManager(new LinearLayoutManager(mainMenu.this));
 
                 getTasksForToday();
@@ -159,15 +182,16 @@ public class mainMenu extends AppCompatActivity {
                     }
                 });
                 list.setText("Today");
-                recyclerView.setAdapter(adapter2);
+                recyclerView.setAdapter(adapter2);*/
             }
         });
 
         flashcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mainMenu.this, ProdoReviewer.class);
+                Intent intent = new Intent(mainMenu.this,AssessmentMain.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("email", UserEmail);
                 startActivity(intent);
             }
         });
@@ -175,8 +199,9 @@ public class mainMenu extends AppCompatActivity {
         btnFlashcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mainMenu.this, ProdoReviewer.class);
+                Intent intent = new Intent(mainMenu.this,AssessmentMain.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("email", UserEmail);
                 startActivity(intent);
             }
         });

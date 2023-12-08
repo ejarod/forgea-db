@@ -42,8 +42,8 @@ public class Timeo_LogIn extends AppCompatActivity {
                 } else {
                     Boolean verified = databaseHelper.checkEmailPassword(txtEmail,txtPassword);
                     if(verified) {
-                        Toast.makeText(Timeo_LogIn.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(Timeo_LogIn.this,MainActivity.class);
+                        //Toast.makeText(Timeo_LogIn.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Timeo_LogIn.this,mainMenu.class);
                         intent.putExtra("email", txtEmail);
                         startActivity(intent);
                     } else {
