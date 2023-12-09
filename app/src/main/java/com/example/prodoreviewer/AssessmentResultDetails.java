@@ -71,12 +71,14 @@ public class AssessmentResultDetails extends AppCompatActivity {
         btnStructure.setText(structure);
 
         traitPercent.setText(String.valueOf(percentW) + "%");
-        if(world=="E"){
+        if(world.equals("E")){
             traitDetails.setText(worldDescriptions[0]);
             trait.setText("Extrovert");
+            btnWorld.setText("E");
         } else {
             traitDetails.setText(worldDescriptions[1]);
             trait.setText("Introvert");
+            btnWorld.setText("I");
         }
 
         btnWorld.setTextColor(ContextCompat.getColor(this, R.color.world));
@@ -94,12 +96,14 @@ public class AssessmentResultDetails extends AppCompatActivity {
                     btnInformation.setBackgroundResource(R.drawable.personality_information_selected);
                     trait.setText(information);
                     traitPercent.setText(String.valueOf(percentI) + "%");
-                    if(information=="S"){
+                    if(information.equals("S")){
                         traitDetails.setText(informationDescriptions[0]);
                         trait.setText("Sensing");
+                        btnInformation.setText("S");
                     } else {
                         traitDetails.setText(informationDescriptions[1]);
                         trait.setText("Intuitive");
+                        btnInformation.setText("N");
                     }
                 }
 
@@ -110,12 +114,14 @@ public class AssessmentResultDetails extends AppCompatActivity {
                     btnDecision.setBackgroundResource(R.drawable.personality_decision_selected);
                     trait.setText(decision);
                     traitPercent.setText(String.valueOf(percentD) + "%");
-                    if(decision=="T"){
+                    if(decision.equals("T")){
                         traitDetails.setText(decisionDescriptions[0]);
                         trait.setText("Thinking");
+                        btnDecision.setText("T");
                     } else {
                         traitDetails.setText(decisionDescriptions[1]);
                         trait.setText("Feeling");
+                        btnDecision.setText("F");
                     }
                 }
 
@@ -126,12 +132,14 @@ public class AssessmentResultDetails extends AppCompatActivity {
                     btnStructure.setBackgroundResource(R.drawable.personality_structure_selected);
                     trait.setText(structure);
                     traitPercent.setText(String.valueOf(percentS) + "%");
-                    if(structure=="J"){
+                    if(structure.equals("J")){
                         traitDetails.setText(structureDescriptions[0]);
                         trait.setText("Judging");
+                        btnStructure.setText("J");
                     } else {
                         traitDetails.setText(structureDescriptions[1]);
                         trait.setText("Perceiving");
+                        btnStructure.setText("P");
                     }
                 }
 
