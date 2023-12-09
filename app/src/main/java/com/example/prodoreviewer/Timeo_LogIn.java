@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,6 +20,7 @@ public class Timeo_LogIn extends AppCompatActivity {
     Button loginButton;
     TextView signup;
     DatabaseHelper databaseHelper;
+    Animation scaleup,scaledown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,9 @@ public class Timeo_LogIn extends AppCompatActivity {
         loginButton = findViewById(R.id.loginButton);
         signup = findViewById(R.id.signupText);
         databaseHelper = new DatabaseHelper(this);
+        scaleup = AnimationUtils.loadAnimation(this,R.anim.scale_up);
+        scaledown = AnimationUtils.loadAnimation(this,R.anim.scale_down);
+        setButtonTouchListener(loginButton);
 
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -42,8 +49,13 @@ public class Timeo_LogIn extends AppCompatActivity {
                 } else {
                     Boolean verified = databaseHelper.checkEmailPassword(txtEmail,txtPassword);
                     if(verified) {
-                        //Toast.makeText(Timeo_LogIn.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(Timeo_LogIn.this,mainMenu.class);
+                        boolean hasAssessed = databaseHelper.hasAssessed(txtEmail);
+                        Intent intent;
+                        if(hasAssessed) {
+                            intent = new Intent(Timeo_LogIn.this,mainMenu.class);
+                        } else {
+                            intent = new Intent(Timeo_LogIn.this,AssessmentMain.class);
+                        }
                         intent.putExtra("email", txtEmail);
                         startActivity(intent);
                     } else {
@@ -58,6 +70,20 @@ public class Timeo_LogIn extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Timeo_LogIn.this,Timeo_Register.class);
                 startActivity(intent);
+            }
+        });
+    }
+
+    private void setButtonTouchListener(final Button button) {
+        button.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if(motionEvent.getAction()== MotionEvent.ACTION_DOWN){
+                    button.startAnimation(scaleup);
+                } else if(motionEvent.getAction()== MotionEvent.ACTION_UP){
+                    button.startAnimation(scaledown);
+                }
+                return false;
             }
         });
     }

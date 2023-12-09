@@ -2,46 +2,56 @@ package com.example.prodoreviewer;
 
 
 public class AssessmentControl {
-    char world;          //E or I
-    char information;    //S or N
-    char decisions;      //T or F
-    char structure;      //J or P
+    String world;          //E or I
+    int percentW;
+    String information;    //S or N
+    int percentI;
+    String decisions;      //T or F
+    int percentD;
+    String structure;      //J or P
+    int percentS;
     String result = assessSkills();
 
     public String assessSkills() {
         String result;
-        if(world=='A'){
-            result = "E";
-        } else {
-            result = "I";
-        }
-
-        if(information =='A'){
-            result += "S";
-        } else {
-            result += "N";
-        }
-
-        if(decisions =='A'){
-            result += "T";
-        } else {
-            result += "F";
-        }
-
-        if(structure =='A'){
-            result += "J";
-        } else {
-            result += "P";
-        }
-
+        result = world + information + decisions + structure;
         return result;
     }
 
     public AssessmentControl(int[] world, int[] information, int[] decisions, int[]structure) {
-        this.world = getTypeScore(world);
-        this.information = getTypeScore(information);
-        this.decisions = getTypeScore(decisions);
-        this.structure = getTypeScore(structure);
+        char w = getTypeScore(world);
+        char i = getTypeScore(information);
+        char d = getTypeScore(decisions);
+        char s = getTypeScore(structure);
+
+        this.percentW = getTypePercent(world);
+        this.percentI = getTypePercent(information);
+        this.percentD = getTypePercent(decisions);
+        this.percentS = getTypePercent(structure);
+
+        if(w=='A'){
+            this.world = "E";
+        } else {
+            this.world = "I";
+        }
+
+        if(i =='A'){
+            this.information = "S";
+        } else {
+            this.information = "N";
+        }
+
+        if(d =='A'){
+            this.decisions = "T";
+        } else {
+            this.decisions = "F";
+        }
+
+        if(s =='A'){
+            this.structure = "J";
+        } else {
+            this.structure = "P";
+        }
     }
 
     public static char getTypeScore(int[] answers) {
@@ -58,16 +68,15 @@ public class AssessmentControl {
 
         if (scoreA > scoreB) {
             return 'A';
-        } else if (scoreA < scoreB) {
-            return 'B';
         } else {
-            return 'C';
+            return 'B';
         }
     }
 
     public static int getTypePercent(int[] answers) {
         int scoreA = 0;
         int scoreB = 0;
+        float percent;
 
         for (int i = 0; i < answers.length; i++) {
             if (i+1 % 2 == 0) {
@@ -78,11 +87,16 @@ public class AssessmentControl {
         }
 
         if (scoreA > scoreB) {
-            return scoreA / answers.length;
+            percent = scoreA / scoreA+scoreB;
         } else if (scoreA < scoreB) {
-            return scoreB / answers.length;
+            percent = scoreB / scoreA+scoreB;
         } else {
-            return 50;
+            scoreB += 3;
+            percent = scoreB / scoreA+scoreB;
         }
+
+        percent *= 100;
+
+        return (int)percent;
     }
 }
