@@ -1,6 +1,8 @@
 package com.example.prodoreviewer;
 
 
+import android.util.Log;
+
 public class AssessmentControl {
     String world;          //E or I
     int percentW;
@@ -18,16 +20,16 @@ public class AssessmentControl {
         return result;
     }
 
-    public AssessmentControl(int[] world, int[] information, int[] decisions, int[]structure) {
-        char w = getTypeScore(world);
-        char i = getTypeScore(information);
-        char d = getTypeScore(decisions);
-        char s = getTypeScore(structure);
+    public AssessmentControl(int[] worldA, int[] informationA, int[] decisionsA, int[]structureA) {
+        char w = getTypeScore(worldA);
+        char i = getTypeScore(informationA);
+        char d = getTypeScore(decisionsA);
+        char s = getTypeScore(structureA);
 
-        this.percentW = getTypePercent(world);
-        this.percentI = getTypePercent(information);
-        this.percentD = getTypePercent(decisions);
-        this.percentS = getTypePercent(structure);
+        this.percentW = getTypePercent(worldA);
+        this.percentI = getTypePercent(informationA);
+        this.percentD = getTypePercent(decisionsA);
+        this.percentS = getTypePercent(structureA);
 
         if(w=='A'){
             this.world = "E";
@@ -54,17 +56,19 @@ public class AssessmentControl {
         }
     }
 
-    public static char getTypeScore(int[] answers) {
-        int scoreA = 0; //even questions == Extrovert
-        int scoreB = 0; //odd questions == Introvert
+    public char getTypeScore(int[] answers) {
+        int scoreA = 0;
+        int scoreB = 0;
 
         for (int i = 0; i < answers.length; i++) {
-            if (i+1 % 2 == 0) {
+            //Log.d(String.valueOf(i) + " <- i+1", String.valueOf(i+1));
+            if (i % 2 == 0) {
                 scoreA += answers[i];
             } else {
                 scoreB += answers[i];
             }
         }
+
 
         if (scoreA > scoreB) {
             return 'A';
@@ -73,30 +77,32 @@ public class AssessmentControl {
         }
     }
 
-    public static int getTypePercent(int[] answers) {
+    public int getTypePercent(int[] answers) {
         int scoreA = 0;
         int scoreB = 0;
-        float percent;
 
         for (int i = 0; i < answers.length; i++) {
-            if (i+1 % 2 == 0) {
+            if (i % 2 == 0) {
                 scoreA += answers[i];
             } else {
                 scoreB += answers[i];
             }
         }
 
+        int totalScore = scoreA + scoreB;
+        float percent;
+
         if (scoreA > scoreB) {
-            percent = scoreA / scoreA+scoreB;
+            percent = (float) scoreA / totalScore;
         } else if (scoreA < scoreB) {
-            percent = scoreB / scoreA+scoreB;
+            percent = (float) scoreB / totalScore;
         } else {
             scoreB += 3;
-            percent = scoreB / scoreA+scoreB;
+            percent = (float) scoreB / totalScore;
         }
 
         percent *= 100;
-
         return (int)percent;
+
     }
 }

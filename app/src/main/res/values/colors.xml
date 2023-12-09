@@ -10,4 +10,12 @@
     <color name="gray">#333333</color>
     <color name="purple">#8692f7</color>
     <color name="lavender">#8692f7</color>
+
+    <color name="world">#F8F1AD</color>
+    <color name="information">#EDACA3</color>
+    <color name="decision">#E199C8</color>
+    <color name="structure">#B78FD6</color>
+    <color name="text">#36353A</color>
+
+
 </resources>

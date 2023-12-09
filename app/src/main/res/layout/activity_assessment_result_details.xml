@@ -5,31 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#36353A"
-    tools:context=".AssessmentResult">
-
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="181dp"
-        android:layout_height="78dp"
-        android:layout_marginStart="115dp"
-        android:layout_marginTop="97dp"
-        android:text="Your Personality Type is"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".AssessmentResultDetails">
 
     <LinearLayout
         android:layout_width="409dp"
-        android:layout_height="554dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,7 +21,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnWorld"
+                android:id="@+id/btnWorld2"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
                 android:layout_marginLeft="60dp"
@@ -48,7 +32,7 @@
                 android:textSize="34sp" />
 
             <Button
-                android:id="@+id/btnInformation"
+                android:id="@+id/btnInformation2"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
                 android:layout_marginLeft="5dp"
@@ -59,7 +43,7 @@
                 android:textSize="34sp" />
 
             <Button
-                android:id="@+id/btnDecision"
+                android:id="@+id/btnDecision2"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
                 android:layout_marginLeft="5dp"
@@ -70,7 +54,7 @@
                 android:textSize="34sp" />
 
             <Button
-                android:id="@+id/btnStructure"
+                android:id="@+id/btnStructure2"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
                 android:layout_marginLeft="5dp"
@@ -82,24 +66,51 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textViewDetails"
+            android:id="@+id/txtTraitPercentage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="40dp"
-            android:layout_marginBottom="220dp"
-            android:text="Please remember that these results are for informational purposes only and should not be considered as definitive or absolute."
-            android:textAlignment="center"
+            android:layout_marginBottom="10dp"
+            android:text="Percent"
+            android:textAlignment="viewStart"
             android:textColor="#FFFFFF"
-            android:textSize="14sp" />
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtTrait"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="10dp"
+            android:text="Trait"
+            android:textAlignment="viewStart"
+            android:textColor="#F7F0AC"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtTraitDetails"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="10dp"
+            android:text="Details"
+            android:textAlignment="viewStart"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <Button
-            android:id="@+id/btnContinue"
+            android:id="@+id/btnContinue2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/gradient_button"
+            android:background="@drawable/personality_world"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingRight="20dp"
@@ -120,4 +131,5 @@
             android:textStyle="bold" />
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

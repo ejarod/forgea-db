@@ -13,7 +13,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String databaseName = "Signup.db";
 
     public DatabaseHelper(@Nullable Context context) {
-        super(context, "Signup.db", null, 2);
+        super(context, "Signup.db", null, 4);
     }
 
     @Override
@@ -28,6 +28,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         MyDatabase.execSQL("drop Table if exists allusers");
         MyDatabase.execSQL("drop Table if exists newuser");
         MyDatabase.execSQL("drop Table if exists tblPersonality");
+
+        MyDatabase.execSQL("create Table allusers(email TEXT primary key, password TEXT)");
+        MyDatabase.execSQL("create Table newuser(email TEXT primary key, assessed INTEGER)");
+        MyDatabase.execSQL("create Table tblPersonality(email TEXT, personality TEXT, world INTEGER, information INTEGER, decisions INTEGER, structure INTEGER)");
     }
 
     public boolean insertData(String email, String password) {
@@ -79,7 +83,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean checkEmailPassword(String email, String password) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
-
         Cursor cursor = MyDatabase.rawQuery("Select * from newuser where email = ?",new String[]{email});
 
         if(cursor.getCount() == 0) {

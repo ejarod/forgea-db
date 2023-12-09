@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -17,22 +18,22 @@ public class AssessmentQuestions extends AppCompatActivity {
             "Do you enjoy large social gatherings?",
             "Do you prefer to work in a quiet environment?",
             "Are you comfortable being the center of attention?",
-            "Do you prefer to work alone or in a team?",
-            "Do you enjoy spending time alone?",
+            "Do you prefer to work alone rather than in a team?",
             "Are you comfortable speaking in front of a large group of people?",
+            "Do you enjoy spending time alone?",
             "Do you enjoy attending parties and social events?",
-            "Do you prefer to spend time alone or in a group of friends?"
+            "Do you prefer to spend time in a smaller group of friends?"
     };
 
     String[] informationQ = {
-            "Do you prefer to work with facts and figures?",
-            "Do you prefer to work with abstract concepts?",
-            "Are you more comfortable with the present than the future?",
-            "Do you prefer to work with the here-and-now rather than the big picture?",
-            "Do you prefer to work with the 'what is' rather than the 'what could be'?",
-            "Do you prefer to work with the standard and usual rather than the different and novel?",
-            "Are you more focused on the 'here and now' rather than the future and global perspective?",
-            "Do you prefer to work with facts and things rather than ideas and dreams?"
+            "Do you prefer dealing with concrete facts and details rather than abstract concepts?",     //S
+            "Do you often find yourself more interested in new possibilities than focusing on the details of the present?",
+            "Do you enjoy activities that require paying attention to the present moment and immediate surroundings?",//S
+            "Do you enjoy contemplating abstract concepts and theories?",
+            "Do you trust your direct observations and experiences more than theories or ideas?",       //S
+            "Are you more drawn to innovative and creative solutions rather than relying solely on proven and established methods?",
+            "Do you appreciate practical, realistic solutions to problems rather than theoretical or conceptual approaches?",//S
+            "Do you tend to see the big picture and overarching patterns, rather than getting bogged down in specific details?"
     };
 
     String[] decisionQ = {
@@ -264,25 +265,37 @@ public class AssessmentQuestions extends AppCompatActivity {
         }
 
         if(qIndex >= fourth) {
-
-            DatabaseHelper db = new DatabaseHelper(this);
-            AssessmentControl control = new AssessmentControl(world,information,decision,structure);
-            Boolean insert = db.insertPersonalityData(control.result,UserEmail,control.percentW,control.percentI,control.percentD,control.percentS);
-            if(insert) {
-                Intent intent = new Intent(AssessmentQuestions.this,AssessmentQuestions.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("email", UserEmail);
-                startActivity(intent);
-            }
-            /*System.out.print("World: ");
-            System.out.print(world[0]);
-            for(int i = 1; i < fourth; i++) {
+            /*for(int i = 0; i < fourth; i++) {
                 if(i < first) {
-                    System.out.print(", ");
-                    System.out.print(world[i]);
+                    Log.d("Output"," " + world[i]);
                 }
-            }
-            System.out.println();*/
+                if(i >= first && i < second) {
+                    Log.d("Output"," = " + world[i-first]);
+                }
+                if(i >= second && i < third) {
+                    Log.d("Output", " - " + world[i-second]);
+                }
+                if(i >= third && i < fourth) {
+                    Log.d("Output", " | " + world[i-third]);
+                }
+            }*/
+
+            AssessmentControl control = new AssessmentControl(world,information,decision,structure);
+
+            Intent intent = new Intent(AssessmentQuestions.this,AssessmentResult.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("email", UserEmail);
+            intent.putExtra("world", control.world);
+            intent.putExtra("information", control.information);
+            intent.putExtra("decision", control.decisions);
+            intent.putExtra("structure", control.structure);
+
+            intent.putExtra("percentW", control.percentW);
+            intent.putExtra("percentI", control.percentI);
+            intent.putExtra("percentD", control.percentD);
+            intent.putExtra("percentS", control.percentS);
+
+            startActivity(intent);
         }
     }
 
