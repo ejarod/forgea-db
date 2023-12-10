@@ -9,11 +9,6 @@
     tools:context=".AssessmentQuestions">
 
     <include
-        android:id="@+id/includeDisplay"
-        layout="@layout/toolbar_dark"
-        android:transitionName="sharedImage" />
-
-    <include
         android:id="@+id/include2"
         layout="@layout/assessment_choices"
         android:layout_width="match_parent"

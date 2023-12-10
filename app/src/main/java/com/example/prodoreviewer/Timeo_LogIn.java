@@ -52,7 +52,7 @@ public class Timeo_LogIn extends AppCompatActivity {
                         boolean hasAssessed = databaseHelper.hasAssessed(txtEmail);
                         Intent intent;
                         if(hasAssessed) {
-                            intent = new Intent(Timeo_LogIn.this,mainMenu.class);
+                            intent = new Intent(Timeo_LogIn.this,ForgeaMainMenu.class);
                         } else {
                             intent = new Intent(Timeo_LogIn.this,AssessmentMain.class);
                         }

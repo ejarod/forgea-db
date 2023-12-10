@@ -265,20 +265,6 @@ public class AssessmentQuestions extends AppCompatActivity {
         }
 
         if(qIndex >= fourth) {
-            /*for(int i = 0; i < fourth; i++) {
-                if(i < first) {
-                    Log.d("Output"," " + world[i]);
-                }
-                if(i >= first && i < second) {
-                    Log.d("Output"," = " + world[i-first]);
-                }
-                if(i >= second && i < third) {
-                    Log.d("Output", " - " + world[i-second]);
-                }
-                if(i >= third && i < fourth) {
-                    Log.d("Output", " | " + world[i-third]);
-                }
-            }*/
 
             AssessmentControl control = new AssessmentControl(world,information,decision,structure);
 

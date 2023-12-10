@@ -9,11 +9,17 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class AssessmentMain extends AppCompatActivity {
 
     String UserEmail;
     Animation scaleup,scaledown;
+    ImageButton btnBack, btnHome;
+    Button btnAssess;
+    DatabaseHelper db;
+    TextView txtLabel;
 
 
     @Override
@@ -26,12 +32,34 @@ public class AssessmentMain extends AppCompatActivity {
             UserEmail = intent.getStringExtra("email");
         }
 
-        Button btnAssess = findViewById(R.id.btnAssessStart);
+        db = new DatabaseHelper(this);
+
+        btnAssess = findViewById(R.id.btnAssessStart);
+        btnHome = findViewById(R.id.btnHome);
+        btnBack = findViewById(R.id.btnBackButton);
         scaleup = AnimationUtils.loadAnimation(this,R.anim.scale_up);
         scaledown = AnimationUtils.loadAnimation(this,R.anim.scale_down);
+        txtLabel = findViewById(R.id.lblPageName);
 
         setButtonTouchListener(btnAssess);
 
+        Boolean check = db.hasAssessed(UserEmail);
+        if(!check){
+            btnHome.setActivated(false);
+            btnHome.setVisibility(View.GONE);
+            txtLabel.setVisibility(View.GONE);
+
+            btnBack.setActivated(false);
+            btnBack.setVisibility(View.GONE);
+        } else {
+            btnHome.setActivated(false);
+            btnHome.setVisibility(View.GONE);
+            txtLabel.setVisibility(View.VISIBLE);
+            txtLabel.setText("Assessment");
+
+            btnBack.setActivated(true);
+            btnBack.setVisibility(View.VISIBLE);
+        }
         btnAssess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

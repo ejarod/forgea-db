@@ -12,6 +12,12 @@
         android:theme="@style/Theme.ProdoReviewer"
         tools:targetApi="31">
         <activity
+            android:name=".ProfileDetails"
+            android:exported="false" />
+        <activity
+            android:name=".ForgeaMainMenu"
+            android:exported="false" />
+        <activity
             android:name=".AssessmentResultDetails"
             android:exported="false" />
         <activity

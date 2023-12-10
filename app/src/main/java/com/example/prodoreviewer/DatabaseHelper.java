@@ -60,12 +60,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("information", information);
         contentValues.put("decisions", decisions);
         contentValues.put("structure", structure);
-        long result = MyDatabase.insert("tblPersonality", null, contentValues);
-        if(result == -1){
-            return false;
+
+        Cursor cursor = MyDatabase.query("tblPersonality", null, "email=?", new String[]{email}, null, null, null);
+        if (cursor.getCount() > 0) {
+            int updatedRows = MyDatabase.update("tblPersonality", contentValues, "email=?", new String[]{email});
+            cursor.close();
+            if (updatedRows == 0) {
+                return false;
+            } else {
+                userAssess(email);
+                return true;
+            }
         } else {
-            userAssess(email);
-            return true;
+            long result = MyDatabase.insert("tblPersonality", null, contentValues);
+            if (result == -1) {
+                return false;
+            } else {
+                userAssess(email);
+                return true;
+            }
         }
     }
 
