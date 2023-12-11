@@ -16,7 +16,7 @@ public class ForgeaMainMenu extends AppCompatActivity {
     DatabaseHelper db;
 
     ImageButton btnAssessmentMenu, btnProfileMenu, btnCareerPathsMenu, btnPersonalityTraitsMenu;
-    TextView txtAssessmentMenu, txtProfileMenu, txtCareerPathsMenu, txtPersonalityTraitsMenu;
+    TextView txtLabel, txtAssessmentMenu, txtProfileMenu, txtCareerPathsMenu, txtPersonalityTraitsMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +30,13 @@ public class ForgeaMainMenu extends AppCompatActivity {
         btnCareerPathsMenu = findViewById(R.id.btnCareerPaths);
         btnPersonalityTraitsMenu = findViewById(R.id.btnPersonalityTraits);
 
+        txtLabel = findViewById(R.id.lblPageName);
         txtAssessmentMenu = findViewById(R.id.txtAssessment);
         txtProfileMenu = findViewById(R.id.txtProfile);
         txtCareerPathsMenu = findViewById(R.id.txtCareerPaths);
         txtPersonalityTraitsMenu = findViewById(R.id.txtPersonalityTraits);
+
+        txtLabel.setText("Home");
 
         Intent intent = getIntent();
         if(intent != null) {
@@ -80,5 +83,24 @@ public class ForgeaMainMenu extends AppCompatActivity {
             }
         });
 
+        btnPersonalityTraitsMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ForgeaMainMenu.this,PersonalityDetails.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("email", UserEmail);
+                startActivity(intent);
+            }
+        });
+
+        txtPersonalityTraitsMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ForgeaMainMenu.this,PersonalityDetails.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("email", UserEmail);
+                startActivity(intent);
+            }
+        });
     }
 }

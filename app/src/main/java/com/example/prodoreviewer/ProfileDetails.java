@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -67,10 +68,10 @@ public class ProfileDetails extends AppCompatActivity {
         }
 
         DatabaseHelper db = new DatabaseHelper(this);
-        world = world + (db.getPersonality(UserEmail).charAt(0));
-        information = world + (db.getPersonality(UserEmail).charAt(1));
-        decision = world + (db.getPersonality(UserEmail).charAt(2));
-        structure = world + (db.getPersonality(UserEmail).charAt(3));
+        world = "" + (db.getPersonality(UserEmail).charAt(0));
+        information = "" + (db.getPersonality(UserEmail).charAt(1));
+        decision = "" + (db.getPersonality(UserEmail).charAt(2));
+        structure = "" + (db.getPersonality(UserEmail).charAt(3));
 
         percentW = db.getPercentage(UserEmail,"world");
         percentI = db.getPercentage(UserEmail,"information");
@@ -85,6 +86,8 @@ public class ProfileDetails extends AppCompatActivity {
         percent2.setText(String.valueOf(100-percentW) + "%");
         traitPercent.setTextColor(ContextCompat.getColor(ProfileDetails.this, R.color.world));
         btnWorld.setText(world);
+
+        Log.d("Personality",world+information+decision+structure);
 
         if(world.equals("E")){
             traitDetails.setText(worldDescriptions[0]);
@@ -115,6 +118,18 @@ public class ProfileDetails extends AppCompatActivity {
         } else {
             btnStructure.setText("P");
         }
+
+        btnWorld.setTextColor(ContextCompat.getColor(ProfileDetails.this, R.color.world));
+        btnWorld.setBackgroundResource(R.drawable.personality_world_selected);
+
+        btnInformation.setTextColor(ContextCompat.getColor(ProfileDetails.this, R.color.text));
+        btnInformation.setBackgroundResource(R.drawable.personality_information);
+
+        btnDecision.setTextColor(ContextCompat.getColor(ProfileDetails.this, R.color.text));
+        btnDecision.setBackgroundResource(R.drawable.personality_decision);
+
+        btnStructure.setTextColor(ContextCompat.getColor(ProfileDetails.this, R.color.text));
+        btnStructure.setBackgroundResource(R.drawable.personality_structure);
 
         btnWorld.setOnClickListener(new View.OnClickListener() {
             @Override
