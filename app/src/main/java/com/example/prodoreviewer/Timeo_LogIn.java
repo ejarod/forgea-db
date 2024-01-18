@@ -58,6 +58,7 @@ public class Timeo_LogIn extends AppCompatActivity {
                         }
                         intent.putExtra("email", txtEmail);
                         startActivity(intent);
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     } else {
                         Toast.makeText(Timeo_LogIn.this, "Enter correct email or password", Toast.LENGTH_SHORT).show();
                     }
@@ -70,6 +71,7 @@ public class Timeo_LogIn extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Timeo_LogIn.this,Timeo_Register.class);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
     }

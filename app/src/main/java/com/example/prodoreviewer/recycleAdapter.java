@@ -1,7 +1,6 @@
 package com.example.prodoreviewer;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -107,10 +106,9 @@ public class recycleAdapter extends RecyclerView.Adapter<recycleAdapter.MyViewHo
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            task_nametxt = itemView.findViewById(R.id.task1);
-            task_icon_img = itemView.findViewById(R.id.imagehere);
+            task_nametxt = itemView.findViewById(R.id.txtCareer);
+            task_icon_img = itemView.findViewById(R.id.imgIcon);
             icon_background = itemView.findViewById(R.id.icon_background);
-            task_datetxt = itemView.findViewById(R.id.taskduedate);
 
             mainLayout = itemView.findViewById(R.id.design1);
             translate_anim = AnimationUtils.loadAnimation(context, R.anim.translate_anim2);

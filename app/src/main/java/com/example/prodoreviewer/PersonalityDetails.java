@@ -6,7 +6,6 @@ import androidx.core.content.ContextCompat;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -19,8 +18,8 @@ public class PersonalityDetails extends AppCompatActivity {
     TextView txtLabel;
 
     String[] worldDescriptions = {
-            "Extroverts are outgoing, sociable individuals who gain energy from interacting with others." + "\n\n" + "They often enjoy a variety of activities, seek stimulation, and are comfortable in group settings. Extroverts tend to think out loud and process information externally.",
-            "Introverts are reserved, reflective individuals who recharge by spending time alone." + "\n\n" + "They prefer smaller, more intimate gatherings and may need quiet time for introspection. Introverts often think deeply before speaking and may process information internally before expressing their thoughts."
+            "Introverts are reserved, reflective individuals who recharge by spending time alone." + "\n\n" + "They prefer smaller, more intimate gatherings and may need quiet time for introspection. Introverts often think deeply before speaking and may process information internally before expressing their thoughts.",
+            "Extroverts are outgoing, sociable individuals who gain energy from interacting with others." + "\n\n" + "They often enjoy a variety of activities, seek stimulation, and are comfortable in group settings. Extroverts tend to think out loud and process information externally."
     };
     String[] informationDescriptions = {
             "Sensors focus on concrete facts, details, and the present moment." + "\n\n" + "They are practical and rely on direct experiences to understand the world around them. Sensors are often realistic and grounded, paying attention to the here and now.",
@@ -59,7 +58,7 @@ public class PersonalityDetails extends AppCompatActivity {
         btnDecisionF = findViewById(R.id.btnDecisionF);
         btnStructureP = findViewById(R.id.btnStructureP);
         traitDetails = findViewById(R.id.txtTraitDetailsProfile);
-        trait = findViewById(R.id.txtTraitProfile);
+        trait = findViewById(R.id.txtCareerTitle);
 
         Intent intent = getIntent();
         if(intent != null) {
@@ -136,6 +135,7 @@ public class PersonalityDetails extends AppCompatActivity {
                 btnWorldI.setBackgroundResource(R.drawable.personality_world_selected);
 
                 trait.setText("Introvert");
+                trait.setTextColor(ContextCompat.getColor(PersonalityDetails.this, R.color.world));
 
                 traitDetails.setText(worldDescriptions[0]);
             }
@@ -165,6 +165,7 @@ public class PersonalityDetails extends AppCompatActivity {
                 btnWorldE.setBackgroundResource(R.drawable.personality_world_selected);
 
                 trait.setText("Extrovert");
+                trait.setTextColor(ContextCompat.getColor(PersonalityDetails.this, R.color.world));
 
                 traitDetails.setText(worldDescriptions[1]);
             }
@@ -194,6 +195,7 @@ public class PersonalityDetails extends AppCompatActivity {
                 btnInformationS.setBackgroundResource(R.drawable.personality_information_selected);
 
                 trait.setText("Sensing");
+                trait.setTextColor(ContextCompat.getColor(PersonalityDetails.this, R.color.information));
 
                 traitDetails.setText(informationDescriptions[0]);
             }
@@ -223,6 +225,7 @@ public class PersonalityDetails extends AppCompatActivity {
                 btnInformationN.setBackgroundResource(R.drawable.personality_information_selected);
 
                 trait.setText("Intuitive");
+                trait.setTextColor(ContextCompat.getColor(PersonalityDetails.this, R.color.information));
 
                 traitDetails.setText(informationDescriptions[1]);
             }
@@ -252,6 +255,7 @@ public class PersonalityDetails extends AppCompatActivity {
                 btnDecisionT.setBackgroundResource(R.drawable.personality_decision_selected);
 
                 trait.setText("Thinking");
+                trait.setTextColor(ContextCompat.getColor(PersonalityDetails.this, R.color.decision));
 
                 traitDetails.setText(decisionDescriptions[0]);
             }
@@ -281,6 +285,7 @@ public class PersonalityDetails extends AppCompatActivity {
                 btnDecisionF.setBackgroundResource(R.drawable.personality_decision_selected);
 
                 trait.setText("Feeling");
+                trait.setTextColor(ContextCompat.getColor(PersonalityDetails.this, R.color.decision));
 
                 traitDetails.setText(decisionDescriptions[1]);
             }
@@ -310,6 +315,7 @@ public class PersonalityDetails extends AppCompatActivity {
                 btnStructureJ.setBackgroundResource(R.drawable.personality_structure_selected);
 
                 trait.setText("Judging");
+                trait.setTextColor(ContextCompat.getColor(PersonalityDetails.this, R.color.structure));
 
                 traitDetails.setText(structureDescriptions[0]);
             }
@@ -339,6 +345,7 @@ public class PersonalityDetails extends AppCompatActivity {
                 btnStructureP.setBackgroundResource(R.drawable.personality_structure_selected);
 
                 trait.setText("Perceiving");
+                trait.setTextColor(ContextCompat.getColor(PersonalityDetails.this, R.color.structure));
 
                 traitDetails.setText(structureDescriptions[1]);
             }
@@ -351,6 +358,7 @@ public class PersonalityDetails extends AppCompatActivity {
                 //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 //startActivity(intent);
                 finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
     }

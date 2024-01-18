@@ -15,7 +15,7 @@ public class AssessmentResultDetails extends AppCompatActivity {
     Button btnWorld,btnInformation,btnDecision,btnStructure,btnContinue;
     String UserEmail, world, information, decision, structure;
     int percentW, percentI, percentD, percentS;
-    TextView trait, traitPercent, traitDetails;
+    TextView trait, traitPercent, traitDetails, btnSkip;
 
     int index = 1;
 
@@ -29,9 +29,10 @@ public class AssessmentResultDetails extends AppCompatActivity {
         btnInformation = findViewById(R.id.btnInformation2);
         btnDecision = findViewById(R.id.btnDecision2);
         btnStructure = findViewById(R.id.btnStructure2);
-        trait = findViewById(R.id.txtTrait);
-        traitPercent = findViewById(R.id.txtTraitPercentage);
+        trait = findViewById(R.id.txtCareerName);
+        traitPercent = findViewById(R.id.txtReferences);
         traitDetails = findViewById(R.id.txtTraitDetails);
+        btnSkip = findViewById(R.id.textSkip);
 
         String[] worldDescriptions = {
                 "Extroverts are outgoing, sociable individuals who gain energy from interacting with others." + "\n\n" + "They often enjoy a variety of activities, seek stimulation, and are comfortable in group settings. Extroverts tend to think out loud and process information externally.",
@@ -157,10 +158,23 @@ public class AssessmentResultDetails extends AppCompatActivity {
                         Intent intent = new Intent(AssessmentResultDetails.this,ForgeaMainMenu.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent.putExtra("email", UserEmail);
+                        finish();
                         startActivity(intent);
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     }
 
                 }
+            }
+        });
+
+        btnSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AssessmentResultDetails.this,CareerPathsRecommendations.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("email", UserEmail);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 

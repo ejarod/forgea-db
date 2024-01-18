@@ -3,7 +3,6 @@ package com.example.prodoreviewer;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.icu.text.ConstrainedFieldPosition;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -108,8 +107,8 @@ public class recycleAdapter2 extends RecyclerView.Adapter<recycleAdapter2.MyView
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            list_nametxt = itemView.findViewById(R.id.task1);
-            list_icon_img = itemView.findViewById(R.id.imagehere);
+            list_nametxt = itemView.findViewById(R.id.txtCareer);
+            list_icon_img = itemView.findViewById(R.id.imgIcon);
             icon_background = itemView.findViewById(R.id.icon_background);
             samelist_namecount = itemView.findViewById(R.id.listcount);
             mainLayout = itemView.findViewById(R.id.design2);

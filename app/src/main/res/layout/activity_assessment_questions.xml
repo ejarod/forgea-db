@@ -18,6 +18,21 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <TextView
+        android:id="@+id/txtAssessmentNo"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/inter_semibold"
+        android:gravity="center"
+        android:text="1 of 30"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtAssessmentQuestion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/txtAssessmentQuestion"
         android:layout_width="350dp"
         android:layout_height="wrap_content"

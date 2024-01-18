@@ -257,7 +257,7 @@ public class mainMenu extends AppCompatActivity {
             }
         });
 
-        recyclerView = findViewById(R.id.tasklistmenu);
+        recyclerView = findViewById(R.id.tasklistmenu2);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         String sort;

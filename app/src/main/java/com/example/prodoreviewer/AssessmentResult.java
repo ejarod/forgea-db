@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class AssessmentResult extends AppCompatActivity {
 
     Button btnWorld,btnInformation,btnDecision,btnStructure,btnContinue;
     String UserEmail, world, information, decision, structure;
     int percentW, percentI, percentD, percentS;
+    TextView btnSkip;
 
 
     @Override
@@ -24,6 +26,7 @@ public class AssessmentResult extends AppCompatActivity {
         btnDecision = findViewById(R.id.btnDecision);
         btnStructure = findViewById(R.id.btnStructure);
         btnContinue = findViewById(R.id.btnContinue);
+        btnSkip = findViewById(R.id.textSkip);
 
         Intent intent = getIntent();
         if(intent != null) {
@@ -59,8 +62,20 @@ public class AssessmentResult extends AppCompatActivity {
                 intent.putExtra("percentI", percentI);
                 intent.putExtra("percentD", percentD);
                 intent.putExtra("percentS", percentS);
-
+                finish();
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        });
+
+        btnSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AssessmentResult.this,CareerPathsRecommendations.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("email", UserEmail);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 

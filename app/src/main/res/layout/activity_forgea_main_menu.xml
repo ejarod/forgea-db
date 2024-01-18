@@ -161,14 +161,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/tasklistmenu"
+            android:id="@+id/tasklistmenu2"
             android:layout_width="match_parent"
-            android:layout_height="260dp"
+            android:layout_height="280dp"
+            android:layout_marginBottom="16dp"
             android:padding="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></androidx.recyclerview.widget.RecyclerView>
+            app:layout_constraintStart_toStartOf="parent"></androidx.recyclerview.widget.RecyclerView>
 
         <TextView
             android:id="@+id/textView10"
@@ -184,39 +184,10 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/tasklistmenu"
+            app:layout_constraintEnd_toEndOf="@+id/tasklistmenu2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/addTask"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="260dp"
-            android:layout_marginRight="290dp"
-            android:backgroundTint="#00FFFFFF"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/tasklistmenu"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tasklistmenu"
-            app:srcCompat="@drawable/add"
-            app:tint="#36353A" />
-
-        <TextView
-            android:id="@+id/addnewlist"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="260dp"
-            android:layout_marginEnd="150dp"
-            android:fontFamily="@font/inter_semibold"
-            android:text="Add "
-            android:textColor="#36353A"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/tasklistmenu"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tasklistmenu" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

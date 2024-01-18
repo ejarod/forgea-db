@@ -37,7 +37,7 @@ public class ProfileDetails extends AppCompatActivity {
             "Perceivers are more flexible and adaptable." + "\n\n" + "They enjoy spontaneity, prefer to keep their options open, and may be more comfortable with uncertainty. Perceivers often embrace change, staying open to new information and possibilities, and enjoy the journey as much as the destination."
     };
 
-    Button btnWorld,btnInformation,btnDecision,btnStructure;
+    Button btnWorld,btnInformation,btnDecision,btnStructure,btnLogout;
     TextView trait,trait2,percent2,traitPercent,traitDetails;
 
     @SuppressLint("MissingInflatedId")
@@ -51,12 +51,13 @@ public class ProfileDetails extends AppCompatActivity {
         txtLabel = findViewById(R.id.lblPageName);
         btnHome.setVisibility(View.INVISIBLE);
         txtLabel.setText("Profile");
+        btnLogout = findViewById(R.id.btnLogout);
 
         btnWorld = findViewById(R.id.btnWorldProfile);
         btnInformation = findViewById(R.id.btnInformationProfile);
         btnDecision = findViewById(R.id.btnDecisionProfile);
         btnStructure = findViewById(R.id.btnStructureProfile);
-        trait = findViewById(R.id.txtTraitProfile);
+        trait = findViewById(R.id.txtCareerTitle);
         trait2 = findViewById(R.id.txtTrait2);
         traitPercent = findViewById(R.id.txtTraitPercentageProfile);
         percent2 = findViewById(R.id.txtPercent2);
@@ -293,10 +294,19 @@ public class ProfileDetails extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(ProfileDetails.this, ForgeaMainMenu.class);
-                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                //startActivity(intent);
                 finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProfileDetails.this, Timeo_LogIn.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                finish();
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
     }

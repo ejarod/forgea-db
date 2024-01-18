@@ -12,11 +12,13 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.sql.Ref;
+
 public class AssessmentMain extends AppCompatActivity {
 
     String UserEmail;
     Animation scaleup,scaledown;
-    ImageButton btnBack, btnHome;
+    ImageButton btnBack, btnHome, btnRef;
     Button btnAssess;
     DatabaseHelper db;
     TextView txtLabel;
@@ -40,6 +42,7 @@ public class AssessmentMain extends AppCompatActivity {
         scaleup = AnimationUtils.loadAnimation(this,R.anim.scale_up);
         scaledown = AnimationUtils.loadAnimation(this,R.anim.scale_down);
         txtLabel = findViewById(R.id.lblPageName);
+        btnRef = findViewById(R.id.btnRef);
 
         setButtonTouchListener(btnAssess);
 
@@ -66,7 +69,28 @@ public class AssessmentMain extends AppCompatActivity {
                 Intent intent = new Intent(AssessmentMain.this,AssessmentQuestions.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("email", UserEmail);
+                finish();
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        });
+
+        btnRef.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AssessmentMain.this, References.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("email", UserEmail);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
     }

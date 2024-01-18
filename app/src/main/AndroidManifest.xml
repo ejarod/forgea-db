@@ -12,6 +12,18 @@
         android:theme="@style/Theme.ProdoReviewer"
         tools:targetApi="31">
         <activity
+            android:name=".References"
+            android:exported="false" />
+        <activity
+            android:name=".CareerPathsRecommendationsPage"
+            android:exported="false" />
+        <activity
+            android:name=".CareerPathsRecommendations"
+            android:exported="false" />
+        <activity
+            android:name=".CareerPathsDescription"
+            android:exported="false" />
+        <activity
             android:name=".PersonalityDetails"
             android:exported="false" />
         <activity

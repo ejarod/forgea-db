@@ -149,7 +149,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/tasklistmenu"
+            android:id="@+id/tasklistmenu2"
             android:layout_width="match_parent"
             android:layout_height="260dp"
             android:padding="5dp"
@@ -172,7 +172,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/tasklistmenu"
+            app:layout_constraintEnd_toEndOf="@+id/tasklistmenu2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -184,9 +184,9 @@
             android:layout_marginRight="230dp"
             android:backgroundTint="#00FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/tasklistmenu"
+            app:layout_constraintEnd_toEndOf="@+id/tasklistmenu2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tasklistmenu"
+            app:layout_constraintTop_toTopOf="@+id/tasklistmenu2"
             app:srcCompat="@drawable/add"
             app:tint="#36353A" />
 
@@ -202,9 +202,9 @@
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/tasklistmenu"
+            app:layout_constraintEnd_toEndOf="@+id/tasklistmenu2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tasklistmenu" />
+            app:layout_constraintTop_toTopOf="@+id/tasklistmenu2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -60,7 +61,7 @@ public class AssessmentQuestions extends AppCompatActivity {
 
     Button btnA,btnB,btnC,btnD,btnE,btnF,btnG;
     Animation scaleup,scaledown;
-    TextView question;
+    TextView question, number;
 
     int[] world = new int[worldQ.length];
     int[] information = new int[informationQ.length];
@@ -94,6 +95,7 @@ public class AssessmentQuestions extends AppCompatActivity {
         btnF = findViewById(R.id.btnAnswerF);
         btnG = findViewById(R.id.btnAnswerG);
         question = findViewById(R.id.txtAssessmentQuestion);
+        number = findViewById(R.id.txtAssessmentNo);
 
         scaleup = AnimationUtils.loadAnimation(this,R.anim.scale_up);
         scaledown = AnimationUtils.loadAnimation(this,R.anim.scale_down);
@@ -248,9 +250,19 @@ public class AssessmentQuestions extends AppCompatActivity {
             }
         });
 
+
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
+
+
     private void proceedAssessment() {
+        if(!(qIndex >= 32)) {
+            number.setText(qIndex + 1 + " of 32");
+        }
         if(qIndex < first) {
             question.setText(worldQ[qIndex]);
         }
@@ -282,6 +294,7 @@ public class AssessmentQuestions extends AppCompatActivity {
             intent.putExtra("percentS", control.percentS);
 
             startActivity(intent);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         }
     }
 

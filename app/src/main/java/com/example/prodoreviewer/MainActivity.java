@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("taskDescription", taskDescription);
                 intent.putExtra("taskListName", taskListName);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
         recyclerView.setAdapter(adapter);
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 //intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("sort", "none");
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 
