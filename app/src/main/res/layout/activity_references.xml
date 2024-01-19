@@ -18,158 +18,137 @@
         android:id="@+id/btnRef2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#36353A"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleX="2"
+        android:scaleY="2"
+        app:layout_constraintEnd_toEndOf="@+id/includeMainMenu"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/includeMainMenu"
         app:srcCompat="@drawable/icon_info"
         app:tint="#FFFFFF" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="409dp"
-        android:layout_height="match_parent"
-        android:layout_marginTop="120dp"
-        android:orientation="vertical"
+    <TextView
+        android:id="@+id/txtReferences"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="References"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/btnRef2" />
 
-        <TextView
-            android:id="@+id/txtReferences"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="10dp"
-            android:text="References"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/txtOverview"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="MBTI General Overview"
+        android:textAlignment="textStart"
+        android:textColor="@color/world"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtReferences" />
 
-        <TextView
-            android:id="@+id/txtOverview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="50dp"
-            android:text="MBTI General Overview"
-            android:textAlignment="textStart"
-            android:textColor="@color/world"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/txtOverview2"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:text="https://www.myersbriggs.org/my-mbti-personality-type/myers-briggs-overview/"
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtOverview" />
 
-        <TextView
-            android:id="@+id/txtOverview2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="10dp"
-            android:text="https://www.myersbriggs.org/my-mbti-personality-type/myers-briggs-overview/"
-            android:textAlignment="textStart"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/txtResearch1"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="PERSONALITY TRAITS AND CAREER CHOICES "
+        android:textAlignment="textStart"
+        android:textColor="@color/world"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtOverview2" />
 
-        <TextView
-            android:id="@+id/txtResearch1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="50dp"
-            android:text="PERSONALITY TRAITS AND CAREER CHOICES "
-            android:textAlignment="textStart"
-            android:textColor="@color/world"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/txResearchs1"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:text="https://academicjournals.org/journal/AJBM/article-full-text-pdf/D46694524797"
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtResearch1" />
 
-        <TextView
-            android:id="@+id/txResearchs1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="10dp"
-            android:text="https://academicjournals.org/journal/AJBM/article-full-text-pdf/D46694524797"
-            android:textAlignment="textStart"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/txtResearch2"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Personality Traits and Career Role Enactment: Career Role Preferences as a Mediator"
+        android:textAlignment="textStart"
+        android:textColor="@color/world"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txResearchs1" />
 
-        <TextView
-            android:id="@+id/txtResearch2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="50dp"
-            android:text="Personality Traits and Career Role Enactment: Career Role Preferences as a Mediator"
-            android:textAlignment="textStart"
-            android:textColor="@color/world"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/txResearchs3"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="https://www.sciencedaily.com/releases/2021/12/211213181545.htm"
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtResearch3" />
 
-        <TextView
-            android:id="@+id/txResearchs2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="10dp"
-            android:text="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6671867/"
-            android:textAlignment="textStart"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/txtResearch3"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Personality traits predict performance differently across different jobs"
+        android:textAlignment="textStart"
+        android:textColor="@color/world"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txResearchs2" />
 
-        <TextView
-            android:id="@+id/txtResearch3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="50dp"
-            android:text="Personality traits predict performance differently across different jobs"
-            android:textAlignment="textStart"
-            android:textColor="@color/world"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/txResearchs3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="10dp"
-            android:text="https://www.sciencedaily.com/releases/2021/12/211213181545.htm"
-            android:textAlignment="textStart"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="350dp" />
-
-        <Button
-            android:id="@+id/btnContinue2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/personality_world"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="10dp"
-            android:text="Continue"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/txResearchs2"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:text="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6671867/"
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtResearch2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

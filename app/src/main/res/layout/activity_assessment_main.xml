@@ -16,7 +16,6 @@
         android:id="@+id/txtAssessmentTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         android:layout_marginTop="90dp"
         android:text="Forge"
         android:textColor="#F8F1AD"
@@ -83,22 +82,24 @@
         android:id="@+id/btnAssessStart"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginBottom="100dp"
         android:background="@drawable/gradient_button"
         android:text="Get Started"
         android:textColor="#36353A"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAssessmentDescription2" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/btnRef"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="181dp"
-        android:layout_marginBottom="63dp"
+        android:layout_marginBottom="50dp"
         android:backgroundTint="#36353A"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/icon_info"
         app:tint="#FFFFFF" />

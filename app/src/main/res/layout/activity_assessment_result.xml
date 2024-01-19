@@ -12,17 +12,18 @@
         android:id="@+id/textView6"
         android:layout_width="181dp"
         android:layout_height="78dp"
-        android:layout_marginStart="115dp"
         android:layout_marginTop="97dp"
         android:text="Your Personality Type is"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="409dp"
         android:layout_height="554dp"
         android:layout_marginStart="1dp"
@@ -34,90 +35,94 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnWorld"
-                android:layout_width="50dp"
+                android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_marginLeft="60dp"
+                android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_weight="1"
                 android:background="@drawable/personality_world"
                 android:text="W"
                 android:textSize="34sp" />
 
             <Button
                 android:id="@+id/btnInformation"
-                android:layout_width="50dp"
+                android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_weight="1"
                 android:background="@drawable/personality_information"
                 android:text="I"
                 android:textSize="34sp" />
 
             <Button
                 android:id="@+id/btnDecision"
-                android:layout_width="50dp"
+                android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_weight="1"
                 android:background="@drawable/personality_decision"
                 android:text="D"
                 android:textSize="34sp" />
 
             <Button
                 android:id="@+id/btnStructure"
-                android:layout_width="50dp"
+                android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="60dp"
-                android:layout_weight="1"
+                android:layout_marginRight="5dp"
                 android:background="@drawable/personality_structure"
                 android:text="S"
                 android:textSize="34sp" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textViewDetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginBottom="220dp"
-            android:text="Please remember that these results are for informational purposes only and should not be considered as definitive or absolute."
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp" />
-
-        <Button
-            android:id="@+id/btnContinue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/gradient_button"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="10dp"
-            android:text="Continue"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textSkip"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Skip to career recommendations"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewDetails"
+        android:layout_width="333dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="150dp"
+        android:text="Please remember that these results are for informational purposes only and should not be considered as definitive or absolute."
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <Button
+        android:id="@+id/btnContinue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/gradient_button"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:text="Continue"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textSkip"
+        android:layout_width="228dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Skip to career recommendations"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnContinue" />
 </androidx.constraintlayout.widget.ConstraintLayout>
