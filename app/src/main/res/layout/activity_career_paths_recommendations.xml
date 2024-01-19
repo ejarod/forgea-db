@@ -92,7 +92,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tasklistmenu2"
-        android:layout_width="340dp"
+        android:layout_width="360dp"
         android:layout_height="340dp"
         android:layout_marginBottom="100dp"
         android:padding="5dp"
