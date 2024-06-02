@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#36353A"
-    tools:context=".AssessmentResultDetails">
+    tools:context=".CareerPathsRecommendations">
 
     <include
         android:id="@+id/includeMainMenu"
@@ -65,39 +65,48 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/txtCareerName"
+        android:id="@+id/txtCareerDesc"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
-        android:text="Career"
-        android:textAlignment="viewStart"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
+        android:text="Recommendation"
+        android:textAlignment="center"
+        android:textColor="#F7F0AC"
+        android:textSize="24sp"
         android:textStyle="bold"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
 
     <TextView
-        android:id="@+id/txtCareerDesc"
+        android:id="@+id/txtProgramRecommendation"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
-        android:text="Recommendations"
-        android:textAlignment="viewStart"
-        android:textColor="#F7F0AC"
-        android:textSize="34sp"
+        android:layout_marginTop="6dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="44sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCareerName" />
+        app:layout_constraintTop_toBottomOf="@id/txtCareerDesc" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/tasklistmenu2"
-        android:layout_width="360dp"
-        android:layout_height="340dp"
-        android:layout_marginBottom="100dp"
-        android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+   <!-- <TextView
+        android:id="@+id/txtPersonalityTrait"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"></androidx.recyclerview.widget.RecyclerView>
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtProgramRecommendation" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

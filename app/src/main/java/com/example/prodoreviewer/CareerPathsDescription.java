@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class CareerPathsDescription extends AppCompatActivity {
 
-
     String UserEmail, world, information, decision, structure = "";
     ImageButton btnHome, btnBack;
     TextView txtLabel;
@@ -46,8 +45,8 @@ public class CareerPathsDescription extends AppCompatActivity {
         }
     }
 
-    Button btnWorld,btnInformation,btnDecision,btnStructure,btnContinue;
-    TextView trait,traitDetails;
+    Button btnWorld, btnInformation, btnDecision, btnStructure, btnContinue;
+    TextView trait, traitDetails;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -68,7 +67,7 @@ public class CareerPathsDescription extends AppCompatActivity {
         btnHome.setVisibility(View.INVISIBLE);
 
         Intent intent = getIntent();
-        if(intent != null) {
+        if (intent != null) {
             UserEmail = intent.getStringExtra("email");
         }
 
@@ -95,6 +94,7 @@ public class CareerPathsDescription extends AppCompatActivity {
                 Intent intent = new Intent(CareerPathsDescription.this, CareerPathsRecommendations.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("email", UserEmail);
+                intent.putExtra("mbtiType", personalityCode); // Pass the personality code to the next activity
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
@@ -103,9 +103,6 @@ public class CareerPathsDescription extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(ProfileDetails.this, ForgeaMainMenu.class);
-                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                //startActivity(intent);
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }

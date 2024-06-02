@@ -16,13 +16,10 @@ import java.util.List;
 
 public class CareerPathsRecommendations extends AppCompatActivity {
 
-
-    String UserEmail, world, information, decision, structure = "";
+    String UserEmail, personalityCode = "";
     ImageButton btnHome, btnBack;
-    TextView txtLabel;
+    TextView txtLabel, txtProgramRecommendation;
 
-    Button btnWorld,btnInformation,btnDecision,btnStructure,btnContinue;
-    TextView trait,traitDetails;
     DatabaseHelper db;
 
     @SuppressLint("MissingInflatedId")
@@ -34,46 +31,40 @@ public class CareerPathsRecommendations extends AppCompatActivity {
         db = new DatabaseHelper(this);
 
         btnBack = findViewById(R.id.btnBackButton);
-        btnContinue = findViewById(R.id.btnContinue2);
-        btnWorld = findViewById(R.id.btnWorld2);
-        btnInformation = findViewById(R.id.btnInformation2);
-        btnDecision = findViewById(R.id.btnDecision2);
-        btnStructure = findViewById(R.id.btnStructure2);
-        trait = findViewById(R.id.txtCareerName);
-        traitDetails = findViewById(R.id.txtTraitDetails);
         btnHome = findViewById(R.id.btnHome);
         txtLabel = findViewById(R.id.lblPageName);
+        txtProgramRecommendation = findViewById(R.id.txtProgramRecommendation);
 
         txtLabel.setText("Career Paths - Recommendations");
 
         Intent intent = getIntent();
-        if(intent != null) {
+        if (intent != null) {
             UserEmail = intent.getStringExtra("email");
+            personalityCode = intent.getStringExtra("mbtiType"); // Retrieve personality code from intent
         }
-        world = "" + (db.getPersonality(UserEmail).charAt(0));
-        information = "" + (db.getPersonality(UserEmail).charAt(1));
-        decision = "" + (db.getPersonality(UserEmail).charAt(2));
-        structure = "" + (db.getPersonality(UserEmail).charAt(3));
-
-        btnWorld.setText(world);
-        btnInformation.setText(information);
-        btnDecision.setText(decision);
-        btnStructure.setText(structure);
-
-        String personalityCode = world + information + decision + structure;
 
         // Fetch the list of career paths from the database
         List<CareerPath> careerPaths = db.getAllCareerPaths(personalityCode);
 
         // Initialize RecyclerView
-        RecyclerView recyclerView = findViewById(R.id.tasklistmenu2);
+        //TextView txtPersonalityTrait = findViewById(R.id.txtPersonalityTrait);
 
-        // Create and set up the adapter with the list of career paths and the database helper
-        CareerPathAdapter adapter = new CareerPathAdapter(careerPaths, db, UserEmail);
-        recyclerView.setAdapter(adapter);
+        // Retrieve the user's personality traits from the database
+        String personalityTraits = db.getPersonality(UserEmail);
 
-        // Set a layout manager (e.g., LinearLayoutManager)
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        // Update the text of txtPersonalityTrait based on the retrieved traits
+        //txtPersonalityTrait.setText(personalityTraits);
+
+        // Update button texts based on personality trait letters
+        Button btnWorld = findViewById(R.id.btnWorld2);
+        Button btnInformation = findViewById(R.id.btnInformation2);
+        Button btnDecision = findViewById(R.id.btnDecision2);
+        Button btnStructure = findViewById(R.id.btnStructure2);
+
+        btnWorld.setText(String.valueOf(personalityTraits.charAt(0)));
+        btnInformation.setText(String.valueOf(personalityTraits.charAt(1)));
+        btnDecision.setText(String.valueOf(personalityTraits.charAt(2)));
+        btnStructure.setText(String.valueOf(personalityTraits.charAt(3)));
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,5 +84,14 @@ public class CareerPathsRecommendations extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
+
+        // Dummy var for GWA
+        double gwa = 1.5; // Replace with actual GWA logic
+
+        if (gwa <= 2.0) {
+            txtProgramRecommendation.setText("Information Technology");
+        } else {
+            txtProgramRecommendation.setText("Computer Science");
+        }
     }
 }
