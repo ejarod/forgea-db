@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".aiTest">
+
+    <EditText
+        android:id="@+id/introversion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Introversion"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/extroversion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Extroversion"
+        app:layout_constraintTop_toBottomOf="@+id/introversion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/intuition"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Intuition"
+        app:layout_constraintTop_toBottomOf="@+id/extroversion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/sensing"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Sensing"
+        app:layout_constraintTop_toBottomOf="@+id/intuition"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/thinking"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Thinking"
+        app:layout_constraintTop_toBottomOf="@+id/sensing"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/feeling"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Feeling"
+        app:layout_constraintTop_toBottomOf="@+id/thinking"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/judging"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Judging"
+        app:layout_constraintTop_toBottomOf="@+id/feeling"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/perceiving"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Perceiving"
+        app:layout_constraintTop_toBottomOf="@+id/judging"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/predictButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Predict GWA"
+        app:layout_constraintTop_toBottomOf="@+id/perceiving"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/itResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Predicted GWA for IT: "
+        app:layout_constraintTop_toBottomOf="@+id/predictButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/csResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Predicted GWA for CS: "
+        app:layout_constraintTop_toBottomOf="@+id/itResult"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
