@@ -11,9 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProdoReviewer"
         tools:targetApi="31">
-        <activity
-            android:name=".aiTest"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".aiTest"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".References"
             android:exported="false" />

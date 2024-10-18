@@ -19,6 +19,7 @@
         android:layout_marginTop="100dp"
         android:gravity="center"
         android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -152,10 +153,10 @@
 
     <TextView
         android:id="@+id/txtTraitDetailsProfile"
-        android:layout_width="340dp"
+        android:layout_width="0dp"
         android:layout_height="350dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
         android:layout_marginBottom="10dp"
         android:text="Details"
         android:textAlignment="viewStart"

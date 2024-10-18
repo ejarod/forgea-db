@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout5"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="100dp"
         android:orientation="vertical"
@@ -85,9 +85,11 @@
 
     <TextView
         android:id="@+id/txtReferences"
-        android:layout_width="340dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="80dp"
+        android:layout_marginRight="20dp"
         android:text="Percent"
         android:textAlignment="viewStart"
         android:textColor="#FFFFFF"
@@ -99,9 +101,11 @@
 
     <TextView
         android:id="@+id/txtCareerName"
-        android:layout_width="340dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:text="Trait"
         android:textAlignment="viewStart"
         android:textColor="#F7F0AC"
@@ -127,9 +131,11 @@
 
     <TextView
         android:id="@+id/txtTraitDetails"
-        android:layout_width="340dp"
+        android:layout_width="0dp"
         android:layout_height="280dp"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:text="Details"
         android:textAlignment="viewStart"
         android:textColor="#FFFFFF"

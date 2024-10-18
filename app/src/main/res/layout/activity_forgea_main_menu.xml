@@ -197,18 +197,18 @@
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="320dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="25dp"
         android:fontFamily="@font/inter_semibold"
         android:text="Curated For You"
         android:textColor="#36353A"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout4"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout4" />
 
 

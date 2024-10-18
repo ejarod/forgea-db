@@ -90,7 +90,7 @@ public class AssessmentResultDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 index++;
-
+                btnContinue.setBackgroundResource(R.drawable.personality_information);
                 if(index==2){
                     btnWorld.setTextColor(ContextCompat.getColor(AssessmentResultDetails.this, R.color.text));
                     btnInformation.setTextColor(ContextCompat.getColor(AssessmentResultDetails.this, R.color.information));
@@ -112,6 +112,7 @@ public class AssessmentResultDetails extends AppCompatActivity {
                 }
 
                 if(index==3){
+                    btnContinue.setBackgroundResource(R.drawable.personality_decision);
                     btnInformation.setTextColor(ContextCompat.getColor(AssessmentResultDetails.this, R.color.text));
                     btnDecision.setTextColor(ContextCompat.getColor(AssessmentResultDetails.this, R.color.decision));
                     btnInformation.setBackgroundResource(R.drawable.personality_information);
@@ -132,6 +133,7 @@ public class AssessmentResultDetails extends AppCompatActivity {
                 }
 
                 if(index==4){
+                    btnContinue.setBackgroundResource(R.drawable.personality_structure);
                     btnDecision.setTextColor(ContextCompat.getColor(AssessmentResultDetails.this, R.color.text));
                     btnStructure.setTextColor(ContextCompat.getColor(AssessmentResultDetails.this, R.color.structure));
                     btnDecision.setBackgroundResource(R.drawable.personality_decision);
