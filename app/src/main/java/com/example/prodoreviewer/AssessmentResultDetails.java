@@ -9,6 +9,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.DocumentReference;
+
+import org.checkerframework.checker.nullness.qual.NonNull;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class AssessmentResultDetails extends AppCompatActivity {
 
@@ -17,12 +30,14 @@ public class AssessmentResultDetails extends AppCompatActivity {
     int percentW, percentI, percentD, percentS;
     TextView trait, traitPercent, traitDetails, btnSkip;
 
+    FirebaseFirestore db;
     int index = 1;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = FirebaseFirestore.getInstance();
         setContentView(R.layout.activity_assessment_result_details);
         btnContinue = findViewById(R.id.btnContinue2);
         btnWorld = findViewById(R.id.btnWorld2);
@@ -90,8 +105,8 @@ public class AssessmentResultDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 index++;
-                btnContinue.setBackgroundResource(R.drawable.personality_information);
                 if(index==2){
+                    btnContinue.setBackgroundResource(R.drawable.personality_information);
                     btnWorld.setTextColor(ContextCompat.getColor(AssessmentResultDetails.this, R.color.text));
                     btnInformation.setTextColor(ContextCompat.getColor(AssessmentResultDetails.this, R.color.information));
                     btnWorld.setBackgroundResource(R.drawable.personality_world);
@@ -154,16 +169,35 @@ public class AssessmentResultDetails extends AppCompatActivity {
                 }
 
                 if(index>=5) {
-                    DatabaseHelper db = new DatabaseHelper(AssessmentResultDetails.this);
-                    Boolean insert = db.insertPersonalityData(UserEmail,world+information+decision+structure,percentW,percentI,percentD,percentS);
-                    if(insert) {
-                        Intent intent = new Intent(AssessmentResultDetails.this,ForgeaMainMenu.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        intent.putExtra("email", UserEmail);
-                        finish();
-                        startActivity(intent);
-                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                    }
+
+                    Map<String, Object> personalityData = new HashMap<>();
+                    personalityData.put("email", UserEmail);
+                    personalityData.put("personalitySummary", world + information + decision + structure);
+                    personalityData.put("percentW", percentW);
+                    personalityData.put("percentI", percentI);
+                    personalityData.put("percentD", percentD);
+                    personalityData.put("percentS", percentS);
+
+                    db.collection("Users").document(UserEmail)
+                            .update(personalityData)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    // Data updated successfully, navigate to the main menu
+                                    Intent intent = new Intent(AssessmentResultDetails.this, ForgeaMainMenu.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.putExtra("email", UserEmail);
+                                    finish();
+                                    startActivity(intent);
+                                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
+                                } else {
+                                    // Handle the failure
+                                    Toast.makeText(AssessmentResultDetails.this, "Failed to update user data", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
 
                 }
             }
@@ -175,6 +209,12 @@ public class AssessmentResultDetails extends AppCompatActivity {
                 Intent intent = new Intent(AssessmentResultDetails.this,CareerPathsRecommendations.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("email", UserEmail);
+                intent.putExtra("mbtiType", world+information+decision+structure);
+
+                intent.putExtra("percentW", percentW);
+                intent.putExtra("percentI", percentI);
+                intent.putExtra("percentD", percentD);
+                intent.putExtra("percentS", percentS);
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }

@@ -13,6 +13,7 @@ public class AssessmentResult extends AppCompatActivity {
     Button btnWorld,btnInformation,btnDecision,btnStructure,btnContinue;
     String UserEmail, world, information, decision, structure;
     int percentW, percentI, percentD, percentS;
+    String personalityCode;
     TextView btnSkip;
 
 
@@ -40,6 +41,8 @@ public class AssessmentResult extends AppCompatActivity {
             percentI = intent.getIntExtra("percentI",0);
             percentD = intent.getIntExtra("percentD",0);
             percentS = intent.getIntExtra("percentS",0);
+
+            personalityCode = world + information + decision + structure;
         }
 
         btnWorld.setText(world);
@@ -74,6 +77,13 @@ public class AssessmentResult extends AppCompatActivity {
                 Intent intent = new Intent(AssessmentResult.this,CareerPathsRecommendations.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("email", UserEmail);
+                intent.putExtra("mbtiType", personalityCode);
+
+                intent.putExtra("percentW", percentW);
+                intent.putExtra("percentI", percentI);
+                intent.putExtra("percentD", percentD);
+                intent.putExtra("percentS", percentS);
+
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }

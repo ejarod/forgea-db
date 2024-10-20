@@ -42,7 +42,7 @@ import java.util.List;
 
 public class CareerPathsRecommendations extends AppCompatActivity {
 
-    String UserEmail, personalityCode = "";
+    String UserEmail, personalityCode = "none";
     ImageButton btnHome, btnBack;
     TextView txtLabel, txtProgramRecommendation;
 
@@ -58,6 +58,10 @@ public class CareerPathsRecommendations extends AppCompatActivity {
 
     float CSgwa;
     float ITgwa;
+
+    Long percentW, percentI, percentD, percentS;
+
+    String world, information, decision, structure;
 
     String currentCategory = traitCategories[currentChartIndex];
 
@@ -77,18 +81,26 @@ public class CareerPathsRecommendations extends AppCompatActivity {
         scatterChart = findViewById(R.id.scatterChart);
         Button btnContinue = findViewById(R.id.btnContinue3);
 
+
+
         txtLabel.setText("Course Paths - Recommendations");
 
         Intent intent = getIntent();
         if (intent != null) {
             UserEmail = intent.getStringExtra("email");
             personalityCode = intent.getStringExtra("mbtiType"); // Retrieve personality code from intent
-        }
+            percentW = intent.getLongExtra("percentW",0);
+            percentI = intent.getLongExtra("percentI",0);
+            percentD = intent.getLongExtra("percentD",0);
+            percentS = intent.getLongExtra("percentS",0);
 
-        String world = "" + (db.getPersonality(UserEmail).charAt(0));
-        String information = "" + (db.getPersonality(UserEmail).charAt(1));
-        String decision = "" + (db.getPersonality(UserEmail).charAt(2));
-        String structure = "" + (db.getPersonality(UserEmail).charAt(3));
+
+            Log.d("DEBUGGGGGGGGGG", personalityCode);
+            world = "" + (personalityCode.charAt(0));
+            information = "" + (personalityCode.charAt(1));
+            decision = "" + (personalityCode.charAt(2));
+            structure = "" + (personalityCode.charAt(3));
+        }
 
         float extroversionp;
         float introversionp;
@@ -99,10 +111,11 @@ public class CareerPathsRecommendations extends AppCompatActivity {
         float judgingp;
         float perceivingp;
 
-        int percentW = db.getPercentage(UserEmail, "world");
+        /*int percentW = db.getPercentage(UserEmail, "world");
         int percentI = db.getPercentage(UserEmail, "information");
         int percentD = db.getPercentage(UserEmail, "decisions");
-        int percentS = db.getPercentage(UserEmail, "structure");
+        int percentS = db.getPercentage(UserEmail, "structure");*/
+
 
         if (world.equals("E")) {
             extroversionp = percentW;
@@ -152,19 +165,16 @@ public class CareerPathsRecommendations extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        // Retrieve the user's personality traits from the database
-        String personalityTraits = db.getPersonality(UserEmail);
-
         // Update button texts based on personality trait letters
         Button btnWorld = findViewById(R.id.btnWorld2);
         Button btnInformation = findViewById(R.id.btnInformation2);
         Button btnDecision = findViewById(R.id.btnDecision2);
         Button btnStructure = findViewById(R.id.btnStructure2);
 
-        btnWorld.setText(String.valueOf(personalityTraits.charAt(0)));
-        btnInformation.setText(String.valueOf(personalityTraits.charAt(1)));
-        btnDecision.setText(String.valueOf(personalityTraits.charAt(2)));
-        btnStructure.setText(String.valueOf(personalityTraits.charAt(3)));
+        btnWorld.setText(String.valueOf(personalityCode.charAt(0)));
+        btnInformation.setText(String.valueOf(personalityCode.charAt(1)));
+        btnDecision.setText(String.valueOf(personalityCode.charAt(2)));
+        btnStructure.setText(String.valueOf(personalityCode.charAt(3)));
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -289,21 +299,25 @@ public class CareerPathsRecommendations extends AppCompatActivity {
 //    }
 
     private void updateCharts() {
-
+        Button btnContinue = findViewById(R.id.btnContinue3);
         // Handle different trait categories
         currentCategory = traitCategories[currentChartIndex];
         switch (currentCategory) {
             case "introversion_extroversion":
                 populateIntroversionExtroversionCharts();
+                btnContinue.setBackgroundResource(R.drawable.personality_world);
                 break;
             case "intuition_sensing":
                 populateIntuitionSensingCharts();
+                btnContinue.setBackgroundResource(R.drawable.personality_information);
                 break;
             case "thinking_feeling":
                 populateThinkingFeelingCharts();
+                btnContinue.setBackgroundResource(R.drawable.personality_decision);
                 break;
             case "judging_perceiving":
                 populateJudgingPerceivingCharts();
+                btnContinue.setBackgroundResource(R.drawable.personality_structure);
                 break;
         }
     }

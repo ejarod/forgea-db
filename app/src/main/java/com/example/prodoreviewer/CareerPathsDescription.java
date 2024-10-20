@@ -8,13 +8,28 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.List;
 
 public class CareerPathsDescription extends AppCompatActivity {
 
+    FirebaseFirestore dbF;
     String UserEmail, world, information, decision, structure = "";
+    Long percentW, percentI, percentD, percentS;
     ImageButton btnHome, btnBack;
     TextView txtLabel;
+
+    String personalityCode = "";
 
     public enum MBTIType {
         ISTJ("You're organized and reliable, with a strong sense of duty. You thrive in structured environments, value tradition, and approach tasks with a methodical mindset. Your commitment to responsibility makes you a cornerstone in any team."),
@@ -52,6 +67,9 @@ public class CareerPathsDescription extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        dbF = FirebaseFirestore.getInstance();
+
         setContentView(R.layout.activity_career_paths_description);
         btnBack = findViewById(R.id.btnBackButton);
         btnContinue = findViewById(R.id.btnContinue2);
@@ -71,7 +89,7 @@ public class CareerPathsDescription extends AppCompatActivity {
             UserEmail = intent.getStringExtra("email");
         }
 
-        DatabaseHelper db = new DatabaseHelper(this);
+        /*DatabaseHelper db = new DatabaseHelper(this);
         world = "" + (db.getPersonality(UserEmail).charAt(0));
         information = "" + (db.getPersonality(UserEmail).charAt(1));
         decision = "" + (db.getPersonality(UserEmail).charAt(2));
@@ -80,13 +98,54 @@ public class CareerPathsDescription extends AppCompatActivity {
         btnWorld.setText(world);
         btnInformation.setText(information);
         btnDecision.setText(decision);
-        btnStructure.setText(structure);
+        btnStructure.setText(structure);*/
 
-        String personalityCode = world + information + decision + structure;
 
-        MBTIType mbtiType = MBTIType.valueOf(personalityCode);
+        DocumentReference userRef = dbF.collection("Users").document(UserEmail);
+        userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        String personality = document.getString("personalitySummary");
 
-        traitDetails.setText(mbtiType.getDescription());
+                        // Check if personality is not null and has at least 4 characters
+                        if (personality != null && personality.length() >= 4) {
+                            world = "" + (personality.charAt(0));
+                            information = "" + (personality.charAt(1));
+                            decision = "" + (personality.charAt(2));
+                            structure = "" + (personality.charAt(3));
+
+                            personalityCode = world + information + decision + structure;
+
+                        } else {
+                            // Handle the case where personality data is missing or incomplete
+                            world = "n";
+                            information = "o";
+                            decision = "n";
+                            structure = "e";
+
+                            personalityCode = "none";
+                        }
+
+                        percentW = document.getLong("percentW");
+                        percentI = document.getLong("percentI");
+                        percentD = document.getLong("percentD");
+                        percentS= document.getLong("percentS");
+
+                        btnWorld.setText(world);
+                        btnInformation.setText(information);
+                        btnDecision.setText(decision);
+                        btnStructure.setText(structure);
+
+                        MBTIType mbtiType = MBTIType.valueOf(personalityCode);
+
+                        traitDetails.setText(mbtiType.getDescription());
+                    }
+                }
+            }
+        });
 
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +154,15 @@ public class CareerPathsDescription extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("email", UserEmail);
                 intent.putExtra("mbtiType", personalityCode); // Pass the personality code to the next activity
+                intent.putExtra("World", world);
+                intent.putExtra("Information", information);
+                intent.putExtra("Decision", decision);
+                intent.putExtra("Structure", structure);
+
+                intent.putExtra("percentW", percentW);
+                intent.putExtra("percentI", percentI);
+                intent.putExtra("percentD", percentD);
+                intent.putExtra("percentS", percentS);
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }

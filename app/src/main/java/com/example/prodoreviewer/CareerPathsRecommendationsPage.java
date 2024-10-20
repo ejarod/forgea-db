@@ -8,9 +8,16 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +29,7 @@ public class CareerPathsRecommendationsPage extends AppCompatActivity {
     String careerName, careerDescription;
     ImageButton btnHome, btnBack;
     DatabaseHelper db;
+    FirebaseFirestore dbF;
     Button btnWorld,btnInformation,btnDecision,btnStructure;
     TextView txtLabel;
 
@@ -32,6 +40,7 @@ public class CareerPathsRecommendationsPage extends AppCompatActivity {
         setContentView(R.layout.activity_career_paths_recommendations_page);
 
         db = new DatabaseHelper(this);
+        dbF = FirebaseFirestore.getInstance();
 
         btnWorld = findViewById(R.id.btnWorld2);
         btnInformation = findViewById(R.id.btnInformation2);
@@ -50,15 +59,46 @@ public class CareerPathsRecommendationsPage extends AppCompatActivity {
             careerName = intent.getStringExtra("careerName");
         }
 
-        world = "" + (db.getPersonality(UserEmail).charAt(0));
+        DocumentReference userRef = dbF.collection("Users").document(UserEmail);
+        userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        String personality = document.getString("personalitySummary");
+
+                        // Check if personality is not null and has at least 4 characters
+                        if (personality != null && personality.length() >= 4) {
+                            world = "" + (personality.charAt(0));
+                            information = "" + (personality.charAt(1));
+                            decision = "" + (personality.charAt(2));
+                            structure = "" + (personality.charAt(3));
+
+                            String personalityCode = world + information + decision + structure;
+
+                        } else {
+                            // Handle the case where personality data is missing or incomplete
+                            world = "n";
+                            information = "o";
+                            decision = "n";
+                            structure = "e";
+                        }
+
+                        btnWorld.setText(world);
+                        btnInformation.setText(information);
+                        btnDecision.setText(decision);
+                        btnStructure.setText(structure);
+                    }
+                }
+            }
+        });
+
+        /*world = "" + (db.getPersonality(UserEmail).charAt(0));
         information = "" + (db.getPersonality(UserEmail).charAt(1));
         decision = "" + (db.getPersonality(UserEmail).charAt(2));
-        structure = "" + (db.getPersonality(UserEmail).charAt(3));
+        structure = "" + (db.getPersonality(UserEmail).charAt(3));*/
 
-        btnWorld.setText(world);
-        btnInformation.setText(information);
-        btnDecision.setText(decision);
-        btnStructure.setText(structure);
 
         // Use the retrieved data to set content in your layout
         TextView nameTextView = findViewById(R.id.txtCareerName);

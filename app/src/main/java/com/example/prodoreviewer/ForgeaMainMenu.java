@@ -1,5 +1,6 @@
 package com.example.prodoreviewer;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,16 +12,26 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.List;
 
 public class ForgeaMainMenu extends AppCompatActivity {
 
     String UserEmail, world, information, decision, structure = "";
     String UserPersonality;
-    DatabaseHelper db;
+    DatabaseHelper db1;
+
+    String personalityCode = "none";
+    FirebaseFirestore db;
 
     ImageButton btnAssessmentMenu, btnProfileMenu, btnCareerPathsMenu, btnPersonalityTraitsMenu, btnBack, btnHome;
     TextView txtLabel, txtAssessmentMenu, txtProfileMenu, txtCareerPathsMenu, txtPersonalityTraitsMenu;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +48,9 @@ public class ForgeaMainMenu extends AppCompatActivity {
         btnHome.setImageResource(R.drawable.icon_info);
         btnHome.setColorFilter(getResources().getColor(android.R.color.white));
 
+        recyclerView = findViewById(R.id.tasklistmenu2);
+        recyclerView.setLayoutManager(new LinearLayoutManager(ForgeaMainMenu.this));
+
         txtLabel = findViewById(R.id.lblPageName);
         txtAssessmentMenu = findViewById(R.id.txtAssessment);
         txtProfileMenu = findViewById(R.id.txtProfile);
@@ -45,32 +59,52 @@ public class ForgeaMainMenu extends AppCompatActivity {
 
         txtLabel.setText("Home");
 
+        db = FirebaseFirestore.getInstance();
+
         Intent intent = getIntent();
         if(intent != null) {
             UserEmail = intent.getStringExtra("email");
         }
 
-        db = new DatabaseHelper(this);
+        db1 = new DatabaseHelper(this);
 
-        world = "" + (db.getPersonality(UserEmail).charAt(0));
-        information = "" + (db.getPersonality(UserEmail).charAt(1));
-        decision = "" + (db.getPersonality(UserEmail).charAt(2));
-        structure = "" + (db.getPersonality(UserEmail).charAt(3));
+        DocumentReference userRef = db.collection("Users").document(UserEmail);
+        userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        String personality = document.getString("personalitySummary");
 
-        String personalityCode = world + information + decision + structure;
+                        // Check if personality is not null and has at least 4 characters
+                        if (personality != null && personality.length() >= 4) {
+                            world = "" + (personality.charAt(0));
+                            information = "" + (personality.charAt(1));
+                            decision = "" + (personality.charAt(2));
+                            structure = "" + (personality.charAt(3));
 
-        // Fetch the list of career paths from the database
-        List<CareerPath> careerPaths = db.getAllCareerPaths(personalityCode);
+                            personalityCode = personality;
 
-        // Initialize RecyclerView
-        RecyclerView recyclerView = findViewById(R.id.tasklistmenu2);
 
-        // Create and set up the adapter with the list of career paths and the database helper
-        CareerPathAdapter adapter = new CareerPathAdapter(careerPaths, db, UserEmail);
+                        } else {
+                            // Handle the case where personality data is missing or incomplete
+                            world = "n";
+                            information = "o";
+                            decision = "n";
+                            structure = "e";
+
+                        }
+                    }
+                }
+            }
+        });
+
+        List<CareerPath> careerPaths = db1.getAllCareerPaths(personalityCode);
+
+        CareerPathAdapter adapter = new CareerPathAdapter(careerPaths, db1, UserEmail);
         recyclerView.setAdapter(adapter);
 
-        // Set a layout manager (e.g., LinearLayoutManager)
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         btnAssessmentMenu.setOnClickListener(new View.OnClickListener() {
             @Override

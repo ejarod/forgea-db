@@ -1,7 +1,10 @@
 package com.example.prodoreviewer;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -12,11 +15,19 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class ProfileDetails extends AppCompatActivity {
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.List;
+
+public class ProfileDetails extends AppCompatActivity {
+    FirebaseFirestore dbF;
 
     String UserEmail, world, information, decision, structure = "";
-    int percentW, percentI, percentD, percentS;
+    Long percentW, percentI, percentD, percentS;
     ImageButton btnHome, btnBack;
     TextView txtLabel;
 
@@ -40,11 +51,13 @@ public class ProfileDetails extends AppCompatActivity {
     Button btnWorld,btnInformation,btnDecision,btnStructure,btnLogout;
     TextView trait,trait2,percent2,traitPercent,traitDetails;
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_details);
+
+        dbF = FirebaseFirestore.getInstance();
 
         btnBack = findViewById(R.id.btnBackButton);
         btnHome = findViewById(R.id.btnHome);
@@ -67,58 +80,85 @@ public class ProfileDetails extends AppCompatActivity {
         if(intent != null) {
             UserEmail = intent.getStringExtra("email");
         }
+        assert UserEmail != null;
+        Log.d("DEBUGGGGGGGGGGGGG",UserEmail);
+        DocumentReference userRef = dbF.collection("Users").document(UserEmail);
+        userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    Log.d("DEBUGGGGGGGGGG","SUCCESS");
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        String personality = document.getString("personalitySummary");
+                        Log.d("DEBUGGGGGGGGGGGGG",personality);
 
-        DatabaseHelper db = new DatabaseHelper(this);
-        world = "" + (db.getPersonality(UserEmail).charAt(0));
-        information = "" + (db.getPersonality(UserEmail).charAt(1));
-        decision = "" + (db.getPersonality(UserEmail).charAt(2));
-        structure = "" + (db.getPersonality(UserEmail).charAt(3));
+                        if (personality != null && personality.length() >= 4) {
+                            world = "" + (personality.charAt(0));
+                            information = "" + (personality.charAt(1));
+                            decision = "" + (personality.charAt(2));
+                            structure = "" + (personality.charAt(3));
 
-        percentW = db.getPercentage(UserEmail,"world");
-        percentI = db.getPercentage(UserEmail,"information");
-        percentD = db.getPercentage(UserEmail,"decisions");
-        percentS = db.getPercentage(UserEmail,"structure");
+                            percentW = document.getLong("percentW");
+                            percentI = document.getLong("percentI");
+                            percentD = document.getLong("percentD");
+                            percentS = document.getLong("percentS");
 
-        btnInformation.setText(information);
-        btnDecision.setText(decision);
-        btnStructure.setText(structure);
+                        } else {
+                            world = "n";
+                            information = "o";
+                            decision = "n";
+                            structure = "e";
 
-        traitPercent.setText(String.valueOf(percentW) + "%");
-        percent2.setText(String.valueOf(100-percentW) + "%");
-        traitPercent.setTextColor(ContextCompat.getColor(ProfileDetails.this, R.color.world));
-        btnWorld.setText(world);
+                            percentW = 0L;
+                            percentI = 0L;
+                            percentD = 0L;
+                            percentS = 0L;
+                        }
 
-        Log.d("Personality",world+information+decision+structure);
+                        // Update UI elements inside this block after successful data retrieval
+                        btnInformation.setText(information);
+                        btnDecision.setText(decision);
+                        btnStructure.setText(structure);
+                        traitPercent.setText((percentW) + "%");
+                        percent2.setText((100 - percentW) + "%");
 
-        if(world.equals("E")){
-            traitDetails.setText(worldDescriptions[0]);
-            trait.setText("Extrovert");
-            trait2.setText("Introvert");
-            btnWorld.setText("E");
-        } else {
-            traitDetails.setText(worldDescriptions[1]);
-            trait.setText("Introvert");
-            trait2.setText("Extrovert");
-            btnWorld.setText("I");
-        }
+                        if (world.equals("E")) {
+                            traitDetails.setText(worldDescriptions[0]);
+                            trait.setText("Extrovert");
+                            trait2.setText("Introvert");
+                            btnWorld.setText("E");
+                        } else {
+                            traitDetails.setText(worldDescriptions[1]);
+                            trait.setText("Introvert");
+                            trait2.setText("Extrovert");
+                            btnWorld.setText("I");
+                        }
 
-        if(information.equals("S")){
-            btnInformation.setText("S");
-        } else {
-            btnInformation.setText("N");
-        }
+                        if (information.equals("S")) {
+                            btnInformation.setText("S");
+                        } else {
+                            btnInformation.setText("N");
+                        }
 
-        if(decision.equals("T")){
-            btnDecision.setText("T");
-        } else {
-            btnDecision.setText("F");
-        }
+                        if (decision.equals("T")) {
+                            btnDecision.setText("T");
+                        } else {
+                            btnDecision.setText("F");
+                        }
 
-        if(structure.equals("J")){
-            btnStructure.setText("J");
-        } else {
-            btnStructure.setText("P");
-        }
+                        if (structure.equals("J")) {
+                            btnStructure.setText("J");
+                        } else {
+                            btnStructure.setText("P");
+                        }
+                    }
+                } else {
+                    Log.d("DEBUGGGGGGGGGGGGG", "Failed with: " + task.getException());
+                }
+            }
+        });
+
 
         btnWorld.setTextColor(ContextCompat.getColor(ProfileDetails.this, R.color.world));
         btnWorld.setBackgroundResource(R.drawable.personality_world_selected);
