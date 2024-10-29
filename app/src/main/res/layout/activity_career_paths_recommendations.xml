@@ -97,7 +97,22 @@
                 android:text=""
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
-                android:textSize="44sp"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.492"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtCareerDesc" />
+
+            <TextView
+                android:id="@+id/txtPercent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="#F7F0AC"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.492"
@@ -112,8 +127,16 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="15dp" />
 
-            <com.github.mikephil.charting.charts.ScatterChart
-                android:id="@+id/scatterChart"
+<!--            <com.github.mikephil.charting.charts.ScatterChart-->
+<!--                android:id="@+id/scatterChart"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="300dp"-->
+<!--                android:layout_marginStart="15dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:layout_marginEnd="15dp" />-->
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barChart"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_marginStart="15dp"
@@ -125,6 +148,27 @@
 <!--                android:layout_width="match_parent"-->
 <!--                android:layout_height="300dp"-->
 <!--                android:layout_marginTop="20dp" />-->
+
+            <TextView
+                android:id="@+id/txtHelp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:maxWidth="300dp"
+                android:text="Help"
+                android:textAlignment="center"
+                android:textColor="#F7F0AC"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
+
+
+
 
             <Button
                 android:id="@+id/btnContinue3"
