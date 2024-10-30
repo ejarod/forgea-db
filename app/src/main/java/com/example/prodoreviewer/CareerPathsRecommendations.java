@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -60,6 +61,7 @@ public class CareerPathsRecommendations extends AppCompatActivity {
     String UserEmail, personalityCode = "none";
     ImageButton btnHome, btnBack;
     TextView txtLabel, txtProgramRecommendation, txtHelp, txtPercent;
+    ScrollView scrollView;
 
     DatabaseHelper db;
     PieChart pieChart;
@@ -111,9 +113,9 @@ public class CareerPathsRecommendations extends AppCompatActivity {
         barChart = findViewById(R.id.barChart);
         Button btnContinue = findViewById(R.id.btnContinue3);
 
+        scrollView = findViewById(R.id.scrollView);
 
-
-        txtLabel.setText("Course Paths - Recommendations");
+        txtLabel.setText("Course Advice - Recommendation");
 
         txtHelp.setText("");
         txtPercent.setText("");
@@ -255,34 +257,38 @@ public class CareerPathsRecommendations extends AppCompatActivity {
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 currentChartIndex = (currentChartIndex + 1) % traitCategories.length;
                 updateCharts();
                 updateFeaturedTrait();
+                scrollView.scrollTo(0, 0);
             }
         });
     }
 
     private void updateFeaturedTrait() {
         if (currentChartIndex == 0) { // Introversion vs Extroversion
+            txtPercent.setTextColor(Color.parseColor("#F8F1AD"));
             if (world.equals("E")) {
                 txtPercent.setText("Extroversion: " + extroversionp + "%");
             } else {
                 txtPercent.setText("Introversion: " + introversionp + "%");
             }
         } else if (currentChartIndex == 1) { // Intuition vs Sensing
+            txtPercent.setTextColor(Color.parseColor("#EDACA3"));
             if (information.equals("S")) {
                 txtPercent.setText("Sensing: " + sensingp + "%");
             } else {
                 txtPercent.setText("Intuition: " + intuitionp + "%");
             }
         } else if (currentChartIndex == 2) { // Thinking vs Feeling
+            txtPercent.setTextColor(Color.parseColor("#E199C8"));
             if (decision.equals("T")) {
                 txtPercent.setText("Thinking: " + thinkingp + "%");
             } else {
                 txtPercent.setText("Feeling: " + feelingp + "%");
             }
         } else if (currentChartIndex == 3) { // Judging vs Perceiving
+            txtPercent.setTextColor(Color.parseColor("#B78FD6"));
             if (structure.equals("J")) {
                 txtPercent.setText("Judging: " + judgingp + "%");
             } else {
@@ -818,24 +824,28 @@ public class CareerPathsRecommendations extends AppCompatActivity {
         String formattedAvgGwaTrait2 = decimalFormat.format(avgGwaTrait2);
 
         if (currentChartIndex == 0) { // Introversion vs Extroversion
+            txtHelp.setTextColor(Color.parseColor("#F8F1AD"));
             if (introversionp > extroversionp) {
                 helpText.append("Introverts like you can score well in the " + formattedAvgGwaTrait1 + " GWA range.");
             } else {
                 helpText.append("Extroverts like you can score well in the " + formattedAvgGwaTrait2 + " GWA range.");
             }
         } else if (currentChartIndex == 1) { // Intuition vs Sensing
+            txtHelp.setTextColor(Color.parseColor("#EDACA3"));
             if (intuitionp > sensingp) {
                 helpText.append("Intuitive types like you can score well in the " + formattedAvgGwaTrait1 + " GWA range.");
             } else {
                 helpText.append("Sensing types like you can score well in the " + formattedAvgGwaTrait2 + " GWA range.");
             }
         } else if (currentChartIndex == 2) { // Thinking vs Feeling
+            txtHelp.setTextColor(Color.parseColor("#E199C8"));
             if (thinkingp > feelingp) {
                 helpText.append("Thinking types like you can score well in the " + formattedAvgGwaTrait1 + " GWA range.");
             } else {
                 helpText.append("Feeling types like you can score well in the " + formattedAvgGwaTrait2 + " GWA range.");
             }
         } else if (currentChartIndex == 3) { // Judging vs Perceiving
+            txtHelp.setTextColor(Color.parseColor("#B78FD6"));
             if (judgingp > perceivingp) {
                 helpText.append("Judging types like you can score well in the " + formattedAvgGwaTrait1 + " GWA range.");
             } else {

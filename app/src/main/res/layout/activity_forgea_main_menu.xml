@@ -26,6 +26,7 @@
             android:layout_marginRight="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
@@ -35,8 +36,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="40dp"
-                android:text="Forgea"
+                android:text="Welcome back."
                 android:textAlignment="viewStart"
                 android:textColor="#F7F0AC"
                 android:textSize="29sp"
@@ -47,99 +49,221 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="20dp">
 
-                <ImageButton
-                    android:id="@+id/btnProfile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#00101010"
-                    app:srcCompat="@drawable/icon_account"
-                    app:tint="#FFFFFF" />
+                <LinearLayout
+                    android:id="@+id/UserPersonality"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/includeMainMenu"
+                    android:background="@drawable/personality_decision"
+                    android:backgroundTint="#424345"
+                    tools:layout_editor_absoluteX="0dp"
+                    android:gravity="center"
+                    android:layout_weight="1">
 
-                <TextView
-                    android:id="@+id/txtProfile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left|center"
-                    android:fontFamily="@font/inter_semibold"
-                    android:text="Profile"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    <Button
+                        android:id="@+id/btnWorld3"
+                        android:layout_width="45dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="3dp"
+                        android:background="@drawable/personality_world"
+                        android:gravity="center"
+                        android:text="W"
+                        android:textSize="25sp" />
+
+                    <Button
+                        android:id="@+id/btnInformation3"
+                        android:layout_width="45dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:background="@drawable/personality_information"
+                        android:text="I"
+                        android:textSize="25sp" />
+
+                    <Button
+                        android:id="@+id/btnDecision3"
+                        android:layout_width="45dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:background="@drawable/personality_decision"
+                        android:text="D"
+                        android:textSize="25sp" />
+
+                    <Button
+                        android:id="@+id/btnStructure3"
+                        android:layout_width="45dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:background="@drawable/personality_structure"
+                        android:text="S"
+                        android:textSize="25sp" />
+                </LinearLayout>
+
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="20dp">
 
-                <ImageButton
-                    android:id="@+id/btnAssessment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#00101010"
-                    app:srcCompat="@drawable/icon_book"
-                    app:tint="#FFFFFF"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
 
-                <TextView
-                    android:id="@+id/txtAssessment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left|center"
-                    android:fontFamily="@font/inter_semibold"
-                    android:text="Assessment"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    <LinearLayout
+                        android:id="@+id/Profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/personality_decision"
+                        android:backgroundTint="#424345"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageButton
+                            android:id="@+id/btnProfile"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:scaleX="2"
+                            android:scaleY="2"
+                            android:backgroundTint="#00101010"
+                            app:srcCompat="@drawable/icon_account"
+                            app:tint="#FFFFFF" />
+
+                        <TextView
+                            android:id="@+id/txtProfile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Profile"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Assessment"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/personality_decision"
+                        android:backgroundTint="#424345"
+                        android:gravity="center">
+
+                        <ImageButton
+                            android:id="@+id/btnAssessment"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:scaleX="2"
+                            android:scaleY="2"
+                            android:backgroundTint="#00101010"
+                            app:srcCompat="@drawable/icon_book"
+                            app:tint="#FFFFFF" />
+
+                        <TextView
+                            android:id="@+id/txtAssessment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Assessment"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp">
 
-                <ImageButton
-                    android:id="@+id/btnCareerPaths"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#00101010"
-                    app:srcCompat="@drawable/icon_flag"
-                    app:tint="#FFFFFF" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
 
-                <TextView
-                    android:id="@+id/txtCareerPaths"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left|center"
-                    android:fontFamily="@font/inter_semibold"
-                    android:text="Career Paths"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-            </TableRow>
+                    <LinearLayout
+                        android:id="@+id/CourseAdvice"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/personality_decision"
+                        android:backgroundTint="#424345"
+                        android:gravity="center">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp">
+                        <ImageButton
+                            android:id="@+id/btnCareerPaths"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:scaleX="2"
+                            android:scaleY="2"
+                            android:backgroundTint="#00101010"
+                            android:text="Course Recommendation"
+                            app:srcCompat="@drawable/icon_flag"
+                            app:tint="#FFFFFF" />
 
-                <ImageButton
-                    android:id="@+id/btnPersonalityTraits"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#00101010"
-                    app:srcCompat="@drawable/icon_assessment"
-                    app:tint="#FFFFFF" />
+                        <TextView
+                            android:id="@+id/txtCourseRecommendation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Course Advice"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/txtPersonalityTraits"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left|center"
-                    android:fontFamily="@font/inter_semibold"
-                    android:text="Personality Traits"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    <LinearLayout
+                        android:id="@+id/PersonalityTraits"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/personality_decision"
+                        android:backgroundTint="#424345"
+                        android:gravity="center">
+
+                        <ImageButton
+                            android:id="@+id/btnPersonalityTraits"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:scaleX="2"
+                            android:scaleY="2"
+                            android:backgroundTint="#00101010"
+                            app:srcCompat="@drawable/icon_assessment"
+                            app:tint="#FFFFFF" />
+
+                        <TextView
+                            android:id="@+id/txtPersonalityTraits"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Personality Traits"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
             </TableRow>
 
         </TableLayout>
@@ -155,6 +279,7 @@
         android:layout_marginRight="25dp"
         android:layout_marginBottom="130dp"
         android:background="@drawable/rounded_corners"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -207,6 +332,7 @@
         android:textColor="#36353A"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout4"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout4" />

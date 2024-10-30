@@ -44,7 +44,7 @@ public class mainMenu extends AppCompatActivity {
         ImageButton btnFlashcard = findViewById(R.id.btnPersonalityTraits);
         ImageButton btnListView = findViewById(R.id.btnProfile);
         TextView txtAssessment = findViewById(R.id.txtAssessment);
-        TextView today = findViewById(R.id.txtCareerPaths);
+        TextView today = findViewById(R.id.txtCourseRecommendation);
         TextView addnewList = findViewById(R.id.addnewlist);
         TextView listview = findViewById(R.id.txtProfile);
         TextView lblPageName = findViewById(R.id.lblPageName);

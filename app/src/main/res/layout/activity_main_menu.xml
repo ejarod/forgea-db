@@ -94,7 +94,7 @@
                     app:tint="#FFFFFF" />
 
                 <TextView
-                    android:id="@+id/txtCareerPaths"
+                    android:id="@+id/txtCourseRecommendation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left|center"

@@ -50,7 +50,7 @@ public class CareerPathsRecommendationsPage extends AppCompatActivity {
         btnHome = findViewById(R.id.btnHome);
         txtLabel = findViewById(R.id.lblPageName);
 
-        txtLabel.setText("Career Paths - Recommendations");
+        txtLabel.setText("Course Advice - Recommendations");
 
         // Retrieve career name and description from Intent Extras
         Intent intent = getIntent();

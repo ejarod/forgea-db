@@ -87,7 +87,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:text="MBTI"
+        android:text="MBTI Description"
         android:textAlignment="viewStart"
         android:textColor="#FFFFFF"
         android:textSize="29sp"
@@ -95,21 +95,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
-
-    <TextView
-        android:id="@+id/txtCareerDesc"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="Description"
-        android:textAlignment="viewStart"
-        android:textColor="#F7F0AC"
-        android:textSize="29sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCareerName" />
 
     <TextView
         android:id="@+id/txtTraitDetails"
@@ -121,11 +106,11 @@
         android:text="Details"
         android:textAlignment="viewStart"
         android:textColor="#FFFFFF"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCareerDesc" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCareerName" />
 
     <Button
         android:id="@+id/btnContinue2"

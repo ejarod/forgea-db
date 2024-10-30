@@ -80,7 +80,7 @@ public class CareerPathsDescription extends AppCompatActivity {
         trait = findViewById(R.id.txtCareerName);
         traitDetails = findViewById(R.id.txtTraitDetails);
         txtLabel = findViewById(R.id.lblPageName);
-        txtLabel.setText("Career Paths");
+        txtLabel.setText("Course Advice");
         btnHome = findViewById(R.id.btnHome);
         btnHome.setVisibility(View.INVISIBLE);
 
