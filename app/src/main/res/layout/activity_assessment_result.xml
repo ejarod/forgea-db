@@ -10,14 +10,14 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="181dp"
-        android:layout_height="78dp"
-        android:layout_marginTop="97dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Your Personality Type is"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:layout_margin="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,8 +26,7 @@
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="554dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6">
@@ -117,7 +116,7 @@
         android:layout_width="228dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Skip to career recommendations"
+        android:text="Skip to course advice"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="14sp"

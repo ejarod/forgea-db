@@ -60,7 +60,8 @@
         android:text="This assessment is designed to help you find a career path that aligns with your personality traits."
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAssessmentTitle3" />
@@ -70,10 +71,11 @@
         android:layout_width="225dp"
         android:layout_height="100dp"
         android:layout_marginTop="33dp"
-        android:text="It's based on the Myers-Briggs Type Indicator (MBTI), a widely recognized tool for understanding personality types"
+        android:text="It's based on the Myers-Briggs Type Indicator (MBTI), a widely recognized tool for understanding personality types."
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="16sp"
+        android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAssessmentDescription" />
