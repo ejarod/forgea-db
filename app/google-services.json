@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "483838118504",
+    "project_id": "forgea-77263",
+    "storage_bucket": "forgea-77263.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:483838118504:android:bf1d3e98c4a6d0e08789dd",
+        "android_client_info": {
+          "package_name": "com.example.prodoreviewer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZ7CtPqrEXjnb8ZwPCv_p69PzFVqphDnY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

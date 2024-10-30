@@ -255,6 +255,7 @@ public class CareerPathsRecommendations extends AppCompatActivity {
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 currentChartIndex = (currentChartIndex + 1) % traitCategories.length;
                 updateCharts();
                 updateFeaturedTrait();
@@ -584,9 +585,9 @@ public class CareerPathsRecommendations extends AppCompatActivity {
         chart.invalidate();
         chart.setDrawEntryLabels(false);
 
-        Description chartDescription = new Description();
-        chartDescription.setText("");
-        chart.setDescription(chartDescription);
+        TextView txtPieDescription = findViewById(R.id.txtPieDescription);
+        txtPieDescription.setText("Distribution of IT Users");
+        chart.setDescription(null);
 
         Legend legend = chart.getLegend();
         legend.setTextColor(Color.WHITE);
@@ -697,10 +698,10 @@ public class CareerPathsRecommendations extends AppCompatActivity {
         // Populate the bar entries with averaged values
         for (int i = 0; i < 10; i++) {
             float avgGwaTrait1 = countsTrait1[i] > 0 ? gwaTotalsTrait1[i][isITRecommended ? 0 : 1] / countsTrait1[i] : 0;
-            barEntriesTrait1.add(new BarEntry(i * 10 + 3, avgGwaTrait1));
+            barEntriesTrait1.add(new BarEntry((float)(i * 10 + 2.5), avgGwaTrait1));
 
             float avgGwaTrait2 = countsTrait2[i] > 0 ? gwaTotalsTrait2[i][isITRecommended ? 0 : 1] / countsTrait2[i] : 0;
-            barEntriesTrait2.add(new BarEntry(i * 10 + 8, avgGwaTrait2)); // Offset for visibility
+            barEntriesTrait2.add(new BarEntry((float) (i * 10 + 7.5), avgGwaTrait2)); // Offset for visibility
         }
 
         // Find the closest bar values to each user trait percentage
@@ -726,7 +727,7 @@ public class CareerPathsRecommendations extends AppCompatActivity {
 
         barChart.getXAxis().setTextColor(Color.WHITE);
         barChart.getAxisLeft().setTextColor(Color.WHITE);
-        barChart.getAxisRight().setTextColor(Color.WHITE);
+        barChart.getAxisRight().setEnabled(false);
 
         Legend legend = barChart.getLegend();
         legend.setTextColor(Color.WHITE);
@@ -734,9 +735,9 @@ public class CareerPathsRecommendations extends AppCompatActivity {
         legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
         legend.setDrawInside(false);
 
-        Description barDescription = new Description();
-        barDescription.setText("");
-        barChart.setDescription(barDescription);
+        TextView txtBarDescription = findViewById(R.id.txtBarDescription);
+        txtBarDescription.setText("GWA Comparison Across " + traitLabel1 + " & " + traitLabel2);
+        barChart.setDescription(null);
 
         barChart.setData(barData);
         barChart.invalidate();
