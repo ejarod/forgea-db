@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,6 +39,8 @@ import com.github.mikephil.charting.data.ScatterDataSet;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
@@ -45,6 +48,7 @@ import org.tensorflow.lite.Interpreter;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 import org.tensorflow.lite.DataType;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -176,12 +180,7 @@ public class CareerPathsRecommendations extends AppCompatActivity {
         }
 
         // Load CSV data
-        try {
-            InputStream inputStream = getResources().openRawResource(R.raw.students_dataset7);
-            csvData = loadCSVData(inputStream);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        downloadCSVFromFirebase(); // Fetch CSV from Firebase
 
         // Load the TFLite models
         try {
@@ -360,6 +359,66 @@ public class CareerPathsRecommendations extends AppCompatActivity {
 //        currentChartIndex++;
 //    }
 
+//    private void downloadCSVFromFirebase() {
+//        FirebaseStorage storage = FirebaseStorage.getInstance();
+//        StorageReference pathReference = storage.getReference().child("Dataset/students_dataset(7).csv");
+//
+//        File tempFile;
+//        try {
+//            tempFile = File.createTempFile("students_data", ".csv");
+//        } catch (IOException e) {
+//            Log.e("FirebaseCSV", "Failed to create temp file", e);
+//            return;
+//        }
+//
+//        pathReference.getFile(tempFile).addOnSuccessListener(taskSnapshot -> {
+//            try {
+//                InputStream inputStream = new FileInputStream(tempFile);
+//                csvData = loadCSVData(inputStream);
+//
+//                if (csvData != null && !csvData.isEmpty()) {
+//                    runOnUiThread(this::updateCharts); // Only update UI if data exists
+//                } else {
+//                    Log.e("FirebaseCSV", "CSV data is empty or null");
+//                    Toast.makeText(CareerPathsRecommendations.this, "CSV file is empty or invalid", Toast.LENGTH_LONG).show();
+//                }
+//            } catch (Exception e) {
+//                Log.e("FirebaseCSV", "Error reading CSV", e);
+//            }
+//        }).addOnFailureListener(exception -> {
+//            Log.e("FirebaseCSV", "Download failed", exception);
+//            Toast.makeText(CareerPathsRecommendations.this, "Failed to download CSV", Toast.LENGTH_LONG).show();
+//        });
+//    }
+
+    private void downloadCSVFromFirebase() {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference pathReference = storage.getReference().child("Dataset/Forgea_Dataset_CSIT_GWA.csv");
+
+        File tempFile;
+        try {
+            tempFile = File.createTempFile("students_data", ".csv");
+        } catch (IOException e) {
+            Log.e("FirebaseCSV", "Failed to create temp file", e);
+            return;
+        }
+
+        pathReference.getFile(tempFile)
+                .addOnSuccessListener(taskSnapshot -> {
+                    Log.d("FirebaseCSV", "✅ Successfully downloaded from Firebase");
+                    try {
+                        InputStream inputStream = new FileInputStream(tempFile);
+                        csvData = loadCSVData(inputStream);
+                        runOnUiThread(this::updateCharts);
+                    } catch (Exception e) {
+                        Log.e("FirebaseCSV", "Error reading CSV after download", e);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirebaseCSV", "❌ Failed to download from Firebase", e);
+                });
+    }
+
     private void updateCharts() {
         Button btnContinue = findViewById(R.id.btnContinue3);
         // Handle different trait categories
@@ -392,12 +451,12 @@ public class CareerPathsRecommendations extends AppCompatActivity {
         // Accumulate trait values and GWA for IT and CS for intuition and sensing
         for (String[] row : csvData) {
             // Check if the row is for IT or CS
-            boolean isIT = "1".equals(row[8]);
+            boolean isIT = "IT".equals(row[5]);
 
             // Parse trait values and GWA
-            float intuition = Float.parseFloat(row[2]);
-            float sensing = Float.parseFloat(row[3]);
-            float gwa = Float.parseFloat(row[9]); // Assuming GWA is always at index 9
+            float intuition = Float.parseFloat(row[8]);
+            float sensing = Float.parseFloat(row[9]);
+            float gwa = Float.parseFloat(row[14]);
 
             // Accumulate trait values and GWA based on the course
             if (isIT) {
@@ -435,12 +494,12 @@ public class CareerPathsRecommendations extends AppCompatActivity {
         // Accumulate trait values and GWA for IT and CS for thinking and feeling
         for (String[] row : csvData) {
             // Check if the row is for IT or CS
-            boolean isIT = "1".equals(row[8]);
+            boolean isIT = "IT".equals(row[5]);
 
             // Parse trait values and GWA
-            float thinking = Float.parseFloat(row[4]);
-            float feeling = Float.parseFloat(row[5]);
-            float gwa = Float.parseFloat(row[9]); // Assuming GWA is always at index 9
+            float thinking = Float.parseFloat(row[10]);
+            float feeling = Float.parseFloat(row[11]);
+            float gwa = Float.parseFloat(row[14]);
 
             // Accumulate trait values and GWA based on the course
             if (isIT) {
@@ -479,12 +538,12 @@ public class CareerPathsRecommendations extends AppCompatActivity {
 
         for (String[] row : csvData) {
             // Check if the row is for IT or CS
-            boolean isIT = "1".equals(row[8]);
+            boolean isIT = "IT".equals(row[5]);
 
             // Parse trait values and GWA
-            float judging = Float.parseFloat(row[6]);
-            float perceiving = Float.parseFloat(row[7]);
-            float gwa = Float.parseFloat(row[9]);
+            float judging = Float.parseFloat(row[12]);
+            float perceiving = Float.parseFloat(row[13]);
+            float gwa = Float.parseFloat(row[14]);
 
             // Accumulate trait values and GWA based on the course
             if (isIT) {
@@ -518,16 +577,19 @@ public class CareerPathsRecommendations extends AppCompatActivity {
         float avgIntroversionIT = 0, avgExtroversionIT = 0, avgGwaIT = 0;
         float avgIntroversionCS = 0, avgExtroversionCS = 0, avgGwaCS = 0;
         int countIT = 0, countCS = 0;
-
+        if (csvData == null || csvData.isEmpty()) {
+            Log.e("CSV", "No data loaded");
+            return;
+        }
         // Accumulate trait values and GWA for IT and CS for introversion and extroversion
         for (String[] row : csvData) {
             // Check if the row is for IT or CS
-            boolean isIT = "1".equals(row[8]);
+            boolean isIT = "IT".equals(row[5]);
 
             // Parse trait values and GWA
-            float introversion = Float.parseFloat(row[0]);
-            float extroversion = Float.parseFloat(row[1]);
-            float gwa = Float.parseFloat(row[9]); // Assuming GWA is always at index 9
+            float introversion = Float.parseFloat(row[6]);
+            float extroversion = Float.parseFloat(row[7]);
+            float gwa = Float.parseFloat(row[14]);
 
             // Accumulate trait values and GWA based on the course
             if (isIT) {
@@ -677,13 +739,13 @@ public class CareerPathsRecommendations extends AppCompatActivity {
 
         // Accumulate data as before (unchanged)
         for (String[] row : csvData) {
-            boolean isIT = "1".equals(row[8]);
+            boolean isIT = "IT".equals(row[5]);
             int trait1Index = getTraitIndex(traitLabel1);
             int trait2Index = getTraitIndex(traitLabel2);
 
             float trait1Value = Float.parseFloat(row[trait1Index]);
             float trait2Value = Float.parseFloat(row[trait2Index]);
-            float gwa = Float.parseFloat(row[9]);
+            float gwa = Float.parseFloat(row[14]);
 
             int rangeIndexTrait1 = Math.min((int) (trait1Value / 10), 9);
             int rangeIndexTrait2 = Math.min((int) (trait2Value / 10), 9);
@@ -793,21 +855,21 @@ public class CareerPathsRecommendations extends AppCompatActivity {
     private int getTraitIndex(String traitLabel) {
         switch (traitLabel) {
             case "Introversion":
-                return 0;
-            case "Extroversion":
-                return 1;
-            case "Intuition":
-                return 2;
-            case "Sensing":
-                return 3;
-            case "Thinking":
-                return 4;
-            case "Feeling":
-                return 5;
-            case "Judging":
                 return 6;
-            case "Perceiving":
+            case "Extroversion":
                 return 7;
+            case "Intuition":
+                return 8;
+            case "Sensing":
+                return 9;
+            case "Thinking":
+                return 10;
+            case "Feeling":
+                return 11;
+            case "Judging":
+                return 12;
+            case "Perceiving":
+                return 13;
             default:
                 return -1; // or handle invalid case
         }
@@ -876,20 +938,18 @@ public class CareerPathsRecommendations extends AppCompatActivity {
         }
     }
 
-    private List<String[]> loadCSVData(InputStream inputStream) {
+    private List<String[]> loadCSVData(InputStream inputStream) throws CsvValidationException, IOException {
         List<String[]> data = new ArrayList<>();
         try (CSVReader reader = new CSVReader(new InputStreamReader(inputStream))) {
             String[] nextLine;
-            boolean firstLine = true; // Add this flag
+            boolean firstLine = true; // Skip header
             while ((nextLine = reader.readNext()) != null) {
                 if (firstLine) {
-                    firstLine = false; // Skip the header row
+                    firstLine = false;
                     continue;
                 }
                 data.add(nextLine);
             }
-        } catch (IOException | CsvValidationException e) {
-            e.printStackTrace();
         }
         return data;
     }
